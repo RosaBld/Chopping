@@ -5,15 +5,23 @@ export default function CalculatePool() {
   const handleCalculate = () => {
     const storedDrinks = JSON.parse(localStorage.getItem('drinks')) ||[];
     const cost = storedDrinks.reduce((total, drink) => total + drink.quantity * drink.price, 0);
-
+  
     const storedData = localStorage.getItem('formData');
     if (storedData) {
-      const { price } = JSON.parse(storedData);
-      const pool = Number(price);
+      let { formData, totalAmount } = JSON.parse(storedData);
+      const pool = Number(totalAmount);
       const remainingPool = pool - cost;
-
-      localStorage.setItem('formData', JSON.stringify({...JSON.parse(storedData), price: remainingPool}));
-
+  
+      const totalPeople = formData.reduce((total, participant) => total + participant.people, 0);
+      const sharedCost = Number((cost / totalPeople).toFixed(2));
+  
+      formData = formData.map(participant => ({
+        ...participant,
+        amount: Number((participant.amount - sharedCost).toFixed(2))
+      }));
+  
+      localStorage.setItem('formData', JSON.stringify({ formData, totalAmount: remainingPool.toFixed(2) }));
+  
       localStorage.removeItem('drinks');
     }
   }

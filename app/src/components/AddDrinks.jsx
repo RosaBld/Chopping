@@ -18,6 +18,7 @@ export default function AddDrinks() {
     const currentDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
     currentDrinks.push({...formData, quantity: 1});
     localStorage.setItem('drinks', JSON.stringify(currentDrinks));
+    setDrinks(currentDrinks); // Update the component's state
     setShowModal(false);
   }
 
@@ -40,9 +41,17 @@ export default function AddDrinks() {
   }
 
   useEffect(() => {
-    const storedDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
-    setDrinks(storedDrinks);
-  }, []);
+    const intervalId = setInterval(() => {
+      const storedDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
+      if (storedDrinks.length !== drinks.length) {
+        setDrinks(storedDrinks);
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [drinks]);
 
   const handleInputChange = (event) => {
     setFormData({...formData, [event.target.name]: event.target.value });
