@@ -100,7 +100,6 @@ export default function AddDrinks() {
               <label>Boisson:</label>
               <input list="drinks" name="name" value={formData.name || ''} onChange={handleInputChange} required />
               <datalist id="drinks">
-                {/* Show filtered drinks as suggestions */}
                 {filteredDrinks.map((drink, index) => (
                   <option key={index} value={drink.name} />
                 ))}

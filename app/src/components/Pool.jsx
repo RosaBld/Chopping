@@ -27,6 +27,7 @@ export default function Pool() {
         <p>est de</p>
         <h2>{totalAmount}€</h2>
       </div>
+      
       <div>
         <DeletePool />
       </div>
