@@ -16,11 +16,16 @@ export default function AddDrinks() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const currentDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
-    currentDrinks.push({...formData, quantity: 1});
+    const newDrink = {
+      ...formData,
+      price: Number(formData.price.replace(',', '.')),
+      quantity: 1
+    };
+    currentDrinks.push(newDrink);
     localStorage.setItem('drinks', JSON.stringify(currentDrinks));
-    setDrinks(currentDrinks); // Update the component's state
+    setDrinks(currentDrinks);
     setShowModal(false);
-  }
+  };
 
   const incrementQuantity = (index) => {
     const newDrinks = [...drinks];

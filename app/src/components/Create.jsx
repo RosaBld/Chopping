@@ -20,8 +20,11 @@ export default function Create() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const totalAmount = formData.reduce((total, person) => total + person.people * person.amount, 0);
-    localStorage.setItem('formData', JSON.stringify({  formData, totalAmount, poolName }));
+    const totalAmount = formData.reduce((total, person) => {
+      const amount = typeof person.amount === 'string' ? Number(person.amount.replace(',', '.')) : person.amount;
+      return total + person.people * amount;
+    }, 0);
+    localStorage.setItem('formData', JSON.stringify({ formData, totalAmount, poolName }));
     setShowModal(false);
     navigate('/Drinks');
   };

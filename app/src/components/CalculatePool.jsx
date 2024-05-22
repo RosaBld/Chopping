@@ -17,7 +17,7 @@ export default function CalculatePool() {
   
       formData = formData.map(participant => ({
         ...participant,
-        amount: Number((participant.amount - sharedCost).toFixed(2))
+        amount: Number(Number(participant.amount.toString().replace(',', '.')).toFixed(2) - sharedCost).toFixed(2)
       }));
   
       localStorage.setItem('formData', JSON.stringify({ formData, totalAmount: remainingPool.toFixed(2) }));
