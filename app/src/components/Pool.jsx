@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import DeletePool from './DeletePool';
 
 export default function Pool() {
   const [data, setData] = useState(JSON.parse(localStorage.getItem('formData')) || {});
@@ -20,10 +21,15 @@ export default function Pool() {
 
   return (
     <div>
-      <h2>Votre cagnotte</h2>
-      <h2>{poolName}</h2>
-      <p>est de</p>
-      <h2>{totalAmount}€</h2>
+      <div>
+        <h2>Votre cagnotte</h2>
+        <h2>{poolName}</h2>
+        <p>est de</p>
+        <h2>{totalAmount}€</h2>
+      </div>
+      <div>
+        <DeletePool />
+      </div>
     </div>
   )
 }

@@ -4,16 +4,22 @@ import './App.css'
 import Drinks from './views/Drinks'
 import Create from './components/Create'
 import Participants from './views/Participants'
+import Pool from './components/Pool'
+import Header from './components/Header'
+import Configuration from './views/Configuration'
 
 function App() {
 
   return (
     <Router>
       <div>
+        <Header />
         <Routes>
           <Route path="/" element={ <Create />} />
           <Route path="/drinks" element={ <Drinks />} />
-          <Route path="participants" element={ <Participants /> } />
+          <Route path="/participants" element={ <Participants /> } />
+          <Route path="/budget" element={ <Pool /> } />
+          <Route path="/configuration" element={ <Configuration /> } />
         </Routes>
       </div>
     </Router>

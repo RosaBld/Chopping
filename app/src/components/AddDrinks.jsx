@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import DeleteDrink from "./DeleteDrink";
 
 export default function AddDrinks() {
 
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({});
   const [drinks, setDrinks] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(''); // Add search term state
+  const [listDrink, setListDrink] = useState([]); // Add listDrink state
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -38,18 +41,20 @@ export default function AddDrinks() {
     const newDrinks = [...drinks];
     if (newDrinks[index].quantity > 1) {
       newDrinks[index].quantity--;
-    } else {
-      newDrinks.splice(index, 1);
     }
     setDrinks(newDrinks);
     localStorage.setItem('drinks', JSON.stringify(newDrinks));
-  }
+  };
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       const storedDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
       if (storedDrinks.length !== drinks.length) {
         setDrinks(storedDrinks);
+      }
+      const data = localStorage.getItem('listDrink'); // Get listDrink from local storage
+      if (data) {
+        setListDrink(JSON.parse(data)); // Update listDrink state
       }
     }, 1000);
 
@@ -60,7 +65,13 @@ export default function AddDrinks() {
 
   const handleInputChange = (event) => {
     setFormData({...formData, [event.target.name]: event.target.value });
+    setSearchTerm(event.target.value); // Update search term when input changes
   };
+
+  // Filter drinks based on search term
+  const filteredDrinks = listDrink.filter(drink =>
+    drink.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
@@ -72,6 +83,7 @@ export default function AddDrinks() {
               <FontAwesomeIcon icon={faPlus} onClick={() => incrementQuantity(index)} />
               <p>{drink.quantity}x{drink.price}€</p>
               <FontAwesomeIcon icon={faMinus} onClick={() => decrementQuantity(index)} />
+              <DeleteDrink index={index} drinks={drinks} setDrinks={setDrinks} />
             </div>
           </div>
         ))}
@@ -86,7 +98,13 @@ export default function AddDrinks() {
           <div className="">
             <form onSubmit={handleFormSubmit}>
               <label>Boisson:</label>
-              <input name="name" value={formData.name || ''} onChange={handleInputChange} required />
+              <input list="drinks" name="name" value={formData.name || ''} onChange={handleInputChange} required />
+              <datalist id="drinks">
+                {/* Show filtered drinks as suggestions */}
+                {filteredDrinks.map((drink, index) => (
+                  <option key={index} value={drink.name} />
+                ))}
+              </datalist>
               <label>Montant:</label>
               <input name="price" value={formData.price || ''} onChange={handleInputChange} required />
 
@@ -96,6 +114,5 @@ export default function AddDrinks() {
         )}
       </div>
     </div>
-
   )
 }

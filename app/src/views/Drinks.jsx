@@ -5,6 +5,8 @@ import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import AddDrinks from "../components/AddDrinks";
 import CalculatePool from "../components/CalculatePool";
 import Pool from "../components/Pool";
+import NumberDrinks from "../components/NumberDrinks";
+import TotalParticipants from "../components/TotalParticipants";
 
 
 export default function Drinks() {
@@ -23,6 +25,14 @@ export default function Drinks() {
 
       <div>
         <Pool />
+      </div>
+
+      <div>
+        <NumberDrinks />
+      </div>
+
+      <div>
+        <TotalParticipants />
       </div>
 
       <div>
