@@ -1,1 +1,64 @@
-/*# sourceMappingURL=style.css.map */
+.header .burger-menu {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  z-index: 10;
+  transform: translateX(0);
+  transition: transform 0.3s ease-out;
+  margin-right: 5%;
+}
+.header .burger-menu .burger {
+  width: 2rem;
+  height: 0.25rem;
+  background: #333;
+}
+.header .burger-menu.move {
+  transform: translateX(-75vw);
+}
+.header .navbar {
+  transform: translateX(120%);
+  transition: transform 0.3s ease-out;
+  background-color: grey;
+  width: 70%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 10%;
+}
+.header .navbar .links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.header .navbar .links a {
+  text-decoration: none;
+  color: inherit;
+}
+.header .navbar .links a:hover {
+  color: inherit;
+}
+.header .config {
+  list-style: none;
+}
+.header .config Link a {
+  text-decoration: none;
+  color: inherit;
+}
+.header .config Link a:hover {
+  color: inherit;
+}
+.header .navbar.show {
+  transform: translateX(0);
+}/*# sourceMappingURL=style.css.map */

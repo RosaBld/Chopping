@@ -1,0 +1,78 @@
+.header {
+  .burger-menu {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    z-index: 10;
+    transform: translateX(0);
+    transition: transform 0.3s ease-out;
+    margin-right: 5%;
+
+    .burger {
+      width: 2rem;
+      height: 0.25rem;
+      background: #333;
+    }  
+  }
+
+  .burger-menu.move {
+    transform: translateX(-75vw);
+  }
+
+  .navbar {
+    transform: translateX(120%);
+    transition: transform 0.3s ease-out;
+    background-color: grey;
+    width: 70%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 10%;
+
+    .links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  .config {
+    list-style: none;
+
+    Link {
+      a {
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  .navbar.show {
+    transform: translateX(0);
+  }
+}
