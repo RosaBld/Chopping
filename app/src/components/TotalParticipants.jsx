@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// Libraries
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react"
+
 
 export default function TotalParticipants() {
-  const [formData, setFormData] = useState([]);
+  const [participants, setParticipants] = useState([]);
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('formData')) || {};
-    const storedPeople = storedData.formData || [];
-    setFormData(storedPeople);
+    const storedData = JSON.parse(localStorage.getItem('participants')) || {};
+    const storedPeople = storedData.participants || [];
+    setParticipants(storedPeople);
   }, []);
 
-  const totalPeople = formData.reduce((total, formData) => {
-    const people = typeof formData.people === 'string' ? Number(formData.people.replace(',', '.')) : formData.people;
+  const totalPeople = participants.reduce((total, participants) => {
+    const people = typeof participants.people === 'string' ? Number(participants.people.replace(',', '.')) : participants.people;
     return total + people;
   }, 0);
 

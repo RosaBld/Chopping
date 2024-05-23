@@ -1,4 +1,5 @@
-import CreateListDrink from "../components/CreateListDrink";
+// Components
+import { CreateListDrink } from "../utils";
 
 
 export default function Configuration() {

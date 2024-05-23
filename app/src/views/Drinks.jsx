@@ -1,8 +1,5 @@
-import AddDrinks from "../components/AddDrinks";
-import CalculatePool from "../components/CalculatePool";
-import Pool from "../components/Pool";
-import NumberDrinks from "../components/NumberDrinks";
-import TotalParticipants from "../components/TotalParticipants";
+// Components
+import { AddDrinks, CalculatePool, NumberDrinks, Pool, TotalParticipants } from '../utils';
 
 
 export default function Drinks() {

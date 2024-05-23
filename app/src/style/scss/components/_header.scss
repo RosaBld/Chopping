@@ -1,4 +1,5 @@
 .header {
+
   .burger-menu {
     position: absolute;
     right: 0;
@@ -18,19 +19,20 @@
     .burger {
       width: 2rem;
       height: 0.25rem;
-      background: #333;
+      background: rgb(255, 209, 93);
     }  
   }
 
   .burger-menu.move {
-    transform: translateX(-75vw);
+    transform: translateX(-60vw);
+    z-index: 11;
   }
 
   .navbar {
     transform: translateX(120%);
     transition: transform 0.3s ease-out;
-    background-color: grey;
-    width: 70%;
+    background-color: rgb(255, 255, 255);
+    width: 60%;
     height: 100vh;
     position: absolute;
     top: 0;
@@ -40,11 +42,13 @@
     justify-content: space-between;
     align-items: flex-end;
     padding: 0 10%;
+    z-index: 10;
 
     .links {
       list-style: none;
       display: flex;
       flex-direction: column;
+      gap: 5vw;
 
       a {
         text-decoration: none;
@@ -60,7 +64,8 @@
   .config {
     list-style: none;
 
-    Link {
+    .iconConfig {
+
       a {
         text-decoration: none;
         color: inherit;
@@ -68,11 +73,39 @@
         &:hover {
           color: inherit;
         }
+
+        .icon-container {
+          color: rgb(255, 209, 93);
+          font-size: 10vw;
+
+          &:hover {
+            color: black;
+          }
+        }
       }
     }
   }
 
   .navbar.show {
     transform: translateX(0);
+    z-index: 10;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(83, 82, 82, 0.5); 
+    z-index: 5;
+    transition: opacity 0.3s ease-out;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .overlay.show {
+    opacity: 1;
+    pointer-events: auto;
   }
 }

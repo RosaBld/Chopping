@@ -1,0 +1,26 @@
+.createBudget {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5vw;
+  background-color: rgb(246, 224, 197);
+  border: none;
+  box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.closeModal {
+  position: absolute;
+  right: 5%;
+}
+
+.participantButtons {
+  padding: 2vw;
+  background-color: rgb(246, 224, 197);
+  border: none;
+  box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+}

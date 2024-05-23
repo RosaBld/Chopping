@@ -1,7 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// Libraries
 import { faGear } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +14,7 @@ export default function Header() {
 
     const toggleNav = () => {
       nav.classList.toggle('show');
-      setIsOpen(!isOpen); // Toggle isOpen when the burger menu is clicked
+      setIsOpen(!isOpen);
     };
 
     burgerMenu.addEventListener('click', toggleNav);
@@ -20,7 +22,7 @@ export default function Header() {
     return () => {
       burgerMenu.removeEventListener('click', toggleNav);
     };
-  }, [isOpen]); // Add isOpen to the dependency array
+  }, [isOpen]);
 
   return (
     <div className="header">
@@ -33,8 +35,13 @@ export default function Header() {
       <nav className="navbar">
         <ul className="links">
           <li className="">
+            <Link to="/">
+              Accueil
+            </Link>
+          </li>
+          <li>
             <Link to="/participants">
-              List
+              Participants
             </Link>
           </li>
           <li>
@@ -50,13 +57,16 @@ export default function Header() {
         </ul>
 
         <ul className="config">
-          <li>
+          <li className="iconConfig">
             <Link to="/configuration">
-              <FontAwesomeIcon icon={faGear} />
+              <div className="icon-container">
+                <FontAwesomeIcon icon={faGear} />
+              </div>            
             </Link>
           </li>
         </ul>
       </nav>
+      <div className={`overlay ${isOpen ? 'show' : ''}`} />
     </div>
   );
 }

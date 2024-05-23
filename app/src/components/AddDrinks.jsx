@@ -1,13 +1,16 @@
+//Libraries
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-import DeleteDrink from "./DeleteDrink";
+// Components
+import { DeleteDrink } from "../utils";
+
 
 export default function AddDrinks() {
 
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState({});
+  const [participants, setParticipants] = useState({});
   const [drinks, setDrinks] = useState([]);
   const [searchTerm, setSearchTerm] = useState(''); // Add search term state
   const [listDrink, setListDrink] = useState([]); // Add listDrink state
@@ -20,8 +23,8 @@ export default function AddDrinks() {
     event.preventDefault();
     const currentDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
     const newDrink = {
-      ...formData,
-      price: Number(formData.price.replace(',', '.')),
+      ...participants,
+      price: Number(participants.price.replace(',', '.')),
       quantity: 1
     };
     currentDrinks.push(newDrink);
@@ -64,7 +67,7 @@ export default function AddDrinks() {
   }, [drinks]);
 
   const handleInputChange = (event) => {
-    setFormData({...formData, [event.target.name]: event.target.value });
+    setParticipants({...participants, [event.target.name]: event.target.value });
     setSearchTerm(event.target.value); // Update search term when input changes
   };
 
@@ -98,14 +101,14 @@ export default function AddDrinks() {
           <div className="">
             <form onSubmit={handleFormSubmit}>
               <label>Boisson:</label>
-              <input list="drinks" name="name" value={formData.name || ''} onChange={handleInputChange} required />
+              <input list="drinks" name="name" value={participants.name || ''} onChange={handleInputChange} required />
               <datalist id="drinks">
                 {filteredDrinks.map((drink, index) => (
                   <option key={index} value={drink.name} />
                 ))}
               </datalist>
               <label>Montant:</label>
-              <input name="price" value={formData.price || ''} onChange={handleInputChange} required />
+              <input name="price" value={participants.price || ''} onChange={handleInputChange} required />
 
               <button type="submit">Submit</button>
             </form>

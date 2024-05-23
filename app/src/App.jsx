@@ -1,12 +1,10 @@
+// Libraries
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './style/css/style.css'
 
-import Drinks from './views/Drinks'
-import Create from './components/Create'
-import Participants from './views/Participants'
-import Pool from './components/Pool'
-import Header from './components/Header'
-import Configuration from './views/Configuration'
+// Components
+import { Configuration, Create, Drinks, Header, Participants, Pool } from './utils';
+
 
 function App() {
 

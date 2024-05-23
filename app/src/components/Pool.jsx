@@ -1,14 +1,17 @@
+// Libraries
 import { useState, useEffect } from 'react';
-import DeletePool from './DeletePool';
+
+// Components
+import { DeletePool } from '../utils';
 
 export default function Pool() {
-  const [data, setData] = useState(JSON.parse(localStorage.getItem('formData')) || {});
+  const [data, setData] = useState(JSON.parse(localStorage.getItem('participants')) || {});
   const totalAmount = data.totalAmount;
   const poolName = data.poolName;
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      const storedData = JSON.parse(localStorage.getItem('formData')) || {};
+      const storedData = JSON.parse(localStorage.getItem('participants')) || {};
       if (storedData.totalAmount !== totalAmount || storedData.poolName !== poolName) {
         setData(storedData);
       }

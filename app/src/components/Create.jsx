@@ -1,30 +1,33 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { useState, useEffect } from 'react'
+// Libraries
+import { faCheck, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState, useEffect } from 'react';
+import ReactModal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 
+
+ReactModal.setAppElement('#root');
+
 export default function Create() {
-  
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState([{ name: '', people: 1, amount: 0 }]);
+  const [participants, setParticipants] = useState([{ name: '', people: 1, amount: 0 }]);
   const navigate = useNavigate();
   const [poolName, setPoolName] = useState('');
 
-
   useEffect(() => {
-    const data = localStorage.getItem('formData');
+    const data = localStorage.getItem('participants');
     if (data) {
-      setFormData(JSON.parse(data));
+      setParticipants(JSON.parse(data));
     }
   }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const totalAmount = formData.reduce((total, person) => {
+    const totalAmount = participants.reduce((total, person) => {
       const amount = typeof person.amount === 'string' ? Number(person.amount.replace(',', '.')) : person.amount;
       return total + person.people * amount;
     }, 0);
-    localStorage.setItem('formData', JSON.stringify({ formData, totalAmount, poolName }));
+    localStorage.setItem('participants', JSON.stringify({ participants, totalAmount, poolName }));
     setShowModal(false);
     navigate('/Drinks');
   };
@@ -34,52 +37,76 @@ export default function Create() {
   }
 
   const addPerson = () => {
-    setFormData([...formData, { name: '', people: 1, amount: 0 }]);
+    setParticipants([...participants, { name: '', people: 1, amount: 0 }]);
   };
 
-
   return (
-    <div>
-      <button onClick={toggleModal}>
+    <div className="createParticipant">
+      <button className="createBudget" onClick={toggleModal}>
         <FontAwesomeIcon icon={faPlus} />
       </button>
-      {showModal && (
-        <form onSubmit={handleSubmit}>
-          <label>Pool Name:</label>
+      <ReactModal 
+        isOpen={showModal}
+        onRequestClose={toggleModal}
+        contentLabel="Participant Form"
+        style={{
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+          },
+          content: {
+            color: 'lightsteelblue',
+            width: '50%',
+            height: '70%',
+            margin: 'auto',
+            padding: '20px',
+            border: '1px solid black',
+          },
+        }}
+      >
+        <button className="closeModal">
+          <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+        </button>
+
+        <form className="formParticipant" onSubmit={handleSubmit}>
+          <label>Nom de l'évènement</label>
           <input value={poolName} onChange={e => setPoolName(e.target.value)} required />
 
-          {formData.map((person, index) => (
+          {participants.map((person, index) => (
             <div key={index}>
-              <label>Name:</label>
+              <label>Participant:</label>
               <input value={person.name} onChange={e => {
-                const newFormData = [...formData];
-                newFormData[index].name = e.target.value;
-                setFormData(newFormData);
+                const newParticipants = [...participants];
+                newParticipants[index].name = e.target.value;
+                setParticipants(newParticipants);
               }} required />
-    
-              <label>Number of people:</label>
+
+              <label>Pour:</label>
               <input type="number" min="1" value={person.people} onChange={e => {
-                const newFormData = [...formData];
-                newFormData[index].people = Number(e.target.value);
-                setFormData(newFormData);
+                const newParticipants = [...participants];
+                newParticipants[index].people = Number(e.target.value);
+                setParticipants(newParticipants);
               }} required />
-    
-              <label>Amount of money:</label>
+
+              <label>Montant par personne:</label>
               <input type="number" min="0" value={person.amount} onChange={e => {
-                const newFormData = [...formData];
-                newFormData[index].amount = Number(e.target.value);
-                setFormData(newFormData);
+                const newParticipants = [...participants];
+                newParticipants[index].amount = Number(e.target.value);
+                setParticipants(newParticipants);
               }} required />
             </div>
           ))}
-  
-        <button type="button" onClick={addPerson}>
-          <FontAwesomeIcon icon={faPlus} /> Add Person
-        </button>
-  
-        <button type="submit">Submit</button>
-      </form>
-      )}
+
+          <div className="validateParticipant">
+            <button className="participantButtons" type="button" onClick={addPerson}>
+              <FontAwesomeIcon icon={faPlus} />
+            </button>
+
+            <button className="participantButtons" type="submit">
+              <FontAwesomeIcon icon={faCheck} />
+            </button>
+          </div>
+        </form>
+      </ReactModal>
     </div>
-  )
+  );
 }

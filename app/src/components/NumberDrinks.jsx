@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// Libraries
 import { faBeerMugEmpty, faMoneyBill1, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Tooltip from '@mui/material/Tooltip';
+import { useEffect, useState } from "react"
+
 
 export default function NumberDrinks() {
   const [drinks, setDrinks] = useState([]);
@@ -35,7 +37,7 @@ export default function NumberDrinks() {
     return total + quantity;
   }, 0);
 
-  const data = JSON.parse(localStorage.getItem('formData')) || {};
+  const data = JSON.parse(localStorage.getItem('participants')) || {};
   const totalAmount = data.totalAmount;
 
   return(

@@ -1,4 +1,5 @@
-import ListParticipants from "../components/ListParticipants";
+// Components
+import { ListParticipants } from "../utils";
 
 
 export default function Participants() {

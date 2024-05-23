@@ -1,30 +1,35 @@
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// Libraries
 import { faArrowLeft, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export default function ListParticipants() {
-  const data = JSON.parse(localStorage.getItem('formData'));
-  const participants = data.formData;
+  let listParticipants = [];
+  const data = JSON.parse(localStorage.getItem('participants'));
+  if (data) {
+    listParticipants = data.participants;
+  }
 
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState([{ name: '', people: 1, amount: 0 }]);
+  const [participants, setParticipants] = useState([{ name: '', people: 1, amount: 0 }]);
 
   const navigate = useNavigate();
 
+  
   useEffect(() => {
-    const storedData = localStorage.getItem('formData');
+    const storedData = localStorage.getItem('participants');
     if (storedData) {
       const data = JSON.parse(storedData);
-      setFormData(data.formData);
+      setParticipants(data.participants);
     }
   }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const totalAmount = formData.reduce((total, person) => total + person.people * person.amount, 0);
-    localStorage.setItem('formData', JSON.stringify({  formData, totalAmount }));
+    const totalAmount = participants.reduce((total, person) => total + person.people * person.amount, 0);
+    localStorage.setItem('participants', JSON.stringify({  participants, totalAmount }));
     setShowModal(false);
     navigate('/Drinks');
   };
@@ -34,7 +39,7 @@ export default function ListParticipants() {
   }
 
   const addPerson = () => {
-    setFormData([...formData, { name: '', people: 1, amount: 0 }]);
+    setParticipants([...participants, { name: '', people: 1, amount: 0 }]);
   };
 
   return (
@@ -46,48 +51,58 @@ export default function ListParticipants() {
       </div>
 
       <div>
-      {participants.map((participant, index) => {
-        const totalAmount = participant.people * participant.amount;
-        return (
-          <div key={index}>
-            <h3>{participant.name}</h3>
-            <p>{participant.people}</p>
-            <p>{totalAmount}</p>
-          </div>
-        );
-      })}
+      {listParticipants.length === 0 ? (
+        <div>
+          <h2>Aucun participant à votre cagnotte n'a été trouvé. Veuillez créer une <Link to="/">cagnotte</Link> ou ajouter des participants à votre cagnotte déjà existante</h2>
+        </div>
+      ) : (
+        <div>
+          {listParticipants.map((participant, index) => {
+            const totalAmount = participant.people * participant.amount;
+            return (
+              <div key={index}>
+                <h3>{participant.name}</h3>
+                <p>{participant.people}</p>
+                <p>{totalAmount}</p>
+              </div>
+            );
+          })}
+        </div>
+      )}
       </div>
       
       <div>
-      <button onClick={toggleModal}>
-        <FontAwesomeIcon icon={faPlus} />
-      </button>
-        {showModal && (
-          <form onSubmit={handleSubmit}>
-          {formData.map((person, index) => (
-            <div key={index}>
-              <label>Name:</label>
-              <input value={person.name} onChange={e => {
-                const newFormData = [...formData];
-                newFormData[index].name = e.target.value;
-                setFormData(newFormData);
-              }} required />
-    
-              <label>Number of people:</label>
-              <input type="number" min="1" value={person.people} onChange={e => {
-                const newFormData = [...formData];
-                newFormData[index].people = Number(e.target.value);
-                setFormData(newFormData);
-              }} required />
-    
-              <label>Amount of money:</label>
-              <input type="number" min="0" value={person.amount} onChange={e => {
-                const newFormData = [...formData];
-                newFormData[index].amount = Number(e.target.value);
-                setFormData(newFormData);
-              }} required />
-            </div>
-          ))}
+        {listParticipants.length > 0 && (
+          <button onClick={toggleModal}>
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+        )}
+          {showModal && (
+            <form onSubmit={handleSubmit}>
+            {participants.map((person, index) => (
+              <div key={index}>
+                <label>Name:</label>
+                <input value={person.name} onChange={e => {
+                  const newParticipants = [...participants];
+                  newParticipants[index].name = e.target.value;
+                  setParticipants(newParticipants);
+                }} required />
+      
+                <label>Number of people:</label>
+                <input type="number" min="1" value={person.people} onChange={e => {
+                  const newParticipants = [...participants];
+                  newParticipants[index].people = Number(e.target.value);
+                  setParticipants(newParticipants);
+                }} required />
+      
+                <label>Amount of money:</label>
+                <input type="number" min="0" value={person.amount} onChange={e => {
+                  const newParticipants = [...participants];
+                  newParticipants[index].amount = Number(e.target.value);
+                  setParticipants(newParticipants);
+                }} required />
+              </div>
+            ))}
           <button type="button" onClick={addPerson}>
             <FontAwesomeIcon icon={faPlus} /> Add Person
           </button>
