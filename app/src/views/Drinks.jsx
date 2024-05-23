@@ -1,5 +1,5 @@
 // Components
-import { AddDrinks, CalculatePool, NumberDrinks, Pool, TotalParticipants } from '../utils';
+import { AddDrinks, CalculatePool, CostDrinks, Pool, TotalDrinks, TotalParticipants } from '../utils';
 
 
 export default function Drinks() {
@@ -8,22 +8,16 @@ export default function Drinks() {
     <div>
       <div>
         <AddDrinks />
-      </div>
-
-      <div>
         <CalculatePool />
       </div>
 
-      <div>
+      <div className="bill">
         <Pool />
-      </div>
-
-      <div>
-        <NumberDrinks />
-      </div>
-
-      <div>
-        <TotalParticipants />
+        <div className="total">
+          <TotalDrinks />
+          <CostDrinks />
+          <TotalParticipants />
+        </div>
       </div>
     </div>
 

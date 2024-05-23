@@ -16,7 +16,7 @@ export default function DeletePool() {
 
   return (
     <div>
-      <button  onClick={handleDelete} >
+      <button  onClick={handleDelete} className="deletePool" >
         <FontAwesomeIcon icon={faTrashCan} />
       </button>
     </div>

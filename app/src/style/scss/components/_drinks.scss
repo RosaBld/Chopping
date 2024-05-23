@@ -1,0 +1,44 @@
+body {
+  padding-bottom: 170px;
+}
+
+.bill {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-top: solid 3px rgb(246, 224, 197);
+  width: 100%;
+  z-index: 0;
+  background-color: white;
+  .total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: solid 3px rgb(246, 224, 197);
+    padding: 0 15vw;
+  }
+}
+
+.poolRemaining {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+
+.drinksAmount, .drinksPrice, .totalParticipant {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+
+
+

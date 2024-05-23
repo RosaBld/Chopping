@@ -1,7 +1,8 @@
 // Libraries
-import { faArrowLeft, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faCheck, faEuroSign, faPlus, faUser, faUsers, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
+import ReactModal from 'react-modal';
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -45,71 +46,112 @@ export default function ListParticipants() {
   return (
     <div>
       <div>
-        <button onClick={() => navigate('/drinks')}>
+        <button onClick={() => navigate('/drinks')} className="back">
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
       </div>
 
       <div>
       {listParticipants.length === 0 ? (
-        <div>
-          <h2>Aucun participant à votre cagnotte n'a été trouvé. Veuillez créer une <Link to="/">cagnotte</Link> ou ajouter des participants à votre cagnotte déjà existante</h2>
+        <div className="errorList">
+          <h2>Aucun participant à votre cagnotte n&apos;a été trouvé. Veuillez créer une <Link to="/">cagnotte</Link> ou ajouter des participants à votre cagnotte déjà existante</h2>
         </div>
       ) : (
-        <div>
-          {listParticipants.map((participant, index) => {
-            const totalAmount = participant.people * participant.amount;
-            return (
-              <div key={index}>
-                <h3>{participant.name}</h3>
-                <p>{participant.people}</p>
-                <p>{totalAmount}</p>
-              </div>
-            );
-          })}
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <th className="name"><FontAwesomeIcon icon={faUser} /></th>
+              <th className="numberUser"><FontAwesomeIcon icon={faUsers} /></th>
+              <th className="given"><FontAwesomeIcon icon={faEuroSign} /></th>
+            </tr>
+          </thead>
+          <tbody>
+            {listParticipants.map((participant, index) => {
+              const totalAmount = participant.people * participant.amount;
+              return (
+                <tr key={index}>
+                  <td className="name">{participant.name}</td>
+                  <td className="numberUser">{participant.people}</td>
+                  <td className="given">{totalAmount}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       )}
       </div>
       
       <div>
         {listParticipants.length > 0 && (
-          <button onClick={toggleModal}>
-            <FontAwesomeIcon icon={faPlus} />
-          </button>
+          <div className="createParticipant">
+            <button onClick={toggleModal} className="createNewParticipant">
+              <FontAwesomeIcon icon={faPlus} />
+            </button>
+          </div>
         )}
-          {showModal && (
+          <ReactModal 
+            isOpen={showModal}
+            onRequestClose={toggleModal}
+            contentLabel="Participant Form"
+            style={{
+              overlay: {
+                backgroundColor: 'rgba(0, 0, 0, 0.75)',
+              },
+              content: {
+                color: 'lightsteelblue',
+                width: '50%',
+                height: '70%',
+                margin: 'auto',
+                padding: '20px',
+                border: '1px solid black',
+              },
+            }}
+          >
+            <button className="closeModal">
+              <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+            </button>
             <form onSubmit={handleSubmit}>
             {participants.map((person, index) => (
-              <div key={index}>
-                <label>Name:</label>
-                <input value={person.name} onChange={e => {
-                  const newParticipants = [...participants];
-                  newParticipants[index].name = e.target.value;
-                  setParticipants(newParticipants);
-                }} required />
-      
-                <label>Number of people:</label>
-                <input type="number" min="1" value={person.people} onChange={e => {
-                  const newParticipants = [...participants];
-                  newParticipants[index].people = Number(e.target.value);
-                  setParticipants(newParticipants);
-                }} required />
-      
-                <label>Amount of money:</label>
-                <input type="number" min="0" value={person.amount} onChange={e => {
-                  const newParticipants = [...participants];
-                  newParticipants[index].amount = Number(e.target.value);
-                  setParticipants(newParticipants);
-                }} required />
+              <div key={index} className="formParticipant">
+                <div className="labelPart">
+                  <label>Name:</label>
+                  <input value={person.name} onChange={e => {
+                    const newParticipants = [...participants];
+                    newParticipants[index].name = e.target.value;
+                    setParticipants(newParticipants);
+                  }} required />
+                </div>
+
+                <div className="labelPart">
+                  <label>Number of people:</label>
+                  <input type="number" min="1" value={person.people} onChange={e => {
+                    const newParticipants = [...participants];
+                    newParticipants[index].people = Number(e.target.value);
+                    setParticipants(newParticipants);
+                  }} required />
+                </div>
+
+                <div className="labelPart">  
+                  <label>Amount of money:</label>
+                  <input type="number" min="0" value={person.amount} onChange={e => {
+                    const newParticipants = [...participants];
+                    newParticipants[index].amount = Number(e.target.value);
+                    setParticipants(newParticipants);
+                  }} required />
+                </div>
               </div>
             ))}
-          <button type="button" onClick={addPerson}>
-            <FontAwesomeIcon icon={faPlus} /> Add Person
-          </button>
-    
-          <button type="submit">Submit</button>
+          <div className="validateParticipant">
+            <button className="participantButtons" type="button" onClick={addPerson}>
+              <FontAwesomeIcon icon={faPlus} />
+            </button>
+
+            <button className="participantButtons" type="submit">
+              <FontAwesomeIcon icon={faCheck} />
+            </button>
+          </div>
           </form>
-        )}
+        </ReactModal>
       </div>
     </div>
   );

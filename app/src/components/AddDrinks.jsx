@@ -1,7 +1,8 @@
 //Libraries
-import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faMinus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
+import ReactModal from 'react-modal';
 
 // Components
 import { DeleteDrink } from "../utils";
@@ -12,8 +13,8 @@ export default function AddDrinks() {
   const [showModal, setShowModal] = useState(false);
   const [participants, setParticipants] = useState({});
   const [drinks, setDrinks] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(''); // Add search term state
-  const [listDrink, setListDrink] = useState([]); // Add listDrink state
+  const [searchTerm, setSearchTerm] = useState('');
+  const [listDrink, setListDrink] = useState([]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -55,9 +56,9 @@ export default function AddDrinks() {
       if (storedDrinks.length !== drinks.length) {
         setDrinks(storedDrinks);
       }
-      const data = localStorage.getItem('listDrink'); // Get listDrink from local storage
+      const data = localStorage.getItem('listDrink');
       if (data) {
-        setListDrink(JSON.parse(data)); // Update listDrink state
+        setListDrink(JSON.parse(data));
       }
     }, 1000);
 
@@ -68,10 +69,9 @@ export default function AddDrinks() {
 
   const handleInputChange = (event) => {
     setParticipants({...participants, [event.target.name]: event.target.value });
-    setSearchTerm(event.target.value); // Update search term when input changes
+    setSearchTerm(event.target.value); 
   };
 
-  // Filter drinks based on search term
   const filteredDrinks = listDrink.filter(drink =>
     drink.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -80,40 +80,74 @@ export default function AddDrinks() {
     <div>
       <div>
         {drinks.map((drink, index) => (
-          <div key={index}>
-            <h2>{drink.name}</h2>
-            <div>
+          <div key={index} className="setOfDrink">
+            <div className="displayDrink">
+              {drink.quantity === 1 ? (
+                <DeleteDrink index={index} drinks={drinks} setDrinks={setDrinks} />
+              ) : (
+                <FontAwesomeIcon icon={faMinus} onClick={() => decrementQuantity(index)} />
+              )}
+              <h2>{drink.name}</h2>
               <FontAwesomeIcon icon={faPlus} onClick={() => incrementQuantity(index)} />
+            </div>
+
+            <div className="detailsDrink">
               <p>{drink.quantity}x{drink.price}€</p>
-              <FontAwesomeIcon icon={faMinus} onClick={() => decrementQuantity(index)} />
-              <DeleteDrink index={index} drinks={drinks} setDrinks={setDrinks} />
             </div>
           </div>
         ))}
       </div>
 
-      <div>
-        <button onClick={toggleModal}>
+      <div className="createDrinkable">
+        <button onClick={toggleModal} className="createDrink">
           <FontAwesomeIcon icon={faPlus} />
         </button>
 
-        {showModal && (
-          <div className="">
+        <ReactModal 
+          isOpen={showModal}
+          onRequestClose={toggleModal}
+          contentLabel="Participant Form"
+          style={{
+            overlay: {
+              backgroundColor: 'rgba(0, 0, 0, 0.75)',
+            },
+            content: {
+              color: 'lightsteelblue',
+              width: '50%',
+              height: '25%',
+              margin: 'auto',
+              padding: '20px',
+              border: '1px solid black',
+            },
+          }}
+        >
+          <button className="closeModal">
+            <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+          </button>
+          <div className="formDrinks">
             <form onSubmit={handleFormSubmit}>
-              <label>Boisson:</label>
-              <input list="drinks" name="name" value={participants.name || ''} onChange={handleInputChange} required />
-              <datalist id="drinks">
-                {filteredDrinks.map((drink, index) => (
-                  <option key={index} value={drink.name} />
-                ))}
-              </datalist>
-              <label>Montant:</label>
-              <input name="price" value={participants.price || ''} onChange={handleInputChange} required />
-
-              <button type="submit">Submit</button>
+              <div className="labelDrinks">
+                <label>Boisson:</label>
+                <input list="drinks" name="name" value={participants.name || ''} onChange={handleInputChange} required />
+                <datalist id="drinks">
+                  {filteredDrinks.map((drink, index) => (
+                    <option key={index} value={drink.name} />
+                  ))}
+                </datalist>
+              </div>
+              
+              <div className="labelDrinks">
+                <label>Montant:</label>
+                <input name="price" value={participants.price || ''} onChange={handleInputChange} required />
+              </div>
+              <div className="validate">
+                <button className="validateDrink" type="submit">
+                  Submit
+                </button>
+              </div>
             </form>
           </div>
-        )}
+        </ReactModal>
       </div>
     </div>
   )

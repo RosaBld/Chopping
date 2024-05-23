@@ -27,8 +27,11 @@ export default function CalculatePool() {
   }
 
   return (
-    <button onClick={handleCalculate}>
-      <FontAwesomeIcon icon={faCheck} />
-    </button>
+    <div className="calculatePool">
+      <button className="validate" onClick={handleCalculate}>
+        <FontAwesomeIcon icon={faCheck} /> Valider la commande
+      </button>
+    </div>
+    
   )
 }

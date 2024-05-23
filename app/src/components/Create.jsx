@@ -13,11 +13,16 @@ export default function Create() {
   const [participants, setParticipants] = useState([{ name: '', people: 1, amount: 0 }]);
   const navigate = useNavigate();
   const [poolName, setPoolName] = useState('');
+  const [existingData, setExistingData] = useState(false);
 
   useEffect(() => {
     const data = localStorage.getItem('participants');
     if (data) {
-      setParticipants(JSON.parse(data));
+      const parsedData = JSON.parse(data);
+      if (Array.isArray(parsedData)) {
+        setParticipants(parsedData);
+        setExistingData(true);
+      }
     }
   }, []);
 
@@ -42,71 +47,83 @@ export default function Create() {
 
   return (
     <div className="createParticipant">
-      <button className="createBudget" onClick={toggleModal}>
-        <FontAwesomeIcon icon={faPlus} />
-      </button>
-      <ReactModal 
-        isOpen={showModal}
-        onRequestClose={toggleModal}
-        contentLabel="Participant Form"
-        style={{
-          overlay: {
-            backgroundColor: 'rgba(0, 0, 0, 0.75)',
-          },
-          content: {
-            color: 'lightsteelblue',
-            width: '50%',
-            height: '70%',
-            margin: 'auto',
-            padding: '20px',
-            border: '1px solid black',
-          },
-        }}
-      >
-        <button className="closeModal">
-          <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
-        </button>
-
-        <form className="formParticipant" onSubmit={handleSubmit}>
-          <label>Nom de l'évènement</label>
-          <input value={poolName} onChange={e => setPoolName(e.target.value)} required />
-
-          {participants.map((person, index) => (
-            <div key={index}>
-              <label>Participant:</label>
-              <input value={person.name} onChange={e => {
-                const newParticipants = [...participants];
-                newParticipants[index].name = e.target.value;
-                setParticipants(newParticipants);
-              }} required />
-
-              <label>Pour:</label>
-              <input type="number" min="1" value={person.people} onChange={e => {
-                const newParticipants = [...participants];
-                newParticipants[index].people = Number(e.target.value);
-                setParticipants(newParticipants);
-              }} required />
-
-              <label>Montant par personne:</label>
-              <input type="number" min="0" value={person.amount} onChange={e => {
-                const newParticipants = [...participants];
-                newParticipants[index].amount = Number(e.target.value);
-                setParticipants(newParticipants);
-              }} required />
-            </div>
-          ))}
-
-          <div className="validateParticipant">
-            <button className="participantButtons" type="button" onClick={addPerson}>
-              <FontAwesomeIcon icon={faPlus} />
+      {existingData ? (
+        <p>There is already existing data.</p>
+      ) : (
+        <>
+          <button className="createBudget" onClick={toggleModal}>
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+          <ReactModal 
+            isOpen={showModal}
+            onRequestClose={toggleModal}
+            contentLabel="Participant Form"
+            style={{
+              overlay: {
+                backgroundColor: 'rgba(0, 0, 0, 0.75)',
+              },
+              content: {
+                color: 'lightsteelblue',
+                width: '50%',
+                height: '70%',
+                margin: 'auto',
+                padding: '20px',
+                border: '1px solid black',
+              },
+            }}
+          >
+            <button className="closeModal">
+              <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
             </button>
 
-            <button className="participantButtons" type="submit">
-              <FontAwesomeIcon icon={faCheck} />
-            </button>
-          </div>
-        </form>
-      </ReactModal>
+            <form className="formParticipant" onSubmit={handleSubmit}>
+              <div className="labelTitle">
+                <label>Nom de l&apos;évènement</label>
+                <input value={poolName} onChange={e => setPoolName(e.target.value)} required />
+              </div>
+
+              {participants.map((person, index) => (
+                <div key={index} className="form">
+                  <div className="labelPart">
+                    <label>Participant:</label>
+                    <input value={person.name} onChange={e => {
+                      const newParticipants = [...participants];
+                      newParticipants[index].name = e.target.value;
+                      setParticipants(newParticipants);
+                    }} required />
+                  </div>
+                  <div className="labelPart">
+                    <label>Pour:</label>
+                    <input type="number" min="1" value={person.people} onChange={e => {
+                      const newParticipants = [...participants];
+                      newParticipants[index].people = Number(e.target.value);
+                      setParticipants(newParticipants);
+                    }} required />
+                  </div>
+                  <div className="labelPart">
+                    <label>Montant par personne:</label>
+                    <input type="number" min="0" value={person.amount} onChange={e => {
+                      const newParticipants = [...participants];
+                      newParticipants[index].amount = Number(e.target.value);
+                      setParticipants(newParticipants);
+                    }} required />
+                  </div>
+                </div>
+              ))}
+
+              <div className="validateParticipant">
+                <button className="participantButtons" type="button" onClick={addPerson}>
+                  <FontAwesomeIcon icon={faPlus} />
+                </button>
+
+                <button className="participantButtons" type="submit">
+                  <FontAwesomeIcon icon={faCheck} />
+                </button>
+              </div>
+            </form>
+          </ReactModal>
+        </>
+      )}
     </div>
   );
 }

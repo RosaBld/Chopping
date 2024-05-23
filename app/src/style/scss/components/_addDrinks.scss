@@ -1,0 +1,29 @@
+.labelDrinks {
+  margin: 0 0 3vw 0;
+  input {
+    border-radius: 5px;
+    border-color: rgb(246, 224, 197);
+  }
+}
+
+.setOfDrink {
+  border-bottom: solid 3px rgb(246, 224, 197);
+  margin-bottom: 5vw;
+
+
+  .displayDrink {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20vw;
+  }
+}
+
+
+
+.detailsDrink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

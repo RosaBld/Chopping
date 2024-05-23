@@ -12,3 +12,68 @@
     }
   }
 }
+
+.formParticipant, .formDrinks {
+  font-family: "Roboto", sans-serif;
+  color: rgb(255, 209, 93);
+  font-weight: 400;
+  margin-top: 7vw;
+}
+
+.labelTitle,  .labelPart, .labelDrinks {
+  input {
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+.errorList {
+  font-family: "Roboto", sans-serif;
+  color: rgb(255, 209, 93);
+  font-weight: 400;
+  margin: 20vw 5vw;
+  text-align: justify;
+  h2 {
+    a {
+      color: inherit;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}
+
+.validateDrink {
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
+
+.calculatePool {
+  .validate {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(107, 107, 107);
+  }
+}
+
+.remaining {
+  font-family: "Roboto", sans-serif;
+  color: rgb(255, 209, 93);
+  font-weight: 400;
+}
+
+.drinksAmount, .drinksPrice, .totalParticipant {
+  font-family: "Roboto", sans-serif;
+  color: rgb(255, 198, 53);
+  font-weight: 400;
+}
+
+.deleteConfirmation {
+  font-family: "Roboto", sans-serif;
+  color: rgb(255, 198, 53);
+  font-weight: 400;
+}
+
+.displayDrink, .detailsDrink {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}

@@ -1,0 +1,27 @@
+table {
+  margin-top: 5vw;
+  border-collapse: collapse;
+  margin-bottom: 5vw;
+
+  thead, tbody {
+    tr {
+      border-bottom: 2px solid rgb(246, 224, 197);
+      .name {
+        width: 50vw;
+        height: 5vh;
+      }
+      
+      .numberUser, .given {
+        width: 20vw;
+      }
+    }
+  }
+}
+
+.labelParticipants {
+  margin: 0 0 3vw 0;
+  input {
+    border-radius: 5px;
+    border-color: rgb(246, 224, 197);
+  }
+}

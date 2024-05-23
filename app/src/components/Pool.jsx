@@ -23,16 +23,13 @@ export default function Pool() {
   }, [totalAmount, poolName]);
 
   return (
-    <div>
-      <div>
-        <h2>Votre cagnotte</h2>
-        <h2>{poolName}</h2>
-        <p>est de</p>
-        <h2>{totalAmount}€</h2>
-      </div>
-      
+    <div className="poolRemaining">
       <div>
         <DeletePool />
+      </div>
+
+      <div className="remaining">
+        <h3>Reste: {totalAmount}€</h3>
       </div>
     </div>
   )

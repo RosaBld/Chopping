@@ -19,7 +19,7 @@ export default function TotalParticipants() {
   }, 0);
 
   return(
-    <div>
+    <div className="totalParticipant">
       <FontAwesomeIcon icon={faUsers} />
       <p>{totalPeople}</p>
     </div>

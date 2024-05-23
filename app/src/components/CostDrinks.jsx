@@ -1,18 +1,12 @@
 // Libraries
-import { faBeerMugEmpty, faMoneyBill1, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
+import { faMoneyBill1, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Tooltip from '@mui/material/Tooltip';
 import { useEffect, useState } from "react"
 
 
-export default function NumberDrinks() {
-  const [drinks, setDrinks] = useState([]);
+export default function CostDrinks() {
   const [cost, setCost] = useState(0);
-
-  useEffect(() => {
-    const storedDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
-    setDrinks(storedDrinks);
-  }, []);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -23,7 +17,6 @@ export default function NumberDrinks() {
       }, 0);
       if (newCost !== cost) {
         setCost(newCost);
-        setDrinks(storedDrinks);
       }
     }, 1000);
 
@@ -32,18 +25,11 @@ export default function NumberDrinks() {
     };
   }, [cost]);
 
-  const totalDrink = drinks.reduce((total, drink) => {
-    const quantity = typeof drink.quantity === 'string' ? Number(drink.quantity.replace(',', '.')) : drink.quantity;
-    return total + quantity;
-  }, 0);
-
   const data = JSON.parse(localStorage.getItem('participants')) || {};
   const totalAmount = data.totalAmount;
 
   return(
-    <div>
-      <FontAwesomeIcon icon={faBeerMugEmpty} />
-      <p>{totalDrink}</p>
+    <div className="drinksPrice">
       <FontAwesomeIcon icon={faMoneyBill1} />
       <p>{cost}</p>
       {cost > totalAmount && 
