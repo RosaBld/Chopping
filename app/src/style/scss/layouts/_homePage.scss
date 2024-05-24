@@ -1,0 +1,17 @@
+.homepage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20vh;
+
+  .logo {
+    width: 20vw;
+  }
+}
+
+.charging {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

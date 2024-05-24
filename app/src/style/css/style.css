@@ -208,14 +208,18 @@
   margin: 0 0 3vw 0;
 }
 .labelTitle input {
+  width: 95%;
   border-radius: 5px;
   border-color: rgb(246, 224, 197);
 }
 
 .labelPart {
+  display: flex;
+  flex-direction: column;
   margin: 0 0 2vw 0;
 }
 .labelPart input {
+  width: 95%;
   border-radius: 5px;
   border-color: rgb(246, 224, 197);
 }
@@ -398,4 +402,21 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
 .labelParticipants input {
   border-radius: 5px;
   border-color: rgb(246, 224, 197);
+}
+
+.homepage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20vh;
+}
+.homepage .logo {
+  width: 20vw;
+}
+
+.charging {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=style.css.map */

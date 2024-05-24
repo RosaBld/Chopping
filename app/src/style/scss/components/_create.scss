@@ -9,14 +9,18 @@
 .labelTitle {
   margin: 0 0 3vw 0;
   input {
+    width: 95%;
     border-radius: 5px;
     border-color: rgb(246, 224, 197);
   }
 }
 
 .labelPart {
+  display: flex;
+  flex-direction: column;
   margin: 0 0 2vw 0;
   input {
+    width: 95%;
     border-radius: 5px;
     border-color: rgb(246, 224, 197);
   }

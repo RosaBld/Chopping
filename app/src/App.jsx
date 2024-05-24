@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './style/css/style.css'
 
 // Components
-import { Configuration, Create, Drinks, ExpirationLocalStorage, Header, Participants, Pool } from './utils';
+import { Configuration, Drinks, ExpirationLocalStorage, Header, Home, Participants, Pool } from './utils';
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <ExpirationLocalStorage />
         <Header />
         <Routes>
-          <Route path="/" element={ <Create />} />
+          <Route path="/" element={ <Home />} />
           <Route path="/drinks" element={ <Drinks />} />
           <Route path="/participants" element={ <Participants /> } />
           <Route path="/budget" element={ <Pool /> } />

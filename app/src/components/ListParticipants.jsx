@@ -1,5 +1,5 @@
 // Libraries
-import { faArrowLeft, faCheck, faEuroSign, faPlus, faUser, faUsers, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faEuroSign, faPlus, faUser, faUsers, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import ReactModal from 'react-modal';
@@ -18,7 +18,6 @@ export default function ListParticipants() {
 
   const navigate = useNavigate();
 
-  
   useEffect(() => {
     const storedData = localStorage.getItem('participants');
     if (storedData) {
@@ -47,11 +46,6 @@ export default function ListParticipants() {
 
   return (
     <div>
-      <div>
-        <button onClick={() => navigate('/drinks')} className="back">
-          <FontAwesomeIcon icon={faArrowLeft} />
-        </button>
-      </div>
 
       <div>
       {listParticipants.length === 0 ? (

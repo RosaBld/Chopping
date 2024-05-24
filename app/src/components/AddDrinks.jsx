@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import ReactModal from 'react-modal';
 
 // Components
-import { DeleteDrink } from "../utils";
+import { DeleteDrink, Loading } from "../utils";
 
 
 export default function AddDrinks() {
@@ -15,6 +15,7 @@ export default function AddDrinks() {
   const [drinks, setDrinks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [listDrink, setListDrink] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -51,6 +52,12 @@ export default function AddDrinks() {
   };
 
   useEffect(() => {
+
+    // Simulate a data loading delay
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 seconds delay
+
     const intervalId = setInterval(() => {
       const storedDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
       if (storedDrinks.length !== drinks.length) {
@@ -60,7 +67,7 @@ export default function AddDrinks() {
       if (data) {
         setListDrink(JSON.parse(data));
       }
-    }, 100);
+    }, 1000);
 
     return () => {
       clearInterval(intervalId);
@@ -78,25 +85,31 @@ export default function AddDrinks() {
 
   return (
     <div>
-      <div>
-        {drinks.map((drink, index) => (
-          <div key={index} className="setOfDrink">
-            <div className="displayDrink">
-              {drink.quantity === 1 ? (
-                <DeleteDrink index={index} drinks={drinks} setDrinks={setDrinks} />
-              ) : (
-                <FontAwesomeIcon icon={faMinus} onClick={() => decrementQuantity(index)} />
-              )}
-              <h2>{drink.name}</h2>
-              <FontAwesomeIcon icon={faPlus} onClick={() => incrementQuantity(index)} />
-            </div>
+      {isLoading ? 
+        <div className="charging">
+          <Loading />
+        </div>
+        :
+        <div>
+          {drinks.map((drink, index) => (
+            <div key={index} className="setOfDrink">
+              <div className="displayDrink">
+                {drink.quantity === 1 ? (
+                  <DeleteDrink index={index} drinks={drinks} setDrinks={setDrinks} />
+                ) : (
+                  <FontAwesomeIcon icon={faMinus} onClick={() => decrementQuantity(index)} />
+                )}
+                <h2>{drink.name}</h2>
+                <FontAwesomeIcon icon={faPlus} onClick={() => incrementQuantity(index)} />
+              </div>
 
-            <div className="detailsDrink">
-              <p>{drink.quantity}x{drink.price}€</p>
+              <div className="detailsDrink">
+                <p>{drink.quantity}x{drink.price}€</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      }
 
       <div className="createDrinkable">
         <button onClick={toggleModal} className="createDrink">
