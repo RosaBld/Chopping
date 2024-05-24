@@ -7,6 +7,7 @@ export { default as CreateListDrink } from '../components/CreateListDrink';
 export { default as DeleteDrink } from '../components/DeleteDrink';
 export { default as DeletePool } from '../components/DeletePool';
 export { default as Drinks } from '../views/Drinks';
+export { default as ExpirationLocalStorage } from '../components/ExpirationLocalStorage'
 export { default as Header } from '../components/Header';
 export { default as ListParticipants } from '../components/ListParticipants';
 export { default as TotalDrinks } from '../components/TotalDrinks';

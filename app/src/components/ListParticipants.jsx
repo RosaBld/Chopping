@@ -30,7 +30,9 @@ export default function ListParticipants() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const totalAmount = participants.reduce((total, person) => total + person.people * person.amount, 0);
-    localStorage.setItem('participants', JSON.stringify({  participants, totalAmount }));
+    const originalData = JSON.parse(localStorage.getItem('participants'));
+    const time = originalData.time;
+    localStorage.setItem('participants', JSON.stringify({ participants, totalAmount, time }));
     setShowModal(false);
     navigate('/Drinks');
   };

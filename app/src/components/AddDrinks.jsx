@@ -60,7 +60,7 @@ export default function AddDrinks() {
       if (data) {
         setListDrink(JSON.parse(data));
       }
-    }, 1000);
+    }, 100);
 
     return () => {
       clearInterval(intervalId);

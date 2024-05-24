@@ -16,7 +16,7 @@ export default function Pool() {
       if (storedData.totalAmount !== totalAmount || storedData.poolName !== poolName) {
         setData(storedData);
       }
-    }, 1000);
+    }, 0);
 
     return () => {
       clearInterval(intervalId);

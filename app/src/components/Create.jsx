@@ -34,7 +34,15 @@ export default function Create() {
       const amount = typeof person.amount === 'string' ? Number(person.amount.replace(',', '.')) : person.amount;
       return total + person.people * amount;
     }, 0);
-    localStorage.setItem('participants', JSON.stringify({ participants, totalAmount, poolName }));
+  
+    const dataToStore = {
+      participants,
+      totalAmount,
+      poolName,
+      time: new Date().getTime()
+    };
+  
+    localStorage.setItem('participants', JSON.stringify(dataToStore));
     setShowModal(false);
     navigate('/Drinks');
   };

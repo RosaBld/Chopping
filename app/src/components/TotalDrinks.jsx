@@ -16,7 +16,7 @@ export default function TotalDrinks() {
     const intervalId = setInterval(() => {
       const storedDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
       setDrinks(storedDrinks);
-    }, 1000);
+    }, 0);
 
     return () => {
       clearInterval(intervalId);
