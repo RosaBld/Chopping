@@ -33,7 +33,7 @@ export default function CostDrinks() {
       <FontAwesomeIcon icon={faMoneyBill1} />
       <p>{cost}</p>
       {cost > totalAmount && 
-      <Tooltip title="Le montant total de votre commande est supérieure au total de votre cagnotte!">
+      <Tooltip title="Le montant total de votre commande est supérieur au total de votre cagnotte!">
         <FontAwesomeIcon icon={faTriangleExclamation} />
       </Tooltip>
       }
