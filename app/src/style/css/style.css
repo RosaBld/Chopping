@@ -53,7 +53,7 @@
   font-weight: 400;
 }
 
-.deleteConfirmation {
+.deleteConfirmation, .homeErrorMsg, .listConfig {
   font-family: "Roboto", sans-serif;
   color: rgb(255, 198, 53);
   font-weight: 400;
@@ -123,7 +123,7 @@
   cursor: pointer;
 }
 
-.back, .deletePool {
+.back, .deletePool, .backToDrinks {
   padding: 3vw;
   background-color: rgb(246, 224, 197);
   border: none;
@@ -218,6 +218,19 @@
 .labelPart input {
   border-radius: 5px;
   border-color: rgb(246, 224, 197);
+}
+
+.homeErrorMsg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 7vw 4vw;
+}
+.homeErrorMsg .buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10vw;
 }
 
 body {
@@ -364,12 +377,18 @@ table {
 }
 table thead tr, table tbody tr {
   border-bottom: 2px solid rgb(246, 224, 197);
+  display: flex;
+  flex-direction: row;
 }
 table thead tr .name, table tbody tr .name {
+  display: flex;
+  align-items: center;
   width: 50vw;
   height: 5vh;
 }
 table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, table tbody tr .given {
+  display: flex;
+  align-items: center;
   width: 20vw;
 }
 

@@ -1,9 +1,10 @@
 // Libraries
-import { faCheck, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBeerMugEmpty, faCheck, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
 import ReactModal from 'react-modal';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import DeletePool from './DeletePool';
 
 
 ReactModal.setAppElement('#root');
@@ -14,13 +15,14 @@ export default function Create() {
   const navigate = useNavigate();
   const [poolName, setPoolName] = useState('');
   const [existingData, setExistingData] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const data = localStorage.getItem('participants');
     if (data) {
       const parsedData = JSON.parse(data);
-      if (Array.isArray(parsedData)) {
-        setParticipants(parsedData);
+      if (parsedData && Array.isArray(parsedData.participants)) {
+        setParticipants(parsedData.participants);
         setExistingData(true);
       }
     }
@@ -45,10 +47,26 @@ export default function Create() {
     setParticipants([...participants, { name: '', people: 1, amount: 0 }]);
   };
 
+  const handlePoolDeletion = () => {
+    setExistingData(false);
+  };
+
+  const backToBeer = () => {
+    navigate('/drinks')
+  }
+
   return (
-    <div className="createParticipant">
+    <div className="createParticipant" key={location.key}>
       {existingData ? (
-        <p>There is already existing data.</p>
+        <div className='homeErrorMsg'>
+          <h2>Vous avez déjà une liste de participants avec une cagnotte. Souhaitez-vous la détruire et recommencer ou souhaitez-vous continuer?</h2>
+          <div className='buttons'>
+            <DeletePool onPoolDelete={handlePoolDeletion} />
+            <button className="backToDrinks" onClick={backToBeer}>
+              <FontAwesomeIcon icon={faBeerMugEmpty} />
+            </button>
+          </div>
+        </div>
       ) : (
         <>
           <button className="createBudget" onClick={toggleModal}>

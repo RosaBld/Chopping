@@ -6,12 +6,18 @@ table {
   thead, tbody {
     tr {
       border-bottom: 2px solid rgb(246, 224, 197);
+      display: flex;
+      flex-direction: row;
       .name {
+        display: flex;
+        align-items: center;
         width: 50vw;
         height: 5vh;
       }
       
       .numberUser, .given {
+        display: flex;
+        align-items: center;
         width: 20vw;
       }
     }

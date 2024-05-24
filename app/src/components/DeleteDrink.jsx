@@ -1,9 +1,9 @@
 // Libraries
-import { faTrashCan, faXmark, faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
-import ReactModal from 'react-modal';
-import PropTypes from "prop-types";
+import { faTrashCan, faXmark, faCheck } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useState } from "react"
+import ReactModal from 'react-modal'
+import PropTypes from "prop-types"
 
 export default function DeleteDrink({ index, drinks, setDrinks }) {
 

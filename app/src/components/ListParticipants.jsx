@@ -60,9 +60,9 @@ export default function ListParticipants() {
         <table>
           <thead>
             <tr>
-              <th className="name"><FontAwesomeIcon icon={faUser} /></th>
-              <th className="numberUser"><FontAwesomeIcon icon={faUsers} /></th>
-              <th className="given"><FontAwesomeIcon icon={faEuroSign} /></th>
+              <th className="name"><FontAwesomeIcon icon={faUser} className="icon" /></th>
+              <th className="numberUser"><FontAwesomeIcon icon={faUsers} className="icon" /></th>
+              <th className="given"><FontAwesomeIcon icon={faEuroSign} className="icon" /></th>
             </tr>
           </thead>
           <tbody>

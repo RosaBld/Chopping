@@ -8,6 +8,7 @@ export default function Pool() {
   const [data, setData] = useState(JSON.parse(localStorage.getItem('participants')) || {});
   const totalAmount = data.totalAmount;
   const poolName = data.poolName;
+  const [existingData, setExistingData] = useState(true);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -22,15 +23,21 @@ export default function Pool() {
     };
   }, [totalAmount, poolName]);
 
+  const handlePoolDeletion = () => {
+    setExistingData(false);
+  };
+
   return (
     <div className="poolRemaining">
       <div>
-        <DeletePool />
+        <DeletePool onPoolDelete={handlePoolDeletion} />
       </div>
-
-      <div className="remaining">
-        <h3>Reste: {totalAmount}€</h3>
-      </div>
+  
+      {existingData && (
+        <div className="remaining">
+          <h3>Reste: {totalAmount}€</h3>
+        </div>
+      )}
     </div>
   )
 }
