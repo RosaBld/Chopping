@@ -1,56 +1,47 @@
 // Libraries
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    const burgerMenu = document.querySelector('.burger-menu');
-    const nav = document.querySelector('.navbar');
+  const toggleNav = () => {
+    setIsOpen(!isOpen);
+  };
 
-    const toggleNav = () => {
-      nav.classList.toggle('show');
-      setIsOpen(!isOpen);
-    };
-
-    burgerMenu.addEventListener('click', toggleNav);
-
-    return () => {
-      burgerMenu.removeEventListener('click', toggleNav);
-    };
-  }, [isOpen]);
+  const closeNav = () => {
+    setIsOpen(false);
+  };
 
   return (
     <div className="header">
-      <div className={`burger-menu ${isOpen ? 'move' : ''}`}>
+      <div className={`burger-menu ${isOpen ? 'move' : ''}`} onClick={toggleNav}>
         <div className="burger"></div>
         <div className="burger"></div>
         <div className="burger"></div>
       </div>
 
-      <nav className="navbar">
+      <nav className={`navbar ${isOpen ? 'show' : ''}`}>
         <ul className="links">
           <li className="">
-            <Link to="/">
+            <Link to="/" onClick={closeNav}>
               Accueil
             </Link>
           </li>
           <li>
-            <Link to="/participants">
+            <Link to="/participants" onClick={closeNav}>
               Participants
             </Link>
           </li>
           <li>
-            <Link to="/budget">
+            <Link to="/budget" onClick={closeNav}>
               Budget
             </Link>
           </li>
           <li>
-            <Link to="/drinks">
+            <Link to="/drinks" onClick={closeNav}>
               Boissons
             </Link>
           </li>
@@ -58,7 +49,7 @@ export default function Header() {
 
         <ul className="config">
           <li className="iconConfig">
-            <Link to="/configuration">
+            <Link to="/configuration" onClick={closeNav}>
               <div className="icon-container">
                 <FontAwesomeIcon icon={faGear} />
               </div>            
@@ -66,7 +57,7 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      <div className={`overlay ${isOpen ? 'show' : ''}`} />
+      <div className={`overlay ${isOpen ? 'show' : ''}`} onClick={closeNav} />
     </div>
   );
 }

@@ -1,7 +1,28 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 
 export default function CalculatePool() {
+  const [storedDrinks, setStoredDrinks] = useState([]);
+
+  useEffect (() => {
+    const drinks = JSON.parse(localStorage.getItem('drinks')) || [];
+    setStoredDrinks(drinks);
+  }, []);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const drinks = JSON.parse(localStorage.getItem('drinks')) || [];
+      if (drinks.length !== storedDrinks.length) {
+        setStoredDrinks(drinks);
+      }
+    }, 0);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [storedDrinks]);
+
   const handleCalculate = () => {
     const storedDrinks = JSON.parse(localStorage.getItem('drinks')) ||[];
     const cost = storedDrinks.reduce((total, drink) => total + drink.quantity * drink.price, 0);
@@ -23,15 +44,20 @@ export default function CalculatePool() {
       localStorage.setItem('participants', JSON.stringify({ participants, totalAmount: remainingPool.toFixed(2) }));
   
       localStorage.removeItem('drinks');
+      setStoredDrinks([]);
     }
   }
 
   return (
     <div className="calculatePool">
-      <button className="validate" onClick={handleCalculate}>
-        <FontAwesomeIcon icon={faCheck} /> Valider la commande
-      </button>
+      {storedDrinks.length === 0 ? (
+        <>
+        </>
+      ) : (
+        <button className="validate" onClick={handleCalculate}>
+          <FontAwesomeIcon icon={faCheck} /> Valider la commande
+        </button>
+      )}
     </div>
-    
   )
 }
