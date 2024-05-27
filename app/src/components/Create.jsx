@@ -30,6 +30,7 @@ export default function Create() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    
     const totalAmount = participants.reduce((total, person) => {
       const amount = typeof person.amount === 'string' ? Number(person.amount.replace(',', '.')) : person.amount;
       return total + person.people * amount;
