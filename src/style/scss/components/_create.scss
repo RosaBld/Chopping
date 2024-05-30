@@ -1,3 +1,17 @@
+.logoHome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  flex-direction: column;
+  color: white;
+  font-size: 40px;
+
+  .ChoppinLogo {
+    width: 25vh;
+  }
+}
+
 .validateParticipant {
   display: flex;
   flex-direction: row;

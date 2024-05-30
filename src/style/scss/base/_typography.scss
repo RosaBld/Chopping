@@ -1,20 +1,26 @@
-.header {
-  .navbar {
-    .links {
-      li {
-        a {
-          font-family: "Roboto", sans-serif;
-          color: rgb(255, 209, 93);
-          text-transform: uppercase;
-          font-weight: 500;
-        }
+
+.navbar {
+  .links {
+    li {
+      text-align: center;
+      a {
+        font-family: "Poppins", sans-serif;
+        color: rgba(0, 111, 119, 1);
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 24px;
       }
     }
   }
 }
 
+
+.logoHome {
+  font-family: "Poppins", sans-serif;
+}
+
 .formParticipant, .formDrinks {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(255, 209, 93);
   font-weight: 400;
   margin-top: 7vw;
@@ -22,12 +28,12 @@
 
 .labelTitle,  .labelPart, .labelDrinks {
   input {
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 }
 
 .errorList {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(255, 209, 93);
   font-weight: 400;
   margin: 20vw 5vw;
@@ -55,24 +61,24 @@
 }
 
 .remaining {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(255, 209, 93);
   font-weight: 400;
 }
 
 .drinksAmount, .drinksPrice, .totalParticipant {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(255, 198, 53);
   font-weight: 400;
 }
 
 .deleteConfirmation, .homeErrorMsg, .listConfig {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(255, 198, 53);
   font-weight: 400;
 }
 
 .displayDrink, .detailsDrink {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
 }

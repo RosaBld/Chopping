@@ -1,24 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-.header .navbar .links li a {
-  font-family: "Roboto", sans-serif;
-  color: rgb(255, 209, 93);
-  text-transform: uppercase;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.navbar .links li {
+  text-align: center;
+}
+.navbar .links li a {
+  font-family: "Poppins", sans-serif;
+  color: rgb(0, 111, 119);
   font-weight: 500;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.logoHome {
+  font-family: "Poppins", sans-serif;
 }
 
 .formParticipant, .formDrinks {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(255, 209, 93);
   font-weight: 400;
   margin-top: 7vw;
 }
 
 .labelTitle input, .labelPart input, .labelDrinks input {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .errorList {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(255, 209, 93);
   font-weight: 400;
   margin: 20vw 5vw;
@@ -41,25 +49,25 @@
 }
 
 .remaining {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(255, 209, 93);
   font-weight: 400;
 }
 
 .drinksAmount, .drinksPrice, .totalParticipant {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(255, 198, 53);
   font-weight: 400;
 }
 
 .deleteConfirmation, .homeErrorMsg, .listConfig {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(255, 198, 53);
   font-weight: 400;
 }
 
 .displayDrink, .detailsDrink {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
 }
 
@@ -91,26 +99,46 @@
 
 .createBudget {
   position: absolute;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 5vw;
-  background-color: rgb(246, 224, 197);
+  background-color: rgb(255, 221, 18);
   border: none;
-  box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
+  color: rgb(173, 50, 0);
+  width: 85%;
+  height: 12vh;
+  font-size: 26px;
 }
 
-.closeModal {
-  position: absolute;
-  right: 5%;
-  padding: 1.5vw;
-  background-color: rgb(246, 224, 197);
-  border: none;
-  box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
-  border-radius: 5px;
-  cursor: pointer;
+.icon-container {
+  background-color: white;
+  border-radius: 100%;
+  border: 1px solid rgb(171, 171, 171);
+  width: 50px;
+  height: 50px;
+}
+.icon-container .config-icon, .icon-container .closeModalHeader {
+  font-size: 25px;
+  color: rgb(171, 171, 171);
+}
+
+.modalContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalContent .closeModal {
+  background-color: white;
+  border-radius: 100%;
+  border: 1px solid rgb(171, 171, 171);
+  width: 40px;
+  height: 40px;
+}
+.modalContent .closeModal .closeIcon {
+  font-size: 25px;
+  color: rgb(171, 171, 171);
 }
 
 .participantButtons {
@@ -196,6 +224,19 @@
   cursor: pointer;
 }
 
+.logoHome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  flex-direction: column;
+  color: white;
+  font-size: 40px;
+}
+.logoHome .ChoppinLogo {
+  width: 25vh;
+}
+
 .validateParticipant {
   display: flex;
   flex-direction: row;
@@ -238,6 +279,7 @@
 
 body {
   padding-bottom: 170px;
+  background-color: rgb(0, 78, 83);
 }
 
 .bill {
@@ -279,11 +321,21 @@ body {
 }
 
 .header {
-  height: 12vw;
+  height: 12vh;
+  background-color: white;
+  border-radius: 25px;
+  margin: 10px;
+}
+.header .ChoppinLogo {
+  width: 28vh;
+  position: absolute;
+  right: 35%;
+  top: 3.5%;
 }
 .header .burger-menu {
   position: absolute;
-  right: 0;
+  right: 2.5vw;
+  top: 5vh;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -300,77 +352,54 @@ body {
 .header .burger-menu .burger {
   width: 2rem;
   height: 0.25rem;
-  background: rgb(255, 209, 93);
+  background: rgb(0, 111, 119);
 }
-.header .burger-menu.move {
-  transform: translateX(-60vw);
-  z-index: 11;
-}
-.header .navbar {
-  transform: translateX(120%);
-  transition: transform 0.3s ease-out;
-  background-color: rgb(255, 255, 255);
-  width: 60%;
-  height: 100vh;
+
+.navbar {
+  width: 91%;
   position: absolute;
-  top: 0;
-  right: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
-  padding: 0 10%;
   z-index: 10;
+  align-items: center;
 }
-.header .navbar .links {
+.navbar .ChoppinLogoNav {
+  width: 35%;
+}
+.navbar .links {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 5vw;
+  padding: 0;
 }
-.header .navbar .links a {
-  text-decoration: none;
-  color: inherit;
+.navbar .links li {
+  padding-bottom: 10px;
+  border-bottom: 1px rgb(231, 231, 231) solid;
 }
-.header .navbar .links a:hover {
-  color: inherit;
-}
-.header .config {
+
+.config {
   list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+  width: 80%;
 }
-.header .config .iconConfig a {
+.config .iconConfig a {
   text-decoration: none;
   color: inherit;
 }
-.header .config .iconConfig a:hover {
+.config .iconConfig a:hover {
   color: inherit;
 }
-.header .config .iconConfig a .icon-container {
+.config .iconConfig a .icon-container {
   color: rgb(255, 209, 93);
   font-size: 10vw;
 }
-.header .config .iconConfig a .icon-container:hover {
+.config .iconConfig a .icon-container:hover {
   color: black;
-}
-.header .navbar.show {
-  transform: translateX(0);
-  z-index: 10;
-}
-.header .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(83, 82, 82, 0.5);
-  z-index: 5;
-  transition: opacity 0.3s ease-out;
-  opacity: 0;
-  pointer-events: none;
-}
-.header .overlay.show {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 table {
