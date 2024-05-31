@@ -38,7 +38,7 @@ export default function Create() {
           <div className='homeErrorMsg'>
             <h2>Vous avez déjà une liste de participants avec une cagnotte. Souhaitez-vous la détruire et recommencer ou souhaitez-vous continuer?</h2>
             <div className='buttons'>
-              <DeletePool onPoolDelete={handlePoolDeletion} />
+              <DeletePool onPoolDelete={handlePoolDeletion} isHomePage={true} />
               <button className="backToDrinks" onClick={backToBeer}>
                 <FontAwesomeIcon icon={faBeerMugEmpty} className="drinkIcon" />
               </button>

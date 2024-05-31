@@ -25,6 +25,7 @@ export default function CreateListDrink() {
     const currentDrinks = [...listDrink, newDrink];
     localStorage.setItem('listDrink', JSON.stringify(currentDrinks));
     setListDrink(currentDrinks);
+    setShowModal(!showModal);
   };
 
   const toggleModal = () => {
@@ -53,7 +54,8 @@ export default function CreateListDrink() {
           contentLabel="Participant Form"
           style={{
             overlay: {
-              backgroundColor: 'rgba(0, 0, 0, 0.75)',
+              backgroundColor: 'rgba(0, 0, 0, 0.25)',
+              backdropFilter: 'blur(2px)',
             },
             content: {
               color: 'lightsteelblue',
@@ -61,13 +63,19 @@ export default function CreateListDrink() {
               height: '25%',
               margin: 'auto',
               padding: '20px',
-              border: '1px solid black',
+              border: '10px solid rgba(233, 233, 233, 1)',
+              borderRadius: '25px',
+              position: 'absolute',
+              top: '0',
+              marginTop: '50vw'
             },
           }}
         >
-          <button className="closeModal">
-            <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
-          </button>
+          <div className="modalContent">
+            <button className="closeModal">
+              <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+            </button>
+          </div>
           <div className="formDrinks">
             <form onSubmit={handleFormSubmit}>
               <div className="labelDrinks">

@@ -1,3 +1,10 @@
+.addAndCalculate {
+  display: flex;
+  flex-direction:row;
+  gap: 5%;
+  margin: 4vh 2vh;
+}
+
 .labelDrinks {
   margin: 0 0 3vw 0;
   input {
@@ -7,23 +14,32 @@
   }
 }
 
-.setOfDrink {
-  border-bottom: solid 3px rgb(246, 224, 197);
-  margin-bottom: 5vw;
+.listOfDrinks {
+  margin: 4vh 2vh;
+  background-color: rgba(0, 70, 74, 1);
+  border-radius: 15px;
 
-  .displayDrink {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 20vw;
+  .setOfDrink {
+    border-bottom: solid 1px rgba(0, 111, 119, 1);
+    margin: 0vh 3vh;
+
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .displayDrink {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20vw;
+    }
+
+    .NumberOfDrinks {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
-}
-
-
-
-.detailsDrink {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

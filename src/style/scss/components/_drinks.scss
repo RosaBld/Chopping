@@ -1,5 +1,4 @@
 body {
-  padding-bottom: 170px;
   background-color: rgba(0, 78, 83, 1);
 }
 
@@ -9,25 +8,28 @@ body {
   justify-content: space-around;
   align-items: center;
   position: fixed;
-  bottom: 0;
   left: 0;
-  border-top: solid 3px rgb(246, 224, 197);
-  width: 100%;
+  bottom: 0;
   z-index: 0;
-  background-color: white;
+  background-color: rgba(0, 111, 119, 1);
+  border-radius: 15px;
+  margin: 0 2vh 2vh 2vh;
+  padding: 0vh 3vh;
+  height: 20vh;
+  gap: 15vw;
+
   .total {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-    border-left: solid 3px rgb(246, 224, 197);
-    padding: 0 15vw;
+    gap: 2vh;
   }
 }
 
 .poolRemaining {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5vw;
@@ -36,10 +38,31 @@ body {
 .drinksAmount, .drinksPrice, .totalParticipant {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 5vw;
+  padding: 0 4vw;
+
+  background-color: rgba(0, 129, 138, 1);
+  border-radius: 7px;
+  width: 40vw;
+  height: 4vh;
+  
 }
 
+.errorState {
+  background-color: rgba(255, 221, 18, 1);
+}
+
+.errorDiv {
+  background-color: rgba(255, 221, 18, 1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 2vh 2vh;
+  z-index: 15;
+}
 
 

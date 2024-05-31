@@ -6,11 +6,11 @@ import ReactModal from 'react-modal'
 import { useNavigate } from "react-router-dom"
 import PropTypes from 'prop-types';
 
-
-export default function DeletePool({ onPoolDelete }) {
+export default function DeletePool({ onPoolDelete, isHomePage }) {
 
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const buttonStyle = isHomePage ? "homePageStyle" : "otherPageStyle";
 
   const handleDelete = () => {
     localStorage.removeItem('participants');
@@ -27,7 +27,7 @@ export default function DeletePool({ onPoolDelete }) {
 
   return (
     <div>
-      <button onClick={toggleModal} className="deletePool" >
+      <button onClick={toggleModal} className={`deletePool ${buttonStyle}`} >
         <FontAwesomeIcon icon={faTrashCan} className="trash" />
       </button>
 
@@ -37,7 +37,8 @@ export default function DeletePool({ onPoolDelete }) {
         contentLabel="Participant Form"
         style={{
           overlay: {
-            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+            backgroundColor: 'rgba(0, 0, 0, 0.25)',
+            backdropFilter: 'blur(2px)',
           },
           content: {
             color: 'lightsteelblue',
@@ -72,4 +73,5 @@ export default function DeletePool({ onPoolDelete }) {
 
 DeletePool.propTypes = {
   onPoolDelete: PropTypes.func.isRequired,
+  isHomePage: PropTypes.bool,
 };

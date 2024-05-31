@@ -14,7 +14,6 @@
   }
 }
 
-
 .logoHome {
   font-family: "Poppins", sans-serif;
   font-size: 12px;
@@ -32,13 +31,6 @@
     font-family: "Poppins", sans-serif;
     color: rgba(0, 111, 119, 1);
     font-weight: 400;
-  }
-}
-
-.participantButtons {
-  .plus {
-    color: rgba(173, 50, 0, 1);
-    font-size: 20px;
   }
 }
 
@@ -63,14 +55,14 @@
 
 .deletePool {
   .trash {
-    color: rgba(173, 50, 0, 1);
+    color: white;
     font-size: 20px;
   }
 }
 
 .errorList {
   font-family: "Poppins", sans-serif;
-  color: rgb(255, 209, 93);
+  color: white;
   font-weight: 400;
   margin: 20vw 5vw;
   h2 {
@@ -91,26 +83,30 @@
   font-size: 16px
 }
 
-.calculatePool {
-  .validate {
-    font-family: "Poppins", sans-serif;;
-    color: rgb(107, 107, 107);
-  }
-}
 
 .remaining {
   font-family: "Poppins", sans-serif;
-  color: rgb(255, 209, 93);
+  color: white;
   font-weight: 400;
+  line-height: 0.5;
+  h2 {
+    margin-bottom: 0;
+  }
 }
 
 .drinksAmount, .drinksPrice, .totalParticipant {
   font-family: "Poppins", sans-serif;
-  color: rgb(255, 198, 53);
+  color: white;
   font-weight: 400;
+  line-height: 0;
 }
 
-.deleteConfirmation, .homeErrorMsg, .listConfig {
+.errorState {
+  color: rgba(173, 50, 0, 1);
+}
+
+
+.deleteConfirmation, .homeErrorMsg, .listConfig, .lessDrinks, .deleteDrink {
   font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 400;
@@ -145,9 +141,75 @@
   }
 }
 
-.moreParticipants, .moreMoney {
+.moreParticipants, .moreMoney, .moreDrinks, .participantButtons {
   .plus {
     color: rgba(173, 50, 0, 1);
     font-size: 18px;
+  }
+}
+
+.drinkQuantity {
+  border: 1.5px solid rgba(0, 111, 119, 1);
+  border-radius: 15px;
+  padding: 0.5vh 7vh;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: white;
+}
+
+.createDrink {
+  color: rgba(173, 50, 0, 1);
+  font-size: 18px;
+}
+
+.addAndCalculate {
+  .createNewDrink {
+    color: rgba(173, 50, 0, 1);
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+  }
+}
+
+.calculatePool {
+  .validate {
+    color: white;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+  }
+}
+
+.errorDiv {
+  color: rgba(173, 50, 0, 1);
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.back, .createNewParticipant {
+  color: rgba(173, 50, 0, 1);
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+table {
+  thead, tbody {
+    tr {
+      .name {
+        color: white;
+        font-size: 16px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+      }
+      
+      .numberUser, .given {
+        color: white;
+        font-size: 16px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+      }
+    }
   }
 }

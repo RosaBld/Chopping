@@ -2,10 +2,12 @@
 import { faMoneyBill1, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Tooltip from '@mui/material/Tooltip';
+import PropTypes from 'prop-types';
 import { useEffect, useState } from "react"
 
 
-export default function CostDrinks() {
+
+export default function CostDrinks({ onCostChange }) {
   const [cost, setCost] = useState(0);
 
   useEffect(() => {
@@ -17,26 +19,32 @@ export default function CostDrinks() {
       }, 0);
       if (newCost !== cost) {
         setCost(newCost);
+        onCostChange(newCost); // Pass the new cost to the parent component
       }
     }, 1000);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [cost]);
+  }, [cost, onCostChange]);
 
   const data = JSON.parse(localStorage.getItem('participants')) || {};
   const totalAmount = data.totalAmount;
 
   return(
-    <div className="drinksPrice">
+    <div className={`drinksPrice ${cost > totalAmount ? 'errorState' : ''}`}>
       <FontAwesomeIcon icon={faMoneyBill1} />
-      <p>{cost}</p>
       {cost > totalAmount && 
       <Tooltip title="Le montant total de votre commande est supérieur au total de votre cagnotte!">
         <FontAwesomeIcon icon={faTriangleExclamation} />
       </Tooltip>
       }
+      <p>{cost}</p>
+      
     </div>
   ) 
 }
+
+CostDrinks.propTypes = {
+  onCostChange: PropTypes.func.isRequired,
+};

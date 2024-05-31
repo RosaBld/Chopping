@@ -29,15 +29,16 @@ export default function Pool() {
 
   return (
     <div className="poolRemaining">
+     
+      {existingData && (
+        <div className="remaining">
+          <h3>Reste</h3>
+          <h2>{totalAmount}€</h2>
+        </div>
+      )}
       <div>
         <DeletePool onPoolDelete={handlePoolDeletion} />
       </div>
-  
-      {existingData && (
-        <div className="remaining">
-          <h3>Reste: {totalAmount}€</h3>
-        </div>
-      )}
     </div>
   )
 }

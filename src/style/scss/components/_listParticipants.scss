@@ -1,24 +1,38 @@
 table {
-  margin-top: 5vw;
+  margin: 5vw 4vw;
   border-collapse: collapse;
-  margin-bottom: 5vw;
-
+  border-spacing: 0;
+  
   thead, tbody {
+    
     tr {
-      border-bottom: 2px solid rgb(246, 224, 197);
       display: flex;
       flex-direction: row;
+      margin-bottom: 2vw;
       .name {
         display: flex;
         align-items: center;
-        width: 50vw;
+        width: 40vw;
         height: 5vh;
+        &:first-child {
+          border-top-left-radius: 15px;
+          border-bottom-left-radius: 15px;
+          padding-left: 2vh;
+        }
       }
       
       .numberUser, .given {
         display: flex;
         align-items: center;
         width: 20vw;
+        &:last-child {
+          border-top-right-radius: 15px;
+          border-bottom-right-radius: 15px;
+        }
+      }
+
+      td {
+        background-color: rgba(0, 111, 119, 1);
       }
     }
   }

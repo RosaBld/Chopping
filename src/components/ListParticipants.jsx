@@ -81,7 +81,7 @@ export default function ListParticipants() {
         {listParticipants.length > 0 && (
           <div className="createParticipant">
             <button onClick={toggleModal} className="createNewParticipant">
-              <FontAwesomeIcon icon={faPlus} />
+              <FontAwesomeIcon icon={faPlus} /> Ajouter
             </button>
           </div>
         )}
@@ -91,7 +91,8 @@ export default function ListParticipants() {
             contentLabel="Participant Form"
             style={{
               overlay: {
-                backgroundColor: 'rgba(0, 0, 0, 0.75)',
+                backgroundColor: 'rgba(0, 0, 0, 0.25)',
+                backdropFilter: 'blur(2px)',
               },
               content: {
                 color: 'lightsteelblue',

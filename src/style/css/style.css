@@ -28,11 +28,6 @@
   font-weight: 400;
 }
 
-.participantButtons .plus {
-  color: rgb(173, 50, 0);
-  font-size: 20px;
-}
-
 .participantButtonsValidate {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -50,13 +45,13 @@
 }
 
 .deletePool .trash {
-  color: rgb(173, 50, 0);
+  color: white;
   font-size: 20px;
 }
 
 .errorList {
   font-family: "Poppins", sans-serif;
-  color: rgb(255, 209, 93);
+  color: white;
   font-weight: 400;
   margin: 20vw 5vw;
 }
@@ -74,24 +69,28 @@
   font-size: 16px;
 }
 
-.calculatePool .validate {
-  font-family: "Poppins", sans-serif;
-  color: rgb(107, 107, 107);
-}
-
 .remaining {
   font-family: "Poppins", sans-serif;
-  color: rgb(255, 209, 93);
+  color: white;
   font-weight: 400;
+  line-height: 0.5;
+}
+.remaining h2 {
+  margin-bottom: 0;
 }
 
 .drinksAmount, .drinksPrice, .totalParticipant {
   font-family: "Poppins", sans-serif;
-  color: rgb(255, 198, 53);
+  color: white;
   font-weight: 400;
+  line-height: 0;
 }
 
-.deleteConfirmation, .homeErrorMsg, .listConfig {
+.errorState {
+  color: rgb(173, 50, 0);
+}
+
+.deleteConfirmation, .homeErrorMsg, .listConfig, .lessDrinks, .deleteDrink {
   font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 400;
@@ -122,9 +121,71 @@
   font-size: 18px;
 }
 
-.moreParticipants .plus, .moreMoney .plus {
+.moreParticipants .plus, .moreMoney .plus, .moreDrinks .plus, .participantButtons .plus {
   color: rgb(173, 50, 0);
   font-size: 18px;
+}
+
+.drinkQuantity {
+  border: 1.5px solid rgb(0, 111, 119);
+  border-radius: 15px;
+  padding: 0.5vh 7vh;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: white;
+}
+
+.createDrink {
+  color: rgb(173, 50, 0);
+  font-size: 18px;
+}
+
+.addAndCalculate .createNewDrink {
+  color: rgb(173, 50, 0);
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.calculatePool .validate {
+  color: white;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.errorDiv {
+  color: rgb(173, 50, 0);
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.back, .createNewParticipant {
+  color: rgb(173, 50, 0);
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+table thead tr .name, table tbody tr .name {
+  color: white;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, table tbody tr .given {
+  color: white;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.addAndCalculate {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+  margin: 4vh 2vh;
 }
 
 .labelDrinks {
@@ -136,22 +197,30 @@
   height: 3vh;
 }
 
-.setOfDrink {
-  border-bottom: solid 3px rgb(246, 224, 197);
-  margin-bottom: 5vw;
+.listOfDrinks {
+  margin: 4vh 2vh;
+  background-color: rgb(0, 70, 74);
+  border-radius: 15px;
 }
-.setOfDrink .displayDrink {
+.listOfDrinks .setOfDrink {
+  border-bottom: solid 1px rgb(0, 111, 119);
+  margin: 0vh 3vh;
+}
+.listOfDrinks .setOfDrink:last-child {
+  border-bottom: none;
+}
+.listOfDrinks .setOfDrink .displayDrink {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 20vw;
 }
-
-.detailsDrink {
+.listOfDrinks .setOfDrink .NumberOfDrinks {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
 .createBudget {
@@ -192,6 +261,7 @@
   border: 1px solid rgb(171, 171, 171);
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 .modalContent .closeModal .closeIcon {
   font-size: 25px;
@@ -214,26 +284,68 @@
   cursor: pointer;
 }
 
-.back, .deletePool {
+.homePageStyle {
   background-color: rgb(255, 221, 18);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 4vw 14vw;
+}
+.homePageStyle .trash {
+  color: rgb(173, 50, 0);
+}
+
+.otherPageStyle {
+  background-color: rgb(0, 78, 83);
   border: none;
   cursor: pointer;
   border-radius: 5px;
   padding: 4vw;
 }
 
-.createDrinkable, .createParticipant {
-  display: flex;
-  justify-content: right;
-  margin-right: 5vw;
-}
-.createDrinkable .createDrink, .createDrinkable .createNewParticipant, .createParticipant .createDrink, .createParticipant .createNewParticipant {
-  padding: 5vw;
-  background-color: rgb(246, 224, 197);
+.back {
+  background-color: rgb(255, 221, 18);
   border: none;
-  box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
-  border-radius: 5px;
   cursor: pointer;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.createParticipant {
+  display: flex;
+  justify-content: center;
+}
+.createParticipant .createNewParticipant {
+  background-color: rgb(255, 221, 18);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 4vw;
+  width: 90%;
+}
+
+.lessDrinks, .deleteDrink {
+  border-radius: 5px;
+  background-color: rgb(0, 111, 119);
+  padding: 1vh 1vh;
+  cursor: pointer;
+  border: none;
+}
+
+.moreDrinks {
+  border-radius: 5px;
+  background-color: rgb(255, 221, 18);
+  border: none;
+  padding: 1vh 1vh;
+  cursor: pointer;
+}
+.moreDrinks:hover {
+  background-color: rgb(255, 217, 0);
 }
 
 .validate {
@@ -245,27 +357,6 @@
   padding: 4vw 14vw;
   background-color: rgb(0, 111, 119);
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.deleteDrink {
-  border: none;
-  background-color: white;
-  cursor: pointer;
-}
-
-.calculatePool {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 7vw;
-}
-.calculatePool .validate {
-  padding: 3vw;
-  background-color: rgb(246, 224, 197);
-  border: none;
-  box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -308,6 +399,37 @@
 }
 .moreParticipants:hover, .moreMoney:hover {
   background-color: rgb(255, 217, 0);
+}
+
+.addAndCalculate .createNewDrink {
+  border-radius: 5px;
+  background-color: rgb(255, 221, 18);
+  border: none;
+  padding: 2vh 2.5vh;
+  cursor: pointer;
+}
+.addAndCalculate .createNewDrink:hover {
+  background-color: rgb(255, 217, 0);
+}
+.addAndCalculate .calculatePool .validate {
+  padding: 2vh 11vw;
+  background-color: rgb(0, 111, 119);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.createDrinkable {
+  display: flex;
+  justify-content: center;
+}
+.createDrinkable .createDrink {
+  padding: 2vh 11vw;
+  background-color: rgb(255, 221, 18);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .logoHome {
@@ -396,7 +518,6 @@
 }
 
 body {
-  padding-bottom: 170px;
   background-color: rgb(0, 78, 83);
 }
 
@@ -406,25 +527,27 @@ body {
   justify-content: space-around;
   align-items: center;
   position: fixed;
-  bottom: 0;
   left: 0;
-  border-top: solid 3px rgb(246, 224, 197);
-  width: 100%;
+  bottom: 0;
   z-index: 0;
-  background-color: white;
+  background-color: rgb(0, 111, 119);
+  border-radius: 15px;
+  margin: 0 2vh 2vh 2vh;
+  padding: 0vh 3vh;
+  height: 20vh;
+  gap: 15vw;
 }
 .bill .total {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  border-left: solid 3px rgb(246, 224, 197);
-  padding: 0 15vw;
+  gap: 2vh;
 }
 
 .poolRemaining {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5vw;
@@ -433,9 +556,29 @@ body {
 .drinksAmount, .drinksPrice, .totalParticipant {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 5vw;
+  padding: 0 4vw;
+  background-color: rgb(0, 129, 138);
+  border-radius: 7px;
+  width: 40vw;
+  height: 4vh;
+}
+
+.errorState {
+  background-color: rgb(255, 221, 18);
+}
+
+.errorDiv {
+  background-color: rgb(255, 221, 18);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 2vh 2vh;
+  z-index: 15;
 }
 
 .header {
@@ -483,7 +626,7 @@ body {
   align-items: center;
 }
 .navbar .ChoppinLogoNav {
-  width: 35%;
+  width: 11vh;
 }
 .navbar .links {
   list-style: none;
@@ -521,25 +664,37 @@ body {
 }
 
 table {
-  margin-top: 5vw;
+  margin: 5vw 4vw;
   border-collapse: collapse;
-  margin-bottom: 5vw;
+  border-spacing: 0;
 }
 table thead tr, table tbody tr {
-  border-bottom: 2px solid rgb(246, 224, 197);
   display: flex;
   flex-direction: row;
+  margin-bottom: 2vw;
 }
 table thead tr .name, table tbody tr .name {
   display: flex;
   align-items: center;
-  width: 50vw;
+  width: 40vw;
   height: 5vh;
+}
+table thead tr .name:first-child, table tbody tr .name:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding-left: 2vh;
 }
 table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, table tbody tr .given {
   display: flex;
   align-items: center;
   width: 20vw;
+}
+table thead tr .numberUser:last-child, table thead tr .given:last-child, table tbody tr .numberUser:last-child, table tbody tr .given:last-child {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+table thead tr td, table tbody tr td {
+  background-color: rgb(0, 111, 119);
 }
 
 .labelParticipants {
@@ -558,7 +713,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   margin-top: 20vh;
 }
 .homepage .logo {
-  width: 20vw;
+  width: 25vh;
 }
 
 .charging {

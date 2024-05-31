@@ -37,6 +37,7 @@
     border: 1px solid rgba(171, 171, 171, 1);
     width: 40px;
     height: 40px;
+    cursor: pointer;
   
     .closeIcon {
       font-size: 25px;
@@ -61,26 +62,68 @@
   cursor: pointer;
 }
 
-.back, .deletePool {
+.homePageStyle {
   background-color: rgba(255, 221, 18, 1);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 4vw 14vw;
+  .trash {
+    color: rgba(173, 50, 0, 1);
+  }
+}
+
+.otherPageStyle {
+  background-color: rgba(0, 78, 83, 1);
   border: none;
   cursor: pointer;
   border-radius: 5px;
   padding: 4vw;
 }
 
-.createDrinkable, .createParticipant {
+.back {
+  background-color: rgba(255, 221, 18, 1);
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 0;
   display: flex;
-  justify-content: right;
-  margin-right: 5vw;
+  align-items: center;
+  justify-content: center;
+}
 
-  .createDrink, .createNewParticipant {
-    padding: 5vw;
-    background-color: rgb(246, 224, 197);
+.createParticipant {
+  display: flex;
+  justify-content: center;
+
+  .createNewParticipant {
+    background-color: rgba(255, 221, 18, 1);
     border: none;
-    box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
-    border-radius: 5px;
     cursor: pointer;
+    border-radius: 5px;
+    padding: 4vw;
+    width: 90%;
+  }
+}
+
+.lessDrinks, .deleteDrink {
+  border-radius: 5px;
+  background-color:rgba(0, 111, 119, 1);
+  padding: 1vh 1vh;
+  cursor: pointer;
+  border: none;
+}
+
+.moreDrinks {
+  border-radius: 5px;
+  background-color:rgba(255, 221, 18, 1);
+  border: none;
+  padding: 1vh 1vh;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(255, 217, 0) ;
   }
 }
 
@@ -91,33 +134,16 @@
 
   .validateDrink {
     padding: 4vw 14vw;
-  background-color: rgba(0, 111, 119, 1);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  }
-}
-
-.deleteDrink {
-  border: none;
-  background-color: white;
-  cursor: pointer;
-}
-
-.calculatePool {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  margin-top: 7vw;
-  .validate {
-    padding: 3vw;
-    background-color: rgb(246, 224, 197);
+    background-color: rgba(0, 111, 119, 1);
     border: none;
-    box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
     border-radius: 5px;
     cursor: pointer;
   }
 }
+
+
+
+
 
 .deleteOrNotDelete {
   display: flex;
@@ -156,5 +182,41 @@
   cursor: pointer;
   &:hover {
     background-color: rgb(255, 217, 0) ;
+  }
+}
+
+.addAndCalculate {
+  .createNewDrink {
+    border-radius: 5px;
+    background-color:rgba(255, 221, 18, 1);
+    border: none;
+    padding: 2vh 2.5vh;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(255, 217, 0) ;
+    }
+  }
+  .calculatePool {
+    .validate {
+      padding: 2vh 11vw;
+      background-color: rgba(0, 111, 119, 1);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}
+
+.createDrinkable {
+  display: flex;
+  justify-content: center;
+
+  .createDrink {
+    padding: 2vh 11vw;
+    background-color: rgba(255, 221, 18, 1);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
   }
 }

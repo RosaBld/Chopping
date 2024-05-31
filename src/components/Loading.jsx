@@ -13,7 +13,7 @@ export default function Loading() {
     >
       <ReactLoading
         type={"spinningBubbles"}
-        color="rgb(255, 209, 93)"
+        color="rgba(255, 221, 18, 1)"
         height={"20%"}
         width={"20%"}
         className="loading"

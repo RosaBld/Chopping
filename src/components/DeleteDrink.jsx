@@ -33,7 +33,8 @@ export default function DeleteDrink({ index, drinks, setDrinks }) {
         contentLabel="Participant Form"
         style={{
           overlay: {
-            backgroundColor: 'rgba(0, 0, 0, 0.75)',
+            backgroundColor: 'rgba(0, 0, 0, 0.25)',
+            backdropFilter: 'blur(2px)',
           },
           content: {
             color: 'lightsteelblue',
@@ -41,7 +42,11 @@ export default function DeleteDrink({ index, drinks, setDrinks }) {
             height: '30%',
             margin: 'auto',
             padding: '20px',
-            border: '1px solid black',
+            border: '10px solid rgba(233, 233, 233, 1)',
+            borderRadius: '25px',
+            position: 'absolute',
+            top: '0',
+            marginTop: '50vw'
           },
         }}
       >

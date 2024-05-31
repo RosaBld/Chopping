@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import ReactModal from 'react-modal';
 
 // Components
-import { DeleteDrink, Loading } from "../utils";
+import { DeleteDrink, Loading, CalculatePool } from "../utils";
 
 
 export default function AddDrinks() {
@@ -90,21 +90,25 @@ export default function AddDrinks() {
           <Loading />
         </div>
         :
-        <div>
+        <div className="listOfDrinks">
           {drinks.map((drink, index) => (
             <div key={index} className="setOfDrink">
               <div className="displayDrink">
+                <h2>{drink.name}</h2>
+                <p>{drink.price}€</p>
+              </div>
+              <div className="NumberOfDrinks">
                 {drink.quantity === 1 ? (
                   <DeleteDrink index={index} drinks={drinks} setDrinks={setDrinks} />
                 ) : (
-                  <FontAwesomeIcon icon={faMinus} onClick={() => decrementQuantity(index)} />
+                  <button className="lessDrinks">
+                    <FontAwesomeIcon className="minus" icon={faMinus} onClick={() => decrementQuantity(index)} />
+                  </button>
                 )}
-                <h2>{drink.name}</h2>
-                <FontAwesomeIcon icon={faPlus} onClick={() => incrementQuantity(index)} />
-              </div>
-
-              <div className="detailsDrink">
-                <p>{drink.quantity}x{drink.price}€</p>
+                <h2 className="drinkQuantity">{drink.quantity}</h2>
+                <button className="moreDrinks">
+                  <FontAwesomeIcon className="plus" icon={faPlus} onClick={() => incrementQuantity(index)} />
+                </button>
               </div>
             </div>
           ))}
@@ -112,9 +116,13 @@ export default function AddDrinks() {
       }
 
       <div className="createDrinkable">
-        <button onClick={toggleModal} className="createDrink">
-          <FontAwesomeIcon icon={faPlus} />
-        </button>
+        <div className="addAndCalculate">
+          <button onClick={toggleModal} className="createNewDrink">
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+          <CalculatePool />
+        </div>
+        
 
         <ReactModal 
           isOpen={showModal}
