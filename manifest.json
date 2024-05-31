@@ -1,0 +1,47 @@
+{
+  "name": "Chopping",
+  "short_name": "Chopping",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#004e53",
+  "theme_color": "#004e53",
+  "description": "Les bons comptes font les bonnes guinzes",
+  "icons": [
+    {
+      "src": "/Chopping-logo.svg",
+      "sizes": "48x48",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/Chopping-logo.svg",
+      "sizes": "72x72",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/Chopping-logo.svg",
+      "sizes": "96x96",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/Chopping-logo.svg",
+      "sizes": "144x144",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/Chopping-logo.svg",
+      "sizes": "168x168",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/Chopping-logo.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/Chopping-logo.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
