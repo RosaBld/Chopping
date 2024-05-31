@@ -2,10 +2,14 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './style/css/style.css'
+import ReactModal from 'react-modal';
+
 
 // Components
-import { Configuration, Drinks, ExpirationLocalStorage, Header, Home, Participants, Pool } from './utils';
+import { Configuration, CreateEvent, Drinks, ExpirationLocalStorage, Header, Home, Participants, Pool } from './utils';
 
+
+ReactModal.setAppElement('#root');
 
 function App() {
 
@@ -20,6 +24,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={ <Home />} />
+          <Route path="createEvent" element={ <CreateEvent /> } />
           <Route path="/drinks" element={ <Drinks />} />
           <Route path="/participants" element={ <Participants /> } />
           <Route path="/budget" element={ <Pool /> } />

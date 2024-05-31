@@ -46,21 +46,27 @@
 }
 
 .participantButtons {
-  padding: 2vw;
-  background-color: rgb(246, 224, 197);
+  background-color: rgba(255, 221, 18, 1);
   border: none;
-  box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 4vw;
+}
+
+.participantButtonsValidate, .backToDrinks {
+  padding: 4vw 14vw;
+  background-color: rgba(0, 111, 119, 1);
+  border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.back, .deletePool, .backToDrinks {
-  padding: 3vw;
-  background-color: rgb(246, 224, 197);
+.back, .deletePool {
+  background-color: rgba(255, 221, 18, 1);
   border: none;
-  box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
-  border-radius: 5px;
   cursor: pointer;
+  border-radius: 5px;
+  padding: 4vw;
 }
 
 .createDrinkable, .createParticipant {
@@ -84,12 +90,11 @@
   align-items: center; 
 
   .validateDrink {
-    padding: 3vw;
-    background-color: rgb(246, 224, 197);
-    border: none;
-    box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 4vw 14vw;
+  background-color: rgba(0, 111, 119, 1);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
   }
 }
 
@@ -120,12 +125,36 @@
   align-items: center;
   gap: 10vw;
   margin-top: 10vw;
-  .cancel, .validateDelete {
-    padding: 3vw;
-    background-color: rgb(246, 224, 197);
+  .cancel {
+    background-color: rgba(255, 221, 18, 1);
     border: none;
-    box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 4vw;
+  }
+  .validateDelete {
+    padding: 4vw;
+    background-color: rgba(0, 111, 119, 1);
+    border: none;
     border-radius: 5px;
     cursor: pointer;
+  }
+}
+
+.lessParticipants, .lessMoney {
+  border-radius: 5px;
+  border: 1.5px solid rgba(231, 231, 231, 1);
+  padding: 0vh 1vh;
+  cursor: pointer;
+}
+
+.moreParticipants, .moreMoney {
+  border-radius: 5px;
+  background-color:rgba(255, 221, 18, 1);
+  border: none;
+  padding: 0vh 1vh;
+  cursor: pointer;
+  &:hover {
+    background-color: rgb(255, 217, 0) ;
   }
 }

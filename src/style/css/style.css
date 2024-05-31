@@ -12,17 +12,46 @@
 
 .logoHome {
   font-family: "Poppins", sans-serif;
+  font-size: 12px;
 }
 
 .formParticipant, .formDrinks {
   font-family: "Poppins", sans-serif;
-  color: rgb(255, 209, 93);
-  font-weight: 400;
+  color: rgb(0, 111, 119);
+  font-weight: 600;
   margin-top: 7vw;
 }
 
-.labelTitle input, .labelPart input, .labelDrinks input {
+.labelTitle input, .labelPart input, .labelDrinks input, .labelPartNumber input {
   font-family: "Poppins", sans-serif;
+  color: rgb(0, 111, 119);
+  font-weight: 400;
+}
+
+.participantButtons .plus {
+  color: rgb(173, 50, 0);
+  font-size: 20px;
+}
+
+.participantButtonsValidate {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+}
+.participantButtonsValidate .check {
+  color: white;
+  font-size: 20px;
+}
+
+.backToDrinks .drinkIcon {
+  color: white;
+  font-size: 20px;
+}
+
+.deletePool .trash {
+  color: rgb(173, 50, 0);
+  font-size: 20px;
 }
 
 .errorList {
@@ -39,12 +68,14 @@
 }
 
 .validateDrink {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: white;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 .calculatePool .validate {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(107, 107, 107);
 }
 
@@ -62,8 +93,14 @@
 
 .deleteConfirmation, .homeErrorMsg, .listConfig {
   font-family: "Poppins", sans-serif;
-  color: rgb(255, 198, 53);
+  color: white;
   font-weight: 400;
+}
+
+.deleteConfirmation {
+  font-family: "Poppins", sans-serif;
+  color: rgb(0, 111, 119);
+  font-weight: 600;
 }
 
 .displayDrink, .detailsDrink {
@@ -71,12 +108,32 @@
   font-weight: 400;
 }
 
+.deleteOrNotDelete .cancel {
+  color: rgb(173, 50, 0);
+  font-size: 20px;
+}
+.deleteOrNotDelete .validateDelete {
+  color: white;
+  font-size: 20px;
+}
+
+.lessParticipants .minus, .lessMoney .minus {
+  color: rgb(0, 111, 119);
+  font-size: 18px;
+}
+
+.moreParticipants .plus, .moreMoney .plus {
+  color: rgb(173, 50, 0);
+  font-size: 18px;
+}
+
 .labelDrinks {
   margin: 0 0 3vw 0;
 }
 .labelDrinks input {
   border-radius: 5px;
-  border-color: rgb(246, 224, 197);
+  width: 95%;
+  height: 3vh;
 }
 
 .setOfDrink {
@@ -142,21 +199,27 @@
 }
 
 .participantButtons {
-  padding: 2vw;
-  background-color: rgb(246, 224, 197);
+  background-color: rgb(255, 221, 18);
   border: none;
-  box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 4vw;
+}
+
+.participantButtonsValidate, .backToDrinks {
+  padding: 4vw 14vw;
+  background-color: rgb(0, 111, 119);
+  border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.back, .deletePool, .backToDrinks {
-  padding: 3vw;
-  background-color: rgb(246, 224, 197);
+.back, .deletePool {
+  background-color: rgb(255, 221, 18);
   border: none;
-  box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
-  border-radius: 5px;
   cursor: pointer;
+  border-radius: 5px;
+  padding: 4vw;
 }
 
 .createDrinkable, .createParticipant {
@@ -179,10 +242,9 @@
   align-items: center;
 }
 .validate .validateDrink {
-  padding: 3vw;
-  background-color: rgb(246, 224, 197);
+  padding: 4vw 14vw;
+  background-color: rgb(0, 111, 119);
   border: none;
-  box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -215,13 +277,37 @@
   gap: 10vw;
   margin-top: 10vw;
 }
-.deleteOrNotDelete .cancel, .deleteOrNotDelete .validateDelete {
-  padding: 3vw;
-  background-color: rgb(246, 224, 197);
+.deleteOrNotDelete .cancel {
+  background-color: rgb(255, 221, 18);
   border: none;
-  box-shadow: rgb(222, 222, 222) 2px 2px 2px 0px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 4vw;
+}
+.deleteOrNotDelete .validateDelete {
+  padding: 4vw;
+  background-color: rgb(0, 111, 119);
+  border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.lessParticipants, .lessMoney {
+  border-radius: 5px;
+  border: 1.5px solid rgb(231, 231, 231);
+  padding: 0vh 1vh;
+  cursor: pointer;
+}
+
+.moreParticipants, .moreMoney {
+  border-radius: 5px;
+  background-color: rgb(255, 221, 18);
+  border: none;
+  padding: 0vh 1vh;
+  cursor: pointer;
+}
+.moreParticipants:hover, .moreMoney:hover {
+  background-color: rgb(255, 217, 0);
 }
 
 .logoHome {
@@ -231,37 +317,9 @@
   height: 60vh;
   flex-direction: column;
   color: white;
-  font-size: 40px;
 }
 .logoHome .ChoppinLogo {
   width: 25vh;
-}
-
-.validateParticipant {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 5% 15%;
-}
-
-.labelTitle {
-  margin: 0 0 3vw 0;
-}
-.labelTitle input {
-  width: 95%;
-  border-radius: 5px;
-  border-color: rgb(246, 224, 197);
-}
-
-.labelPart {
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 2vw 0;
-}
-.labelPart input {
-  width: 95%;
-  border-radius: 5px;
-  border-color: rgb(246, 224, 197);
 }
 
 .homeErrorMsg {
@@ -275,6 +333,66 @@
   display: flex;
   flex-direction: row;
   gap: 10vw;
+}
+
+.events {
+  display: flex;
+  justify-content: center;
+}
+.events .createEvent {
+  background-color: white;
+  margin-top: 12vw;
+  padding: 5%;
+  border-radius: 15px;
+  width: 75%;
+  border: 10px solid rgb(233, 233, 233);
+}
+.events .createEvent .validateParticipant {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+  margin: 5% 0;
+}
+.events .createEvent .labelTitle {
+  margin: 0 0 3vw 0;
+}
+.events .createEvent .labelTitle input {
+  height: 3vh;
+  width: 95%;
+  border-radius: 5px;
+}
+.events .createEvent .labelPart {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 2vw 0;
+}
+.events .createEvent .labelPart input {
+  height: 3vh;
+  width: 95%;
+  border-radius: 5px;
+}
+.events .createEvent .labelPartNumber {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 2vw 0;
+}
+.events .createEvent .labelPartNumber .number {
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+}
+.events .createEvent .labelPartNumber .number input {
+  height: 3vh;
+  width: 95%;
+  border-radius: 5px;
+}
+.events .createEvent .labelPartNumber .number .inputNumber::-webkit-inner-spin-button,
+.events .createEvent .labelPartNumber .number .inputNumber::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.events .createEvent .labelPartNumber .number .inputNumber {
+  -moz-appearance: textfield;
 }
 
 body {
@@ -327,7 +445,7 @@ body {
   margin: 10px;
 }
 .header .ChoppinLogo {
-  width: 28vh;
+  width: 11vh;
   position: absolute;
   right: 35%;
   top: 3.5%;

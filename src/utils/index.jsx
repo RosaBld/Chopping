@@ -4,6 +4,7 @@ export { default as CalculatePool } from '../components/CalculatePool';
 export { default as Configuration } from '../views/Configuration';
 export { default as CostDrinks } from '../components/CostDrinks';
 export { default as Create } from '../components/Create';
+export { default as CreateEvent } from '../components/CreateEvent';
 export { default as CreateListDrink } from '../components/CreateListDrink';
 export { default as DeleteDrink } from '../components/DeleteDrink';
 export { default as DeletePool } from '../components/DeletePool';

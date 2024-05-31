@@ -39,13 +39,15 @@ export default function Header() {
           },
           content: {
             color: 'lightsteelblue',
-            width: '87%',
+            width: '82%', 
             height: '55%',
             padding: '20px',
             border: 'none',
             borderRadius: '25px',
-            top: '1%',
-            left: '3%',
+            top: '0',
+            left: '0', 
+            position: 'absolute',
+            margin: '10px'
           },
         }}
       >

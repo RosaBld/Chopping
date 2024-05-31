@@ -17,18 +17,54 @@
 
 .logoHome {
   font-family: "Poppins", sans-serif;
+  font-size: 12px;
 }
 
 .formParticipant, .formDrinks {
   font-family: "Poppins", sans-serif;
-  color: rgb(255, 209, 93);
-  font-weight: 400;
+  color: rgba(0, 111, 119, 1);
+  font-weight: 600;
   margin-top: 7vw;
 }
 
-.labelTitle,  .labelPart, .labelDrinks {
+.labelTitle,  .labelPart, .labelDrinks, .labelPartNumber {
   input {
     font-family: "Poppins", sans-serif;
+    color: rgba(0, 111, 119, 1);
+    font-weight: 400;
+  }
+}
+
+.participantButtons {
+  .plus {
+    color: rgba(173, 50, 0, 1);
+    font-size: 20px;
+  }
+}
+
+.participantButtonsValidate {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+
+  .check {
+    color: white;
+    font-size: 20px;
+  }
+}
+
+ .backToDrinks {
+  .drinkIcon {
+    color: white;
+    font-size: 20px;
+  }
+}
+
+.deletePool {
+  .trash {
+    color: rgba(173, 50, 0, 1);
+    font-size: 20px;
   }
 }
 
@@ -49,13 +85,15 @@
 }
 
 .validateDrink {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: white;
+  font-weight: 600;
+  font-size: 16px
 }
 
 .calculatePool {
   .validate {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Poppins", sans-serif;;
     color: rgb(107, 107, 107);
   }
 }
@@ -74,11 +112,42 @@
 
 .deleteConfirmation, .homeErrorMsg, .listConfig {
   font-family: "Poppins", sans-serif;
-  color: rgb(255, 198, 53);
+  color: white;
   font-weight: 400;
+}
+
+.deleteConfirmation {
+  font-family: "Poppins", sans-serif;
+  color: rgba(0, 111, 119, 1);
+  font-weight: 600;
 }
 
 .displayDrink, .detailsDrink {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
+}
+
+.deleteOrNotDelete {
+  .cancel {
+    color: rgba(173, 50, 0, 1);
+    font-size: 20px;
+  }
+  .validateDelete {
+    color: white;
+    font-size: 20px;
+  }
+}
+
+.lessParticipants, .lessMoney {
+  .minus {
+    color: rgba(0, 111, 119, 1);
+    font-size: 18px;
+  }
+}
+
+.moreParticipants, .moreMoney {
+  .plus {
+    color: rgba(173, 50, 0, 1);
+    font-size: 18px;
+  }
 }

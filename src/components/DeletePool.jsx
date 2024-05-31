@@ -28,7 +28,7 @@ export default function DeletePool({ onPoolDelete }) {
   return (
     <div>
       <button onClick={toggleModal} className="deletePool" >
-        <FontAwesomeIcon icon={faTrashCan} />
+        <FontAwesomeIcon icon={faTrashCan} className="trash" />
       </button>
 
       <ReactModal 
@@ -42,10 +42,14 @@ export default function DeletePool({ onPoolDelete }) {
           content: {
             color: 'lightsteelblue',
             width: '50%',
-            height: '30%',
+            height: '20%',
             margin: 'auto',
             padding: '20px',
-            border: '1px solid black',
+            border: '10px solid rgba(233, 233, 233, 1)',
+            borderRadius: '25px',
+            position: 'absolute',
+            top: '0',
+            marginTop: '50vw'
           },
         }}
       >

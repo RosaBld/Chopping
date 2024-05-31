@@ -1,5 +1,5 @@
 //Libraries
-import { faPlus, faMinus, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faPlus, faMinus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import ReactModal from 'react-modal';
@@ -127,16 +127,24 @@ export default function AddDrinks() {
             content: {
               color: 'lightsteelblue',
               width: '50%',
-              height: '25%',
+              height: '30%',
               margin: 'auto',
               padding: '20px',
-              border: '1px solid black',
+              border: '10px solid rgba(233, 233, 233, 1)',
+              borderRadius: '25px',
+              position: 'absolute',
+              top: '0',
+              marginTop: '50vw'
             },
           }}
         >
-          <button className="closeModal">
-            <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
-          </button>
+
+          <div className="modalContent">
+            <button className="closeModal">
+              <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+            </button>
+          </div>
+          
           <div className="formDrinks">
             <form onSubmit={handleFormSubmit}>
               <div className="labelDrinks">
@@ -155,7 +163,7 @@ export default function AddDrinks() {
               </div>
               <div className="validate">
                 <button className="validateDrink" type="submit">
-                  Submit
+                  <FontAwesomeIcon icon={faCheck} className="validateCheck" /> Valider
                 </button>
               </div>
             </form>
