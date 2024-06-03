@@ -13,14 +13,14 @@ export default function Home() {
         setFirstOpen(false);
         localStorage.setItem('firstOpen', 'false');
       }
-    }, 20000); // 2 seconds delay
+    }, 2000); // 2 seconds delay
   }, [firstOpen]);
 
   return (
     <div>
       {isLoading && firstOpen ? 
         <div className="homepage">
-          <img src="src/assets/img/Chopping-logo.svg" className="logo" alt="logo-alpaga-agency" />          
+          <img src="/Chopping-logo.svg" className="logo" alt="logo-Choppin" />          
           <Loading />
         </div> 
       : 

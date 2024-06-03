@@ -18,7 +18,7 @@ export default function Header() {
     <div className="header">
 
       {location.pathname !== '/' && 
-        <img src="src/assets/img/Chopping-logo.svg" alt="logo Chopp'ing" className="ChoppinLogo" />
+        <img src="/Chopping-logo.svg" alt="logo Chopp'ing" className="ChoppinLogo" />
       }
 
       <div className="burger-menu" onClick={toggleModal}>
@@ -55,7 +55,7 @@ export default function Header() {
         
         <nav className="navbar">
 
-          <img src="src/assets/img/Chopping-logo.svg" alt="logo Chopp'ing" className="ChoppinLogoNav" />
+          <img src="/Chopping-logo.svg" alt="logo Chopp'ing" className="ChoppinLogoNav" />
 
           <ul className="links">
             <li className="">
