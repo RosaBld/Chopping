@@ -1,7 +1,7 @@
 // Libraries
 import { faGear, faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactModal from 'react-modal';
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
@@ -9,6 +9,14 @@ export default function Header() {
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -39,13 +47,13 @@ export default function Header() {
           },
           content: {
             color: 'lightsteelblue',
-            width: '80%', 
+            width: windowWidth > 425 ? '85.7vw' : windowWidth > 320 ? '83.7vw' : '81vw', 
             height: '70%',
             padding: '20px',
             border: 'none',
             borderRadius: '25px',
             top: '0',
-            left: '2.1%', 
+            left: '0', 
             position: 'absolute',
             margin: '10px'
           },

@@ -65,9 +65,9 @@ export default function ListParticipants() {
     setShowModal2(!showModal2);
   }
 
-  const addPerson = () => {
-    setParticipants([...participants, { name: '', people: 1, amount: 0 }]);
-  };
+  // const addPerson = () => {
+  //   setParticipants([...participants, { name: '', people: 1, amount: 0 }]);
+  // };
 
 
   return (
@@ -127,15 +127,15 @@ export default function ListParticipants() {
               content: {
                 color: 'lightsteelblue',
                 width: '70%',
-                height: '80%',
+                height: '50%',
                 margin: 'auto',
-                marginLeft: '-12px',
+                marginLeft: '-20px',
                 padding: '20px',
                 border: '10px solid rgba(233, 233, 233, 1)',
                 borderRadius: '25px',
                 position: 'absolute',
                 top: '0',
-                marginTop: '17vw'
+                marginTop: '22vw'
               },
             }}
           >
@@ -191,9 +191,9 @@ export default function ListParticipants() {
                 </div>
               </div>
             <div className="validateParticipant">
-              <button className="participantButtons" type="button" onClick={addPerson}>
+              {/* <button className="participantButtons" type="button" onClick={addPerson}>
                 <FontAwesomeIcon className="plus" icon={faPlus} />
-              </button>
+              </button> */}
 
               <button className="participantButtonsValidate" onClick={addNewParticipant} >
                 <FontAwesomeIcon icon={faCheck} /> Valider
@@ -214,15 +214,15 @@ export default function ListParticipants() {
               content: {
                 color: 'lightsteelblue',
                 width: '70%',
-                height: '80%',
+                height: '60%',
                 margin: 'auto',
-                marginLeft: '-12px',
+                marginLeft: '-20px',
                 padding: '20px',
                 border: '10px solid rgba(233, 233, 233, 1)',
                 borderRadius: '25px',
                 position: 'absolute',
                 top: '0',
-                marginTop: '17vw'
+                marginTop: '22vw'
               },
             }}
           >

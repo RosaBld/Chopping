@@ -215,7 +215,6 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   display: flex;
   flex-direction: row;
   gap: 5%;
-  margin: 4vh 2vh;
 }
 
 .labelDrinks {
@@ -228,7 +227,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
 }
 
 .listOfDrinks {
-  margin: 4vh 2vh;
+  margin: 4vh 0;
   background-color: rgb(0, 70, 74);
   border-radius: 15px;
 }
@@ -344,6 +343,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 2vh 0 0 0;
 }
 
 .createParticipant {
@@ -599,43 +599,27 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
 
 body {
   background-color: rgb(0, 78, 83);
+  margin: 2vh;
 }
 
 .totalPool {
   min-height: 83vh;
-  position: relative;
 }
 .totalPool .bill {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 0;
   background-color: rgb(0, 111, 119);
   border-radius: 15px;
   margin: 0 2vh 2vh 2vh;
   padding: 0vh 3vh;
   height: 24vh;
-}
-@media screen and (min-width: 320px) {
-  .totalPool .bill {
-    width: 80%;
-    gap: 6vw;
-  }
-}
-@media screen and (min-width: 375px) {
-  .totalPool .bill {
-    width: 83%;
-    gap: 8vw;
-  }
-}
-@media screen and (min-width: 425px) {
-  .totalPool .bill {
-    width: 85%;
-    gap: 8vw;
-  }
 }
 .totalPool .bill .total {
   display: flex;
@@ -685,7 +669,6 @@ body {
   height: 12vh;
   background-color: white;
   border-radius: 25px;
-  margin: 10px;
 }
 .header .ChoppinLogo {
   width: 11vh;
@@ -764,7 +747,7 @@ body {
 }
 
 table {
-  margin: 5vw 4vw;
+  margin: 5vw 0;
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -776,7 +759,7 @@ table thead tr, table tbody tr {
 table thead tr .name, table tbody tr .name {
   display: flex;
   align-items: center;
-  width: 43vw;
+  width: 46vw;
   height: 5vh;
 }
 table thead tr .name:first-child, table tbody tr .name:first-child {
