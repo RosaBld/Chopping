@@ -33,7 +33,7 @@ export default function Drinks() {
         </div> 
       : 
         <div>
-          <div>
+          <div style={{ maxHeight: '375px', overflowY: 'auto' }} >
             <AddDrinks />
           </div>
 
