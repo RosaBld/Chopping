@@ -4,7 +4,6 @@ body {
 }
 
 .totalPool {
-  min-height: 83vh;
 
   .bill {
     display: flex;
@@ -68,7 +67,11 @@ body {
   justify-content: center;
   text-align: center;
   padding: 2vh 2vh;
-  z-index: 15;
+  z-index: 0;
+  position: fixed;
+  bottom: 27vh;
+  left: 0;
+  right: 0;
 }
 
 

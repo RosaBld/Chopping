@@ -602,9 +602,6 @@ body {
   margin: 2vh;
 }
 
-.totalPool {
-  min-height: 83vh;
-}
 .totalPool .bill {
   display: flex;
   flex-direction: row;
@@ -662,7 +659,11 @@ body {
   justify-content: center;
   text-align: center;
   padding: 2vh 2vh;
-  z-index: 15;
+  z-index: 0;
+  position: fixed;
+  bottom: 27vh;
+  left: 0;
+  right: 0;
 }
 
 .header {
