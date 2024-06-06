@@ -43,7 +43,7 @@ export default function DeletePool({ onPoolDelete, isHomePage }) {
           content: {
             color: 'lightsteelblue',
             width: '50%',
-            height: '20%',
+            height: '30%',
             margin: 'auto',
             padding: '20px',
             border: '10px solid rgba(233, 233, 233, 1)',

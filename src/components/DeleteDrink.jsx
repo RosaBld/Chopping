@@ -39,7 +39,7 @@ export default function DeleteDrink({ index, drinks, setDrinks }) {
           content: {
             color: 'lightsteelblue',
             width: '50%',
-            height: '30%',
+            height: '35%',
             margin: 'auto',
             padding: '20px',
             border: '10px solid rgba(233, 233, 233, 1)',

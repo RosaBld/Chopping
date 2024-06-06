@@ -123,6 +123,7 @@
 .displayDrink, .detailsDrink {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
+  color: white;
 }
 
 .deleteOrNotDelete {
@@ -169,16 +170,16 @@
     color: rgba(173, 50, 0, 1);
     font-size: 14px;
     font-family: "Poppins", sans-serif;
-    font-weight: 400;
+    font-weight: 600;
   }
 }
 
 .calculatePool {
   .validate {
-    color: white;
+    color: rgba(0, 129, 138, 1);
     font-size: 14px;
     font-family: "Poppins", sans-serif;
-    font-weight: 400;
+    font-weight: 600;
   }
 }
 
@@ -214,4 +215,25 @@ table {
       }
     }
   }
+}
+
+.title404 {
+  color: rgba(173, 50, 0, 1);
+  font-size: 28px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.text404 {
+  color: rgba(0, 129, 138, 1);
+  font-size: 22px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.redirectHome {
+  color: white;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
 }

@@ -66,3 +66,53 @@
     }
   }
 }
+
+.formNewPart {
+
+
+  .validateParticipant {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    margin: 5% 0;
+  }
+  .formParticipant {
+    .labelPart {
+      display: flex;
+      flex-direction: column;
+      margin: 0 0 2vw 0;
+      input {
+        height: 3vh;
+        width: 95%;
+        border-radius: 5px;
+      }
+    }
+
+    .labelPartNumber {
+      display: flex;
+      flex-direction: column;
+      margin: 0 0 2vw 0;
+
+      .number {
+        display: flex;
+        flex-direction: row;
+        gap: 2%;
+        input {
+          height: 3vh;
+          width: 95%;
+          border-radius: 5px;
+        }
+  
+        .inputNumber::-webkit-inner-spin-button,
+        .inputNumber::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+  
+        .inputNumber {
+          -moz-appearance: textfield;
+        }
+      }
+    }
+  }
+}

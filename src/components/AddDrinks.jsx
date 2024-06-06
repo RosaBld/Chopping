@@ -135,7 +135,7 @@ export default function AddDrinks() {
             content: {
               color: 'lightsteelblue',
               width: '50%',
-              height: '30%',
+              height: '40%',
               margin: 'auto',
               padding: '20px',
               border: '10px solid rgba(233, 233, 233, 1)',

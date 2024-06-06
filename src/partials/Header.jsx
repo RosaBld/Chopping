@@ -40,7 +40,7 @@ export default function Header() {
           content: {
             color: 'lightsteelblue',
             width: '80%', 
-            height: '55%',
+            height: '70%',
             padding: '20px',
             border: 'none',
             borderRadius: '25px',

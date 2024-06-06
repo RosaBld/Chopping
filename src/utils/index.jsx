@@ -9,6 +9,7 @@ export { default as CreateListDrink } from '../components/CreateListDrink';
 export { default as DeleteDrink } from '../components/DeleteDrink';
 export { default as DeletePool } from '../components/DeletePool';
 export { default as Drinks } from '../views/Drinks';
+export { default as ErrorPage } from '../views/ErrorPage';
 export { default as ExpirationLocalStorage } from '../components/ExpirationLocalStorage'
 export { default as Header } from '../partials/Header';
 export { default as Home } from '../views/Home';

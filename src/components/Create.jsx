@@ -45,8 +45,7 @@ export default function Create() {
       ) : (
         <>
         <div className="logoHome">
-          <img src="/Chopping-logo.svg" alt="logo Chopp'ing" className="ChoppinLogo" />
-          <h1>Chopping</h1>
+          <img src="/chopping-full.svg" alt="logo Chopp'ing et marque" className="ChoppinLogo" />
         </div>
         <div className="createParticipant" key={location.key}></div>
         <Link to='/createEvent'>

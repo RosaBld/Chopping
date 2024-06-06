@@ -106,6 +106,7 @@
 .displayDrink, .detailsDrink {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
+  color: white;
 }
 
 .deleteOrNotDelete .cancel {
@@ -145,14 +146,14 @@
   color: rgb(173, 50, 0);
   font-size: 14px;
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .calculatePool .validate {
-  color: white;
+  color: rgb(0, 129, 138);
   font-size: 14px;
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .errorDiv {
@@ -176,6 +177,27 @@ table thead tr .name, table tbody tr .name {
   font-weight: 600;
 }
 table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, table tbody tr .given {
+  color: white;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.title404 {
+  color: rgb(173, 50, 0);
+  font-size: 28px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.text404 {
+  color: rgb(0, 129, 138);
+  font-size: 22px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.redirectHome {
   color: white;
   font-size: 16px;
   font-family: "Poppins", sans-serif;
@@ -414,7 +436,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
 }
 .addAndCalculate .calculatePool .validate {
   padding: 2vh 11vw;
-  background-color: rgb(0, 111, 119);
+  background-color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -518,6 +540,46 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   -moz-appearance: textfield;
 }
 
+.formNewPart .validateParticipant {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+  margin: 5% 0;
+}
+.formNewPart .formParticipant .labelPart {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 2vw 0;
+}
+.formNewPart .formParticipant .labelPart input {
+  height: 3vh;
+  width: 95%;
+  border-radius: 5px;
+}
+.formNewPart .formParticipant .labelPartNumber {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 2vw 0;
+}
+.formNewPart .formParticipant .labelPartNumber .number {
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+}
+.formNewPart .formParticipant .labelPartNumber .number input {
+  height: 3vh;
+  width: 95%;
+  border-radius: 5px;
+}
+.formNewPart .formParticipant .labelPartNumber .number .inputNumber::-webkit-inner-spin-button,
+.formNewPart .formParticipant .labelPartNumber .number .inputNumber::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.formNewPart .formParticipant .labelPartNumber .number .inputNumber {
+  -moz-appearance: textfield;
+}
+
 body {
   background-color: rgb(0, 78, 83);
 }
@@ -535,8 +597,9 @@ body {
   border-radius: 15px;
   margin: 0 2vh 2vh 2vh;
   padding: 0vh 3vh;
-  height: 20vh;
+  height: 24vh;
   gap: 15vw;
+  width: 83%;
 }
 .bill .total {
   display: flex;
@@ -591,7 +654,7 @@ body {
 .header .ChoppinLogo {
   width: 11vh;
   position: absolute;
-  right: 35%;
+  right: 40%;
   top: 3.5%;
 }
 .header .burger-menu {
@@ -677,7 +740,7 @@ table thead tr, table tbody tr {
 table thead tr .name, table tbody tr .name {
   display: flex;
   align-items: center;
-  width: 40vw;
+  width: 43vw;
   height: 5vh;
 }
 table thead tr .name:first-child, table tbody tr .name:first-child {

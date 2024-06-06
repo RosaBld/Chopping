@@ -1,9 +1,9 @@
 // Libraries
-import { faCheck, faEuroSign, faPlus, faUser, faUsers, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faEuroSign, faMinus, faPlus, faUser, faUsers, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import ReactModal from 'react-modal';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 export default function ListParticipants() {
@@ -16,7 +16,6 @@ export default function ListParticipants() {
   const [showModal, setShowModal] = useState(false);
   const [participants, setParticipants] = useState([{ name: '', people: 1, amount: 0 }]);
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     const storedData = localStorage.getItem('participants');
@@ -31,9 +30,9 @@ export default function ListParticipants() {
     const totalAmount = participants.reduce((total, person) => total + person.people * person.amount, 0);
     const originalData = JSON.parse(localStorage.getItem('participants'));
     const time = originalData.time;
+    
     localStorage.setItem('participants', JSON.stringify({ participants, totalAmount, time }));
     setShowModal(false);
-    navigate('/Drinks');
   };
 
   const toggleModal = () => {
@@ -43,6 +42,7 @@ export default function ListParticipants() {
   const addPerson = () => {
     setParticipants([...participants, { name: '', people: 1, amount: 0 }]);
   };
+
 
   return (
     <div>
@@ -80,12 +80,16 @@ export default function ListParticipants() {
       <div>
         {listParticipants.length > 0 && (
           <div className="createParticipant">
+            {/* <button onClick={toggleModal} className="createNewParticipant">
+              <FontAwesomeIcon icon={faPen} /> Modifier
+            </button> */}
             <button onClick={toggleModal} className="createNewParticipant">
               <FontAwesomeIcon icon={faPlus} /> Ajouter
             </button>
           </div>
         )}
-          <ReactModal 
+
+        <ReactModal 
             isOpen={showModal}
             onRequestClose={toggleModal}
             contentLabel="Participant Form"
@@ -96,18 +100,25 @@ export default function ListParticipants() {
               },
               content: {
                 color: 'lightsteelblue',
-                width: '50%',
-                height: '70%',
+                width: '70%',
+                height: '80%',
                 margin: 'auto',
+                marginLeft: '-12px',
                 padding: '20px',
-                border: '1px solid black',
+                border: '10px solid rgba(233, 233, 233, 1)',
+                borderRadius: '25px',
+                position: 'absolute',
+                top: '0',
+                marginTop: '17vw'
               },
             }}
           >
-            <button className="closeModal">
-              <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
-            </button>
-            <form onSubmit={handleSubmit}>
+            <div className="modalContent">
+              <button className="closeModal">
+                <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+              </button>
+            </div>
+            <form className="formNewPart" onSubmit={handleSubmit}>
             {participants.map((person, index) => (
               <div key={index} className="formParticipant">
                 <div className="labelPart">
@@ -119,36 +130,74 @@ export default function ListParticipants() {
                   }} required />
                 </div>
 
-                <div className="labelPart">
-                  <label>Number of people:</label>
-                  <input type="number" min="1" value={person.people} onChange={e => {
-                    const newParticipants = [...participants];
-                    newParticipants[index].people = Number(e.target.value);
-                    setParticipants(newParticipants);
-                  }} required />
+                <div className="labelPartNumber">
+                  <label>Nombre de personne:</label>
+                  <div className="number">
+                    <input type="number" min="1" value={person.people} className='inputNumber' onChange={e => {
+                      const newParticipants = [...participants];
+                      newParticipants[index].people = Number(e.target.value);
+                      setParticipants(newParticipants);
+                    }} required />
+                    <button className="lessParticipants" onClick={e => {
+                      e.preventDefault();
+                      const newParticipants = [...participants];
+                      newParticipants[index].people = Math.max(Number(newParticipants[index].people) - 1, 0);
+                      setParticipants(newParticipants);
+                    }}>
+                      <FontAwesomeIcon className="minus" icon={faMinus} />
+                    </button>
+                    <button className="moreParticipants"onClick={e => {
+                      e.preventDefault();
+                      const newParticipants = [...participants];
+                      newParticipants[index].people = Number(newParticipants[index].people) + 1;
+                      setParticipants(newParticipants);
+                    }}>
+                      <FontAwesomeIcon className="plus" icon={faPlus} />
+                    </button>
+                  </div>
                 </div>
 
-                <div className="labelPart">  
-                  <label>Amount of money:</label>
-                  <input type="number" min="0" value={person.amount} onChange={e => {
-                    const newParticipants = [...participants];
-                    newParticipants[index].amount = Number(e.target.value);
-                    setParticipants(newParticipants);
-                  }} required />
+                <div className="labelPartNumber">
+                  <label>Montant par personne:</label>
+                  <div className="number">
+                    <input type="number" min="0" value={person.amount} className='inputNumber' onChange={e => {
+                      const newParticipants = [...participants];
+                      newParticipants[index].amount = Number(e.target.value);
+                      setParticipants(newParticipants);
+                    }} required />
+                    <button className="lessMoney" onClick={e => {
+                      e.preventDefault();
+                      const newParticipants = [...participants];
+                      newParticipants[index].amount = Math.max(Number(newParticipants[index].amount) - 1, 0);
+                      setParticipants(newParticipants);
+                    }}>
+                      <FontAwesomeIcon className="minus" icon={faMinus} />
+                    </button>
+                    <button className="moreMoney" onClick={e => {
+                      e.preventDefault();
+                      const newParticipants = [...participants];
+                      newParticipants[index].amount = Number(newParticipants[index].amount) + 1;
+                      setParticipants(newParticipants);
+                    }}>
+                      <FontAwesomeIcon className="plus" icon={faPlus} />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
           <div className="validateParticipant">
             <button className="participantButtons" type="button" onClick={addPerson}>
-              <FontAwesomeIcon icon={faPlus} />
+              <FontAwesomeIcon className="plus" icon={faPlus} />
             </button>
 
-            <button className="participantButtons" type="submit">
-              <FontAwesomeIcon icon={faCheck} />
+            <button className="participantButtonsValidate" type="submit" >
+              <FontAwesomeIcon icon={faCheck} /> Valider
             </button>
           </div>
           </form>
         </ReactModal>
+
+        
       </div>
     </div>
   );
