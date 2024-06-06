@@ -97,8 +97,19 @@
 .createParticipant {
   display: flex;
   justify-content: center;
+  gap: 5vw;
+  margin: 0 5vw;
 
-  .createNewParticipant {
+  .modifyNewParticipant {
+    background-color: rgb(0, 111, 119);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 4vw;
+    width: 90%;
+  }
+
+  .addNewParticipant {
     background-color: rgba(255, 221, 18, 1);
     border: none;
     cursor: pointer;

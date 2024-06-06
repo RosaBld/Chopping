@@ -163,8 +163,15 @@
   font-weight: 600;
 }
 
-.back, .createNewParticipant {
+.back, .addNewParticipant {
   color: rgb(173, 50, 0);
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.modifyNewParticipant {
+  color: white;
   font-size: 18px;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -197,7 +204,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   font-weight: 600;
 }
 
-.redirectHome {
+.redirectHome, .modifyNewParticipant {
   color: white;
   font-size: 16px;
   font-family: "Poppins", sans-serif;
@@ -342,8 +349,18 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
 .createParticipant {
   display: flex;
   justify-content: center;
+  gap: 5vw;
+  margin: 0 5vw;
 }
-.createParticipant .createNewParticipant {
+.createParticipant .modifyNewParticipant {
+  background-color: rgb(0, 111, 119);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 4vw;
+  width: 90%;
+}
+.createParticipant .addNewParticipant {
   background-color: rgb(255, 221, 18);
   border: none;
   cursor: pointer;

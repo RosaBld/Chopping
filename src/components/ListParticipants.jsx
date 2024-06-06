@@ -1,5 +1,5 @@
 // Libraries
-import { faCheck, faEuroSign, faMinus, faPlus, faUser, faUsers, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faEuroSign, faMinus, faPen, faPlus, faUser, faUsers, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import ReactModal from 'react-modal';
@@ -13,9 +13,10 @@ export default function ListParticipants() {
     listParticipants = data.participants;
   }
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal1, setShowModal1] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
   const [participants, setParticipants] = useState([{ name: '', people: 1, amount: 0 }]);
-
+  const [newParticipant, setNewParticipant] = useState({ name: '', people: 1, amount: 0 });
 
   useEffect(() => {
     const storedData = localStorage.getItem('participants');
@@ -32,11 +33,36 @@ export default function ListParticipants() {
     const time = originalData.time;
     
     localStorage.setItem('participants', JSON.stringify({ participants, totalAmount, time }));
-    setShowModal(false);
+    setShowModal2(false);
   };
 
-  const toggleModal = () => {
-    setShowModal(!showModal);
+  // Function to handle changes in the form
+  const handleInputChange = (event, field) => {
+    setNewParticipant({
+      ...newParticipant,
+      [field]: event.target.value,
+    });
+  };
+
+  const addNewParticipant = (event) => {
+    event.preventDefault();
+    const updatedParticipants = [...participants, newParticipant];
+    setParticipants(updatedParticipants);
+    setNewParticipant({ name: '', people: 1, amount: 0 });
+    setShowModal1(false);
+
+    const originalData = JSON.parse(localStorage.getItem('participants'));
+    const totalAmount = updatedParticipants.reduce((total, person) => total + person.people * person.amount, 0);
+    const time = originalData.time;
+    localStorage.setItem('participants', JSON.stringify({ participants: updatedParticipants, totalAmount, time }));
+  };
+  
+  const toggleModal1 = () => {
+    setShowModal1(!showModal1);
+  };
+
+  const toggleModal2 = () => {
+    setShowModal2(!showModal2);
   }
 
   const addPerson = () => {
@@ -80,18 +106,18 @@ export default function ListParticipants() {
       <div>
         {listParticipants.length > 0 && (
           <div className="createParticipant">
-            {/* <button onClick={toggleModal} className="createNewParticipant">
+            <button onClick={toggleModal2} className="modifyNewParticipant">
               <FontAwesomeIcon icon={faPen} /> Modifier
-            </button> */}
-            <button onClick={toggleModal} className="createNewParticipant">
+            </button>
+            <button onClick={toggleModal1} className="addNewParticipant">
               <FontAwesomeIcon icon={faPlus} /> Ajouter
             </button>
           </div>
         )}
 
         <ReactModal 
-            isOpen={showModal}
-            onRequestClose={toggleModal}
+            isOpen={showModal1}
+            onRequestClose={toggleModal1}
             contentLabel="Participant Form"
             style={{
               overlay: {
@@ -115,7 +141,94 @@ export default function ListParticipants() {
           >
             <div className="modalContent">
               <button className="closeModal">
-                <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+                <FontAwesomeIcon icon={faXmark} onClick={toggleModal1} />
+              </button>
+            </div>
+
+            <form className="formNewPart" onSubmit={addNewParticipant}>
+              <div className="formParticipant">
+                <div className="labelPart">
+                  <label>Name:</label>
+                  <input value={newParticipant.name} onChange={e => handleInputChange(e, 'name')} required />
+                </div>
+
+                <div className="labelPartNumber">
+                  <label>Nombre de personne:</label>
+                  <div className="number">
+                    <input type="number" min="1" value={newParticipant.people} className='inputNumber' onChange={e => handleInputChange(e, 'people')} required />
+                    <button className="lessParticipants" onClick={e => {
+                      e.preventDefault();
+                      setNewParticipant(prev => ({...prev, people: Math.max(Number(prev.people) - 1, 0)}));
+                    }}>
+                      <FontAwesomeIcon className="minus" icon={faMinus} />
+                    </button>
+                    <button className="moreParticipants"onClick={e => {
+                      e.preventDefault();
+                      setNewParticipant(prev => ({...prev, people: Number(prev.people) + 1}));
+                    }}>
+                      <FontAwesomeIcon className="plus" icon={faPlus} />
+                    </button>
+                  </div>
+                </div>
+
+                <div className="labelPartNumber">
+                  <label>Montant par personne:</label>
+                  <div className="number">
+                    <input type="number" min="0" value={newParticipant.amount} className='amount' onChange={e => handleInputChange(e, 'amount')} required />
+                    <button className="lessMoney" onClick={e => {
+                      e.preventDefault();
+                      setNewParticipant(prev => ({...prev, amount: Math.max(Number(prev.amount) - 1, 0)}));
+                    }}>
+                      <FontAwesomeIcon className="minus" icon={faMinus} />
+                    </button>
+                    <button className="moreMoney" onClick={e => {
+                      e.preventDefault();
+                      setNewParticipant(prev => ({...prev, amount: Number(prev.amount) + 1}));
+                    }}>
+                      <FontAwesomeIcon className="plus" icon={faPlus} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            <div className="validateParticipant">
+              <button className="participantButtons" type="button" onClick={addPerson}>
+                <FontAwesomeIcon className="plus" icon={faPlus} />
+              </button>
+
+              <button className="participantButtonsValidate" onClick={addNewParticipant} >
+                <FontAwesomeIcon icon={faCheck} /> Valider
+              </button>
+            </div>
+          </form>
+        </ReactModal>
+
+        <ReactModal 
+            isOpen={showModal2}
+            onRequestClose={toggleModal2}
+            contentLabel="Participant Form"
+            style={{
+              overlay: {
+                backgroundColor: 'rgba(0, 0, 0, 0.25)',
+                backdropFilter: 'blur(2px)',
+              },
+              content: {
+                color: 'lightsteelblue',
+                width: '70%',
+                height: '80%',
+                margin: 'auto',
+                marginLeft: '-12px',
+                padding: '20px',
+                border: '10px solid rgba(233, 233, 233, 1)',
+                borderRadius: '25px',
+                position: 'absolute',
+                top: '0',
+                marginTop: '17vw'
+              },
+            }}
+          >
+            <div className="modalContent">
+              <button className="closeModal">
+                <FontAwesomeIcon icon={faXmark} onClick={toggleModal2} />
               </button>
             </div>
             <form className="formNewPart" onSubmit={handleSubmit}>
@@ -185,18 +298,14 @@ export default function ListParticipants() {
                 </div>
               </div>
             ))}
-          <div className="validateParticipant">
-            <button className="participantButtons" type="button" onClick={addPerson}>
-              <FontAwesomeIcon className="plus" icon={faPlus} />
-            </button>
 
-            <button className="participantButtonsValidate" type="submit" >
-              <FontAwesomeIcon icon={faCheck} /> Valider
-            </button>
-          </div>
+            <div className="validateParticipant">
+              <button className="participantButtonsValidate" type="submit" >
+                <FontAwesomeIcon icon={faCheck} /> Valider
+              </button>
+            </div>
           </form>
         </ReactModal>
-
         
       </div>
     </div>

@@ -190,8 +190,15 @@
   font-weight: 600;
 }
 
-.back, .createNewParticipant {
+.back, .addNewParticipant {
   color: rgba(173, 50, 0, 1);
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.modifyNewParticipant {
+  color: white;
   font-size: 18px;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -231,7 +238,7 @@ table {
   font-weight: 600;
 }
 
-.redirectHome {
+.redirectHome, .modifyNewParticipant {
   color: white;
   font-size: 16px;
   font-family: "Poppins", sans-serif;
