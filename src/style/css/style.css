@@ -750,6 +750,7 @@ table {
   margin: 5vw 0;
   border-collapse: collapse;
   border-spacing: 0;
+  width: 100%;
 }
 table thead tr, table tbody tr {
   display: flex;
@@ -758,6 +759,7 @@ table thead tr, table tbody tr {
 }
 table thead tr .name, table tbody tr .name {
   display: flex;
+  flex: 2;
   align-items: center;
   width: 46vw;
   height: 5vh;
@@ -768,6 +770,7 @@ table thead tr .name:first-child, table tbody tr .name:first-child {
   padding-left: 2vh;
 }
 table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, table tbody tr .given {
+  flex: 1.5;
   display: flex;
   align-items: center;
   width: 20vw;

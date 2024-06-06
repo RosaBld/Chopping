@@ -2,6 +2,7 @@ table {
   margin: 5vw 0;
   border-collapse: collapse;
   border-spacing: 0;
+  width: 100%;
   
   thead, tbody {
 
@@ -9,8 +10,10 @@ table {
       display: flex;
       flex-direction: row;
       margin-bottom: 2vw;
+
       .name {
         display: flex;
+        flex: 2;
         align-items: center;
         width: 46vw;
         height: 5vh;
@@ -22,6 +25,7 @@ table {
       }
       
       .numberUser, .given {
+        flex: 1.5;
         display: flex;
         align-items: center;
         width: 20vw;
