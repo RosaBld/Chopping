@@ -44,7 +44,7 @@ export default function AddDrinks() {
 
   const decrementQuantity = (index) => {
     const newDrinks = [...drinks];
-    if (newDrinks[index].quantity > 1) {
+    if (newDrinks[index].quantity > 0) {
       newDrinks[index].quantity--;
     }
     setDrinks(newDrinks);
@@ -60,15 +60,11 @@ export default function AddDrinks() {
 
     const intervalId = setInterval(() => {
       const storedDrinks = JSON.parse(localStorage.getItem('drinks')) || [];
-      if (storedDrinks.length !== drinks.length) {
+      if (JSON.stringify(storedDrinks) !== JSON.stringify(drinks)) {
         setDrinks(storedDrinks);
       }
-      const data = localStorage.getItem('listDrink');
-      if (data) {
-        setListDrink(JSON.parse(data));
-      }
-    }, 1000);
-
+    }, 100);
+  
     return () => {
       clearInterval(intervalId);
     };
@@ -98,7 +94,7 @@ export default function AddDrinks() {
                 <p>{drink.price}€</p>
               </div>
               <div className="NumberOfDrinks">
-                {drink.quantity === 1 ? (
+                {drink.quantity === 0 ? (
                   <DeleteDrink index={index} drinks={drinks} setDrinks={setDrinks} />
                 ) : (
                   <button className="lessDrinks">

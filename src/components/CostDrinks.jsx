@@ -5,8 +5,6 @@ import Tooltip from '@mui/material/Tooltip';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from "react"
 
-
-
 export default function CostDrinks({ onCostChange }) {
   const [cost, setCost] = useState(0);
 
