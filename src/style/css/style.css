@@ -602,10 +602,8 @@ body {
 }
 
 .totalPool {
-  width: 100%;
-  min-height: 100vh;
+  min-height: 83vh;
   position: relative;
-  min-width: 100vw;
 }
 .totalPool .bill {
   display: flex;
@@ -623,19 +621,19 @@ body {
 }
 @media screen and (min-width: 320px) {
   .totalPool .bill {
-    width: 76%;
+    width: 80%;
     gap: 6vw;
   }
 }
 @media screen and (min-width: 375px) {
   .totalPool .bill {
-    width: 79%;
+    width: 83%;
     gap: 8vw;
   }
 }
 @media screen and (min-width: 425px) {
   .totalPool .bill {
-    width: 81.5%;
+    width: 85%;
     gap: 8vw;
   }
 }
