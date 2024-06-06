@@ -601,13 +601,18 @@ body {
   background-color: rgb(0, 78, 83);
 }
 
-.bill {
+.totalPool {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  min-width: 100vw;
+}
+.totalPool .bill {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  position: fixed;
-  left: 0;
+  position: absolute;
   bottom: 0;
   z-index: 0;
   background-color: rgb(0, 111, 119);
@@ -615,10 +620,26 @@ body {
   margin: 0 2vh 2vh 2vh;
   padding: 0vh 3vh;
   height: 24vh;
-  gap: 15vw;
-  width: 83%;
 }
-.bill .total {
+@media screen and (min-width: 320px) {
+  .totalPool .bill {
+    width: 76%;
+    gap: 6vw;
+  }
+}
+@media screen and (min-width: 375px) {
+  .totalPool .bill {
+    width: 79%;
+    gap: 8vw;
+  }
+}
+@media screen and (min-width: 425px) {
+  .totalPool .bill {
+    width: 81.5%;
+    gap: 8vw;
+  }
+}
+.totalPool .bill .total {
   display: flex;
   flex-direction: column;
   justify-content: left;

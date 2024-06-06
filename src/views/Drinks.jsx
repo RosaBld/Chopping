@@ -32,7 +32,7 @@ export default function Drinks() {
           <Loading />
         </div> 
       : 
-        <div>
+        <div className="totalPool">
           <div style={{ maxHeight: '375px', overflowY: 'auto' }} >
             <AddDrinks />
           </div>
