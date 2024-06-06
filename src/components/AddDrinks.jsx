@@ -63,8 +63,12 @@ export default function AddDrinks() {
       if (JSON.stringify(storedDrinks) !== JSON.stringify(drinks)) {
         setDrinks(storedDrinks);
       }
+      const data = localStorage.getItem('listDrink');
+      if (data) {
+        setListDrink(JSON.parse(data));
+      }
     }, 100);
-  
+
     return () => {
       clearInterval(intervalId);
     };
