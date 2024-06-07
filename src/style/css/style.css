@@ -253,23 +253,23 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
 }
 
 .customDropdown {
-  width: 100%; /* Match the width of the input field */
-  border: 1px solid #ccc; /* Add a border */
-  border-radius: 4px; /* Round the corners */
-  padding: 10px; /* Add some padding */
-  background-color: #fff; /* Set the background color */
-  z-index: 1; /* Stack the dropdown above other elements */
-  max-height: 200px; /* Limit the height of the dropdown */
-  overflow-y: auto; /* Add a scrollbar if necessary */
+  width: 100%;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fff;
+  z-index: 1;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
 .customDropdown option {
-  padding: 10px; /* Add some padding to each option */
-  cursor: pointer; /* Change the cursor when hovering over an option */
+  padding: 10px;
+  cursor: pointer;
 }
 
 .customDropdown option:hover {
-  background-color: #f1f1f1; /* Change the background color of an option when hovering */
+  background-color: rgb(0, 111, 119);
 }
 
 .createBudget {
