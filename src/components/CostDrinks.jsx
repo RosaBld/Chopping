@@ -14,7 +14,7 @@ export default function CostDrinks({ onCostChange }) {
       const newCost = storedDrinks.reduce((total, drink) => {
         const price = typeof drink.price === 'string' ? Number(drink.price.replace(',', '.')) : drink.price;
         return total + (price * drink.quantity);
-      }, 0);
+      }, 0).toFixed(2);
       if (newCost !== cost) {
         setCost(newCost);
         onCostChange(newCost); // Pass the new cost to the parent component
