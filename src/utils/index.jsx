@@ -18,5 +18,4 @@ export { default as Loading } from "../components/Loading";
 export { default as TotalDrinks } from '../components/TotalDrinks';
 export { default as Participants } from '../views/Participants';
 export { default as Pool } from '../components/Pool';
-export { default as SearchDrink } from '../components/SearchDrink';
 export { default as TotalParticipants } from '../components/TotalParticipants';

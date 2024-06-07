@@ -16,6 +16,8 @@ export default function AddDrinks() {
   const [searchTerm, setSearchTerm] = useState('');
   const [listDrink, setListDrink] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -76,12 +78,18 @@ export default function AddDrinks() {
 
   const handleInputChange = (event) => {
     setParticipants({...participants, [event.target.name]: event.target.value });
-    setSearchTerm(event.target.value); 
+    setSearchTerm(event.target.value);
+    setDropdownVisible(true);
   };
 
   const filteredDrinks = listDrink.filter(drink =>
     drink.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleOptionClick = (drinkName) => {
+    setSearchTerm(drinkName);
+    setDropdownVisible(false);
+  };
 
   return (
     <div>
@@ -157,12 +165,16 @@ export default function AddDrinks() {
             <form onSubmit={handleFormSubmit}>
               <div className="labelDrinks">
                 <label>Boisson:</label>
-                <input list="drinks" name="name" value={participants.name || ''} onChange={handleInputChange} required />
-                <datalist id="drinks">
-                  {filteredDrinks.map((drink, index) => (
-                    <option key={index} value={drink.name} />
-                  ))}
-                </datalist>
+                <input name="name" value={searchTerm} onChange={handleInputChange} required />
+                {dropdownVisible && (
+                  <select size={filteredDrinks.length} className="customDropdown">
+                    {filteredDrinks.map((drink, index) => (
+                      <option key={index} value={drink.name} onClick={() => handleOptionClick(drink.name)}>
+                        {drink.name}
+                      </option>
+                    ))}
+                  </select>
+                )}
               </div>
               
               <div className="labelDrinks">
