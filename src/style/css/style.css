@@ -211,65 +211,18 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   font-weight: 400;
 }
 
-.addAndCalculate {
-  display: flex;
-  flex-direction: row;
-  gap: 5%;
+.budgetPage .OrderPage {
+  color: white;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
 }
-
-.labelDrinks {
-  margin: 0 0 3vw 0;
-}
-.labelDrinks input {
-  border-radius: 5px;
-  width: 95%;
-  height: 3vh;
-}
-
-.listOfDrinks {
-  margin: 4vh 0;
-  background-color: rgb(0, 70, 74);
-  border-radius: 15px;
-}
-.listOfDrinks .setOfDrink {
-  border-bottom: solid 1px rgb(0, 111, 119);
-  margin: 0vh 3vh;
-}
-.listOfDrinks .setOfDrink:last-child {
-  border-bottom: none;
-}
-.listOfDrinks .setOfDrink .displayDrink {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20vw;
-}
-.listOfDrinks .setOfDrink .NumberOfDrinks {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.customDropdown {
-  width: 100%;
-  border: 1px solid rgb(231, 231, 231);
-  border-radius: 4px;
-  padding: 10px;
-  background-color: #fff;
-  z-index: 1;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.customDropdown option {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.customDropdown option:hover {
-  background-color: rgb(0, 111, 119);
+.budgetPage .OrderPage .orders .detailOrder {
+  line-height: 0.4;
+  color: white;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
 }
 
 .createBudget {
@@ -490,6 +443,111 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   color: white;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.addAndCalculate {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+}
+
+.labelDrinks {
+  margin: 0 0 3vw 0;
+}
+.labelDrinks input {
+  border-radius: 5px;
+  width: 95%;
+  height: 3vh;
+}
+
+.listOfDrinks {
+  margin: 4vh 0;
+  background-color: rgb(0, 70, 74);
+  border-radius: 15px;
+}
+.listOfDrinks .setOfDrink {
+  border-bottom: solid 1px rgb(0, 111, 119);
+  margin: 0vh 3vh;
+}
+.listOfDrinks .setOfDrink:last-child {
+  border-bottom: none;
+}
+.listOfDrinks .setOfDrink .displayDrink {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20vw;
+}
+.listOfDrinks .setOfDrink .NumberOfDrinks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.customDropdown {
+  width: 100%;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fff;
+  z-index: 1;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.customDropdown option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.customDropdown option:hover {
+  background-color: rgb(0, 111, 119);
+}
+
+.budgetPage {
+  height: 70vh;
+  overflow-y: auto;
+}
+.budgetPage .OrderPage {
+  margin: 2vh 2vw;
+}
+.budgetPage .OrderPage .orders {
+  background-color: rgb(0, 70, 74);
+  padding: 1vh 4vh;
+  border-radius: 15px;
+}
+.budgetPage .OrderPage .orders .tableOrders:last-child .detailOrder {
+  border-bottom: none;
+}
+.budgetPage .OrderPage .orders .tableOrders .detailOrder {
+  padding: 0 2vh 2vh 2vh;
+  border-bottom: solid 1px rgb(0, 111, 119);
+}
+.budgetPage .OrderPage .orders .tableOrders .detailOrder .listOrder, .budgetPage .OrderPage .orders .tableOrders .detailOrder .totalOrder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.budgetPage .poolBudgetPage {
+  background-color: rgb(0, 111, 119);
+  border-radius: 10px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 2vh;
+}
+.budgetPage .poolBudgetPage .poolRemaining {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+}
+.budgetPage .poolBudgetPage .poolRemaining .remaining {
+  height: 13vh;
 }
 
 .logoHome {
@@ -774,6 +832,23 @@ body {
   color: black;
 }
 
+.homepage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20vh;
+}
+.homepage .logo {
+  width: 25vh;
+}
+
+.charging {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 table {
   margin: 5vw 0;
   border-collapse: collapse;
@@ -817,21 +892,4 @@ table thead tr td, table tbody tr td {
 .labelParticipants input {
   border-radius: 5px;
   border-color: rgb(246, 224, 197);
-}
-
-.homepage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 20vh;
-}
-.homepage .logo {
-  width: 25vh;
-}
-
-.charging {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }/*# sourceMappingURL=style.css.map */

@@ -244,3 +244,21 @@ table {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
 }
+
+.budgetPage {
+  .OrderPage {
+    color: white;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    .orders {
+      .detailOrder {
+        line-height: 0.4;
+        color: white;
+        font-size: 14px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+      }
+    }
+  }
+}

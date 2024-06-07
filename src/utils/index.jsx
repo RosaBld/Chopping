@@ -1,5 +1,6 @@
 export { default as AddDrinks } from '../components/AddDrinks';
 export { default as BackButton } from '../components/BackButton';
+export { default as Budget } from '../views/Budget'; 
 export { default as CalculatePool } from '../components/CalculatePool';
 export { default as Configuration } from '../views/Configuration';
 export { default as CostDrinks } from '../components/CostDrinks';
@@ -15,7 +16,8 @@ export { default as Header } from '../partials/Header';
 export { default as Home } from '../views/Home';
 export { default as ListParticipants } from '../components/ListParticipants';
 export { default as Loading } from "../components/Loading";
-export { default as TotalDrinks } from '../components/TotalDrinks';
+export { default as Order } from '../components/Orders';
 export { default as Participants } from '../views/Participants';
 export { default as Pool } from '../components/Pool';
+export { default as TotalDrinks } from '../components/TotalDrinks';
 export { default as TotalParticipants } from '../components/TotalParticipants';

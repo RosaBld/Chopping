@@ -1,0 +1,51 @@
+.budgetPage {
+  height: 70vh;
+  overflow-y: auto;
+
+  .OrderPage {
+    margin: 2vh 2vw;
+    .orders {
+      background-color: rgba(0, 70, 74, 1);
+      padding: 1vh 4vh;
+      border-radius: 15px;
+      .tableOrders {
+        &:last-child {
+          .detailOrder {
+            border-bottom: none;
+          }
+        }
+        .detailOrder {
+          padding: 0 2vh 2vh 2vh;
+          border-bottom: solid 1px rgba(0, 111, 119, 1);
+
+          .listOrder, .totalOrder {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
+  }
+
+  .poolBudgetPage {
+    background-color: rgba(0, 111, 119, 1);
+    border-radius: 10px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 2vh;
+
+    .poolRemaining {
+      display: flex; 
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height:15vh; 
+      .remaining {
+        height: 13vh;
+      }
+    }
+  }
+}

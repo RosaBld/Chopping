@@ -29,7 +29,6 @@ export default function Pool() {
 
   return (
     <div className="poolRemaining">
-     
       {existingData && (
         <div className="remaining">
           <h3>Reste</h3>
