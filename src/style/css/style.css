@@ -686,6 +686,13 @@ body {
   right: 0;
 }
 
+.listDrinkConfig {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .header {
   height: 12vh;
   background-color: white;
