@@ -310,6 +310,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 100%;
 }
 
 .homePageStyle {
@@ -623,7 +624,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   margin: 0 0 3vw 0;
 }
 .events .createEvent .labelTitle input {
-  height: 3vh;
+  height: 4vh;
   width: 95%;
   border-radius: 5px;
 }
@@ -633,7 +634,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   margin: 0 0 2vw 0;
 }
 .events .createEvent .labelPart input {
-  height: 3vh;
+  height: 4vh;
   width: 95%;
   border-radius: 5px;
 }
@@ -648,7 +649,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   gap: 2%;
 }
 .events .createEvent .labelPartNumber .number input {
-  height: 3vh;
+  height: 4vh;
   width: 95%;
   border-radius: 5px;
 }
@@ -792,8 +793,7 @@ body {
 }
 .header .burger-menu {
   position: absolute;
-  right: 2.5vw;
-  top: 5vh;
+  right: 8vw;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -805,7 +805,6 @@ body {
   z-index: 10;
   transform: translateX(0);
   transition: transform 0.3s ease-out;
-  margin-right: 5%;
 }
 .header .burger-menu .burger {
   width: 2rem;
