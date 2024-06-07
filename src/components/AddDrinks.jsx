@@ -35,6 +35,16 @@ export default function AddDrinks() {
     localStorage.setItem('drinks', JSON.stringify(currentDrinks));
     setDrinks(currentDrinks);
     setShowModal(false);
+  
+    // Check if the entered drink name exists in the listDrink array
+    if (!listDrink.some(drink => drink.name.toLowerCase() === newDrink.name.toLowerCase())) {
+      // If it doesn't exist, add the new drink name to the listDrink array
+      const newListDrink = [...listDrink, { name: newDrink.name }];
+      setListDrink(newListDrink);
+  
+      // Update the listDrink in local storage
+      localStorage.setItem('listDrink', JSON.stringify(newListDrink));
+    }
   };
 
   const incrementQuantity = (index) => {
