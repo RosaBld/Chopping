@@ -59,8 +59,6 @@ export default function Header() {
           },
         }}
       >
-
-        
         <nav className="navbar">
 
           <img src="/Chopping-logo.svg" alt="logo Chopp'ing" className="ChoppinLogoNav" />
@@ -100,10 +98,9 @@ export default function Header() {
                 <FontAwesomeIcon icon={faGear} className="config-icon" />
               </button>            
             </li>
-
-            
           </ul>
         </nav>
+
       </ReactModal>
 
     </div>

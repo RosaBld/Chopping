@@ -670,12 +670,14 @@ body {
   height: 12vh;
   background-color: white;
   border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .header .ChoppinLogo {
   width: 11vh;
   position: absolute;
-  right: 40%;
-  top: 3.5%;
+  top: 10vw;
 }
 .header .burger-menu {
   position: absolute;
@@ -701,8 +703,6 @@ body {
 }
 
 .navbar {
-  width: 91%;
-  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
