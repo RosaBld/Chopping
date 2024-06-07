@@ -38,7 +38,6 @@ export default function AddDrinks() {
   
     // Check if the entered drink name exists in the listDrink array
     if (!listDrink.some(drink => drink.name.toLowerCase() === newDrink.name.toLowerCase())) {
-      // If it doesn't exist, add the new drink name to the listDrink array
       const newListDrink = [...listDrink, { name: newDrink.name }];
       setListDrink(newListDrink);
   

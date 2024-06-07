@@ -2,6 +2,7 @@
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 // Components
 import { AddDrinks, CostDrinks, Loading, Pool, TotalDrinks, TotalParticipants } from '../utils';
@@ -21,6 +22,8 @@ export default function Drinks() {
     setTotalAmount(data.totalAmount);
   }, []);
 
+  const participants = JSON.parse(localStorage.getItem('participants')) || [];
+
   const handleCostChange = (newCost) => {
     setCost(newCost);
   };
@@ -33,10 +36,15 @@ export default function Drinks() {
         </div> 
       : 
         <div className="totalPool">
-          <div style={{ maxHeight: '375px', overflowY: 'auto' }} >
-            <AddDrinks />
-          </div>
-
+          {participants.length === 0 ? (
+            <div>
+              <h2 className="errorDrink">Veuillez créer un <Link to="/">évènement</Link></h2>
+            </div>
+          ) : (
+              <div style={{ maxHeight: '375px', overflowY: 'auto' }} >
+                <AddDrinks />
+              </div>
+          )}
           <div>
             {cost > totalAmount && 
               <div className="errorDiv">

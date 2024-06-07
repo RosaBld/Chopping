@@ -64,14 +64,11 @@
   font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 400;
-  margin: 20vw 5vw;
+  font-size: 14px;
+  margin: 4vh 2vh;
   h2 {
     a {
-      color: inherit;
-
-      &:hover {
-        color: black;
-      }
+      color: rgba(173, 50, 0, 1);
     }
   }
 }
@@ -112,6 +109,13 @@
   font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 400;
+}
+
+.homeErrorMsg {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .deleteConfirmation {
@@ -251,6 +255,17 @@ table {
     font-size: 14px;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
+
+    .errorOrder {
+      margin: 4vh 2vh;
+      color: rgba(173, 50, 0, 1);
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      a {
+        color: rgba(173, 50, 0, 1);
+      }
+    }
     .orders {
       .detailOrder {
         line-height: 0.4;
@@ -260,5 +275,16 @@ table {
         font-weight: 400;
       }
     }
+  }
+}
+
+.errorDrink {
+  margin: 4vh 2vh;
+  color: rgba(173, 50, 0, 1);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  a {
+    color: rgba(173, 50, 0, 1);
   }
 }

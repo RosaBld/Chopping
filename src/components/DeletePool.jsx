@@ -16,6 +16,7 @@ export default function DeletePool({ onPoolDelete, isHomePage }) {
     localStorage.removeItem('participants');
     localStorage.removeItem('drinks');
     localStorage.removeItem('totalAmount');
+    localStorage.removeItem('orders');
     setShowModal(!showModal);
     navigate('/');
     onPoolDelete();
