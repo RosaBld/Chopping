@@ -17,7 +17,7 @@ export default function AddDrinks() {
   const [listDrink, setListDrink] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [dropdownVisible, setDropdownVisible] = useState(false);
-
+  const [price, setPrice] = useState(""); 
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -54,7 +54,6 @@ export default function AddDrinks() {
   };
 
   useEffect(() => {
-
     // Simulate a data loading delay
     setTimeout(() => {
       setIsLoading(false);
@@ -88,7 +87,13 @@ export default function AddDrinks() {
 
   const handleOptionClick = (drinkName) => {
     setSearchTerm(drinkName);
+    setParticipants({...participants, name: drinkName});
     setDropdownVisible(false);
+  };
+
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
+    setParticipants({...participants, price: event.target.value});
   };
 
   return (
@@ -165,21 +170,36 @@ export default function AddDrinks() {
             <form onSubmit={handleFormSubmit}>
               <div className="labelDrinks">
                 <label>Boisson:</label>
-                <input name="name" value={searchTerm} onChange={handleInputChange} required />
-                {dropdownVisible && (
-                  <select size={filteredDrinks.length} className="customDropdown">
-                    {filteredDrinks.map((drink, index) => (
-                      <option key={index} value={drink.name} onClick={() => handleOptionClick(drink.name)}>
-                        {drink.name}
-                      </option>
-                    ))}
-                  </select>
-                )}
+                <input 
+                  name="name" 
+                  value={searchTerm} 
+                  onChange={handleInputChange} 
+                  onBlur={() => setTimeout(() => setDropdownVisible(false), 100)} 
+                  required 
+                />
+
+                  {dropdownVisible && (
+                    <select 
+                      size={filteredDrinks.length} 
+                      className="customDropdown" 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleOptionClick(e.target.value);
+                      }}
+                    >
+                      {filteredDrinks.map((drink, index) => (
+                        <option key={index} value={drink.name}>
+                          {drink.name}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+                
               </div>
               
               <div className="labelDrinks">
                 <label>Montant:</label>
-                <input name="price" value={participants.price || ''} onChange={handleInputChange} required />
+                <input name="price" value={price} onChange={handlePriceChange} required /> {/* Update this line */}
               </div>
               <div className="validate">
                 <button className="validateDrink" type="submit">
