@@ -37,7 +37,7 @@ export default function CreateEvent() {
       participants,
       totalAmount,
       poolName,
-      time: new Date().getTime()
+      expireTime: new Date().getTime()
     };
   
     localStorage.setItem('participants', JSON.stringify(dataToStore));

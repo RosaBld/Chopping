@@ -41,8 +41,6 @@ export default function CalculatePool() {
         amount: Number(Number(participant.amount.toString().replace(',', '.')).toFixed(2) - sharedCost).toFixed(2)
       }));
   
-      localStorage.setItem('participants', JSON.stringify({ participants, totalAmount: remainingPool.toFixed(2) }));
-  
       // Create order object
       const order = {
         orderNumber: new Date().getTime(),
@@ -63,6 +61,16 @@ export default function CalculatePool() {
       const updatedDrinks = storedDrinks.map(drink => ({ ...drink, quantity: 0 }));
       localStorage.setItem('drinks', JSON.stringify(updatedDrinks));
       setStoredDrinks(updatedDrinks);
+
+      // Get the current pool data
+      const currentPool = JSON.parse(localStorage.getItem('participants'));
+
+      // Update the participants and totalAmount
+      currentPool.participants = participants;
+      currentPool.totalAmount = remainingPool.toFixed(2);
+
+      // Set the updated pool data back to localStorage
+      localStorage.setItem('participants', JSON.stringify(currentPool));
     }
   };
 
