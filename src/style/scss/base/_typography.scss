@@ -278,12 +278,12 @@ table {
   }
 }
 
-.errorDrink {
-  margin: 4vh 2vh;
-  color: rgba(173, 50, 0, 1);
+.errorDrink, .errorOrder, .errorOrderNoEvent {
   font-family: "Poppins", sans-serif;
+  color: white;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 22px;
+  margin: 4vh 2vh;
   a {
     color: rgba(173, 50, 0, 1);
   }

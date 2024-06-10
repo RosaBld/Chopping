@@ -58,7 +58,7 @@ export default function Order() {
   if (participants.length === 0) {
     return (
       <div className="OrderPage">
-        <h2 className="errorOrder">Veuillez créer un <Link to="/">évènement!</Link></h2>
+        <h2 className="errorOrderNoEvent">Vous n&apos;avez pas encore créé d&apos;évènement. Veuillez créer un <Link to="/">évènement</Link> afin d&apos;avoir accès à votre liste d&apos;historique</h2>
       </div>
     )
   }
@@ -68,7 +68,7 @@ export default function Order() {
       <h2>Dernières commandes:</h2>
       {listOrders && listOrders.length === 0 ? (
         <div>
-          <h2 className="errorOrder">Vous n&apos;avez pas encore effectué de commande!</h2>
+          <h2 className="errorOrder">Vous n&apos;avez pas encore effectué de commande! Veuillez effectuez une commande afin d&apos;avoir accès à votre historique</h2>
         </div>
       ) : (
         <div className="orders">

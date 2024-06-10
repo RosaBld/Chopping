@@ -38,7 +38,7 @@ export default function Drinks() {
         <div className="totalPool">
           {participants.length === 0 ? (
             <div>
-              <h2 className="errorDrink">Veuillez créer un <Link to="/">évènement</Link></h2>
+              <h2 className="errorDrink">Il ne vous est pas possible d&apos;ajouter une boisson à vorre évènement car aucun évènement n&apos;est en cours. Veuillez créer un <Link to="/">évènement</Link> afin de continuer</h2>
             </div>
           ) : (
               <div style={{ maxHeight: '375px', overflowY: 'auto' }} >

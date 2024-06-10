@@ -240,14 +240,14 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   font-weight: 400;
 }
 
-.errorDrink {
-  margin: 4vh 2vh;
-  color: rgb(173, 50, 0);
+.errorDrink, .errorOrder, .errorOrderNoEvent {
   font-family: "Poppins", sans-serif;
+  color: white;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 22px;
+  margin: 4vh 2vh;
 }
-.errorDrink a {
+.errorDrink a, .errorOrder a, .errorOrderNoEvent a {
   color: rgb(173, 50, 0);
 }
 
