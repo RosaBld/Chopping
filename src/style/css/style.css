@@ -472,6 +472,15 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   cursor: pointer;
 }
 
+.reorderButton {
+  padding: 2.5vw;
+  background-color: rgb(0, 111, 119);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
 .addAndCalculate {
   display: flex;
   flex-direction: row;
@@ -556,6 +565,13 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.budgetPage .OrderPage .orders .tableOrders .reorder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 2vh;
 }
 .budgetPage .poolBudgetPage {
   background-color: rgb(0, 111, 119);

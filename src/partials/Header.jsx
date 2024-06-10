@@ -48,7 +48,7 @@ export default function Header() {
           content: {
             color: 'lightsteelblue',
             width: windowWidth > 425 ? '85.7vw' : windowWidth > 320 ? '83.7vw' : '81vw', 
-            height: '70%',
+            height: '57%',
             padding: '20px',
             border: 'none',
             borderRadius: '25px',
@@ -65,7 +65,7 @@ export default function Header() {
 
           <ul className="links">
             <li className="">
-              <Link to="/" onClick={toggleModal}>
+              <Link to="/drinks" onClick={toggleModal}>
                 Accueil
               </Link>
             </li>
@@ -77,11 +77,6 @@ export default function Header() {
             <li>
               <Link to="/budget" onClick={toggleModal}>
                 Budget
-              </Link>
-            </li>
-            <li>
-              <Link to="/drinks" onClick={toggleModal}>
-                Boissons
               </Link>
             </li>
           </ul>

@@ -1,9 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import ReactModal from 'react-modal';
 
 export default function CalculatePool() {
   const [storedDrinks, setStoredDrinks] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  }
 
   useEffect (() => {
     const drinks = JSON.parse(localStorage.getItem('drinks')) || [];
@@ -44,7 +50,9 @@ export default function CalculatePool() {
       // Create order object
       const order = {
         orderNumber: new Date().getTime(),
-        drinks: storedDrinks.map(drink => ({ name: drink.name, quantity: drink.quantity, price: drink.price })),
+        drinks: storedDrinks
+          .filter(drink => drink.quantity > 0)
+          .map(drink => ({ name: drink.name, quantity: drink.quantity, price: drink.price })),
         totalPrice: cost
       };
   
@@ -72,6 +80,7 @@ export default function CalculatePool() {
       // Set the updated pool data back to localStorage
       localStorage.setItem('participants', JSON.stringify(currentPool));
     }
+    setShowModal(false);
   };
 
   return (
@@ -80,9 +89,53 @@ export default function CalculatePool() {
         <>
         </>
       ) : (
-        <button className="validate" onClick={handleCalculate}>
+        <div>
+
+        <button className="validate" onClick={toggleModal}>
           <FontAwesomeIcon icon={faCheck} /> Valider
         </button>
+        <ReactModal 
+          isOpen={showModal}
+          onRequestClose={toggleModal}
+          contentLabel="Participant Form"
+          style={{
+            overlay: {
+              backgroundColor: 'rgba(0, 0, 0, 0.25)',
+              backdropFilter: 'blur(2px)',
+            },
+            content: {
+              color: 'lightsteelblue',
+              width: '50%',
+              height: '40%',
+              margin: 'auto',
+              padding: '20px',
+              border: '10px solid rgba(233, 233, 233, 1)',
+              borderRadius: '25px',
+              position: 'absolute',
+              top: '0',
+              marginTop: '50vw'
+            },
+          }}
+        >
+          <div className="modalContent">
+            <button className="closeModal">
+              <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+            </button>
+          </div>
+          <div>
+            <p className="deleteConfirmation">Voulez-vous passer cette commande?</p>
+            <div className="deleteOrNotDelete">
+              <button className="cancel">
+                <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+              </button>
+              <button onClick={handleCalculate} className="validateDelete">
+                <FontAwesomeIcon icon={faCheck} />
+              </button>
+            </div>
+            
+          </div>
+          </ReactModal>
+        </div>
       )}
     </div>
   )
