@@ -15,8 +15,11 @@ export default function ListParticipants() {
 
   const [showModal1, setShowModal1] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
+  const [showModal3, setShowModal3] = useState(false);
   const [participants, setParticipants] = useState([{ name: '', people: 1, amount: 0 }]);
   const [newParticipant, setNewParticipant] = useState({ name: '', people: 1, amount: 0 });
+  const [showCustom, setShowCustom] = useState(false);
+  const [showCustom2, setShowCustom2] = useState(false);
 
   useEffect(() => {
     const storedData = localStorage.getItem('participants');
@@ -65,6 +68,32 @@ export default function ListParticipants() {
     setShowModal2(!showModal2);
   }
 
+  const toggleModal3 = () => {
+    setShowModal3(!showModal3);
+  }
+
+  const updateAmount = (e, index, amountToAdd) => {
+    e.preventDefault();
+    const newParticipants = [...participants];
+    newParticipants[index].amount = amountToAdd;
+    setParticipants(newParticipants);
+  };
+  
+  const updateNewParticipantAmount = (e, amountToAdd) => {
+    e.preventDefault();
+    setNewParticipant(prev => ({...prev, amount: amountToAdd}));
+  };
+  
+  const handleShow = (e) => {
+    e.preventDefault();
+    setShowCustom(prevShow => !prevShow);
+  };
+
+  const handleShow2 = (e) => {
+    e.preventDefault();
+    setShowCustom2(prevShow2 => !prevShow2);
+  };
+
   // const addPerson = () => {
   //   setParticipants([...participants, { name: '', people: 1, amount: 0 }]);
   // };
@@ -105,13 +134,20 @@ export default function ListParticipants() {
       
       <div>
         {listParticipants.length > 0 && (
-          <div className="createParticipant">
-            <button onClick={toggleModal2} className="modifyNewParticipant">
-              <FontAwesomeIcon icon={faPen} /> Modifier
-            </button>
-            <button onClick={toggleModal1} className="addNewParticipant">
-              <FontAwesomeIcon icon={faPlus} /> Ajouter
-            </button>
+          <div>
+            <div className="createParticipant">
+              <button onClick={toggleModal2} className="modifyNewParticipant">
+                <FontAwesomeIcon icon={faPen} /> Modifier
+              </button>
+              <button onClick={toggleModal1} className="addNewParticipant">
+                <FontAwesomeIcon icon={faPlus} /> Ajouter
+              </button>
+            </div>
+            <div>
+              <button onClick={toggleModal3} className="addAmountParticipants">
+                <FontAwesomeIcon icon={faPlus} /> Ajouter € à tous les participants
+              </button>
+            </div>
           </div>
         )}
 
@@ -127,7 +163,7 @@ export default function ListParticipants() {
               content: {
                 color: 'lightsteelblue',
                 width: '70%',
-                height: '50%',
+                height: '58%',
                 margin: 'auto',
                 marginLeft: '-20px',
                 padding: '20px',
@@ -173,7 +209,14 @@ export default function ListParticipants() {
 
                 <div className="labelPartNumber">
                   <label>Montant par personne:</label>
-                  <div className="number">
+                  <div className="buttonsAddByFive">
+                    <button className="addTo" onClick={(e) => updateNewParticipantAmount(e, 5)}>5€</button>
+                    <button className="addTo" onClick={(e) => updateNewParticipantAmount(e, 10)}>10€</button>
+                    <button className="addTo" onClick={(e) => updateNewParticipantAmount(e, 15)}>15€</button>
+                    <button className="addTo" onClick={(e) => updateNewParticipantAmount(e, 20)}>20€</button>
+                    <button className="addTo" onClick={handleShow}><FontAwesomeIcon icon={faPen} /></button>
+                  </div>
+                  <div className="number" style={{display: showCustom ? '' : 'none'}}>
                     <input type="number" min="0" value={newParticipant.amount} className='amount' onChange={e => handleInputChange(e, 'amount')} required />
                     <button className="lessMoney" onClick={e => {
                       e.preventDefault();
@@ -214,7 +257,7 @@ export default function ListParticipants() {
               content: {
                 color: 'lightsteelblue',
                 width: '70%',
-                height: '60%',
+                height: '65%',
                 margin: 'auto',
                 marginLeft: '-20px',
                 padding: '20px',
@@ -272,7 +315,14 @@ export default function ListParticipants() {
 
                 <div className="labelPartNumber">
                   <label>Montant par personne:</label>
-                  <div className="number">
+                  <div className="buttonsAddByFive">
+                    <button className="addTo" onClick={(e) => updateAmount(e, index, 5)}>5€</button>
+                    <button className="addTo" onClick={(e) => updateAmount(e, index, 10)}>10€</button>
+                    <button className="addTo" onClick={(e) => updateAmount(e, index, 15)}>15€</button>
+                    <button className="addTo" onClick={(e) => updateAmount(e, index, 20)}>20€</button>
+                    <button className="addTo" onClick={handleShow2}><FontAwesomeIcon icon={faPen} /></button>
+                  </div>
+                  <div className="number" style={{display: showCustom2 ? '' : 'none'}}>
                     <input type="number" min="0" value={person.amount} className='inputNumber' onChange={e => {
                       const newParticipants = [...participants];
                       newParticipants[index].amount = Number(e.target.value);
@@ -306,6 +356,52 @@ export default function ListParticipants() {
             </div>
           </form>
         </ReactModal>
+
+        <ReactModal 
+            isOpen={showModal3}
+            onRequestClose={toggleModal3}
+            contentLabel="Participant Form"
+            style={{
+              overlay: {
+                backgroundColor: 'rgba(0, 0, 0, 0.25)',
+                backdropFilter: 'blur(2px)',
+              },
+              content: {
+                color: 'lightsteelblue',
+                width: '70%',
+                height: '58%',
+                margin: 'auto',
+                marginLeft: '-20px',
+                padding: '20px',
+                border: '10px solid rgba(233, 233, 233, 1)',
+                borderRadius: '25px',
+                position: 'absolute',
+                top: '0',
+                marginTop: '22vw'
+              },
+            }}
+          >
+            <div className="modalContent">
+              <button className="closeModal">
+                <FontAwesomeIcon icon={faXmark} onClick={toggleModal3} />
+              </button>
+            </div>
+            <div>
+              <h2>Quel montant souhaitez-vous ajouter à tous les participants?</h2>
+              <div className="buttonsAddByFive">
+                <button className="addTo">5€</button>
+                <button className="addTo">10€</button>
+                <button className="addTo">15€</button>
+                <button className="addTo">20€</button>
+                <button className="addTo" onClick={handleShow2}><FontAwesomeIcon icon={faPen} /></button>
+              </div>
+            </div>
+            <div className="validateParticipant">
+              <button className="participantButtonsValidate" type="submit">
+                <FontAwesomeIcon icon={faCheck} /> Valider
+              </button>
+            </div>
+          </ReactModal>
         
       </div>
     </div>

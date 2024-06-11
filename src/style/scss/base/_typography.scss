@@ -119,6 +119,7 @@
 }
 
 .deleteConfirmation {
+  text-align: center;
   font-family: "Poppins", sans-serif;
   color: rgba(0, 111, 119, 1);
   font-weight: 600;
@@ -288,5 +289,16 @@ table {
   margin: 4vh 2vh;
   a {
     color: rgba(173, 50, 0, 1);
+  }
+}
+
+.buttonsAddByFive {
+  .addTo {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    &:hover{
+      color:white;
+    }
   }
 }

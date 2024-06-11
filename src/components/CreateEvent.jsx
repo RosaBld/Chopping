@@ -1,4 +1,4 @@
-import { faCheck, faPlus, faMinus, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faPen, faPlus, faMinus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ export default function CreateEvent() {
   const [participants, setParticipants] = useState([{ name: '', people: 1, amount: 0 }]);
   const navigate = useNavigate();
   const [poolName, setPoolName] = useState('');
+  const [showCustom, setShowCustom] = useState(false);
 
   useEffect(() => {
     const data = localStorage.getItem('participants');
@@ -52,6 +53,18 @@ export default function CreateEvent() {
     navigate('/');
   }
 
+  const updateAmount = (e, index, amountToAdd) => {
+    e.preventDefault();
+    const newParticipants = [...participants];
+    newParticipants[index].amount = amountToAdd;
+    setParticipants(newParticipants);
+  };
+
+  const handleShow = (e) => {
+    e.preventDefault();
+    setShowCustom(prevShow => !prevShow);
+  };
+  
 
   return (
     <div className="events">
@@ -109,7 +122,14 @@ export default function CreateEvent() {
               
               <div className="labelPartNumber">
                 <label>Montant par personne:</label>
-                <div className="number">
+                <div className="buttonsAddByFive">
+                  <button className="addTo" onClick={(e) => updateAmount(e, index, 5)}>5€</button>
+                  <button className="addTo" onClick={(e) => updateAmount(e, index, 10)}>10€</button>
+                  <button className="addTo" onClick={(e) => updateAmount(e, index, 15)}>15€</button>
+                  <button className="addTo" onClick={(e) => updateAmount(e, index, 20)}>20€</button>
+                  <button className="addTo" onClick={handleShow}><FontAwesomeIcon icon={faPen} /></button>
+                </div>
+                <div className="number" style={{display: showCustom ? '' : 'none'}}>
                   <input type="number" min="0" value={person.amount} className='inputNumber' onChange={e => {
                     const newParticipants = [...participants];
                     newParticipants[index].amount = Number(e.target.value);

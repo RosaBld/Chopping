@@ -242,3 +242,24 @@
   cursor: pointer;
   color: white;
 }
+
+
+.buttonsAddByFive {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+  align-items: center;
+  justify-content: center;
+  margin: 2vh 2vw;
+  .addTo {
+    flex-grow: 1;
+    // padding: 0 4vw;
+    width: 100%;
+    height: 8vh;
+    border-radius: 10px;
+    border: none;
+    &:hover {
+      background-color: rgba(0, 111, 119, 1);
+    }
+  }
+}
