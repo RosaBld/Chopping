@@ -1,7 +1,7 @@
 import { faArrowsRotate, faCheck, faXmark} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ReactModal from 'react-modal';
 
 export default function Order() {
@@ -51,16 +51,6 @@ export default function Order() {
   
     localStorage.setItem('drinks', JSON.stringify(drinks));
     navigate('/drinks');
-  }
-
-  const participants = JSON.parse(localStorage.getItem('participants')) || [];
-  
-  if (participants.length === 0) {
-    return (
-      <div className="OrderPage">
-        <h2 className="errorOrderNoEvent">Vous n&apos;avez pas encore créé d&apos;évènement. Veuillez créer un <Link to="/">évènement</Link> afin d&apos;avoir accès à votre liste d&apos;historique</h2>
-      </div>
-    )
   }
 
   return (

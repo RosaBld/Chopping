@@ -26,7 +26,7 @@ export default function TotalDrinks() {
   const totalDrink = drinks.reduce((total, drink) => {
     const quantity = typeof drink.quantity === 'string' ? Number(drink.quantity.replace(',', '.')) : drink.quantity;
     return total + quantity;
-  }, 0);
+  }, 10);
 
   return(
     <div className="drinksAmount">

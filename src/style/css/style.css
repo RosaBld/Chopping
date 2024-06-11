@@ -147,6 +147,9 @@
   font-size: 18px;
 }
 
+.addAndCalculate {
+  margin-top: 4vh;
+}
 .addAndCalculate .createNewDrink {
   color: rgb(173, 50, 0);
   font-size: 14px;
@@ -542,12 +545,9 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   background-color: rgb(0, 111, 119);
 }
 
-.budgetPage {
-  height: 70vh;
-  overflow-y: auto;
-}
 .budgetPage .OrderPage {
   margin: 2vh 2vw;
+  height: 60dvh;
 }
 .budgetPage .OrderPage .orders {
   background-color: rgb(0, 70, 74);

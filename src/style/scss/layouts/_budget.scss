@@ -1,13 +1,17 @@
 .budgetPage {
-  height: 70vh;
-  overflow-y: auto;
+  // overflow-y: auto;
+  // max-height: 430px;
 
   .OrderPage {
     margin: 2vh 2vw;
+    height: 60dvh;
+
     .orders {
       background-color: rgba(0, 70, 74, 1);
       padding: 1vh 4vh;
       border-radius: 15px;
+
+
       .tableOrders {
         &:last-child {
           .detailOrder {

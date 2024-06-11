@@ -16,7 +16,7 @@ export default function TotalParticipants() {
   const totalPeople = participants.reduce((total, participants) => {
     const people = typeof participants.people === 'string' ? Number(participants.people.replace(',', '.')) : participants.people;
     return total + people;
-  }, 0);
+  }, 10);
 
   return(
     <div className="totalParticipant">

@@ -19,7 +19,7 @@ export default function CostDrinks({ onCostChange }) {
         setCost(newCost);
         onCostChange(newCost); // Pass the new cost to the parent component
       }
-    }, 1000);
+    }, 10);
 
     return () => {
       clearInterval(intervalId);
