@@ -20,6 +20,7 @@ export default function ListParticipants() {
   const [newParticipant, setNewParticipant] = useState({ name: '', people: 1, amount: 0 });
   const [showCustom, setShowCustom] = useState(false);
   const [showCustom2, setShowCustom2] = useState(false);
+  
 
   useEffect(() => {
     const storedData = localStorage.getItem('participants');
@@ -34,8 +35,16 @@ export default function ListParticipants() {
     const totalAmount = participants.reduce((total, person) => total + person.people * person.amount, 0);
     const originalData = JSON.parse(localStorage.getItem('participants'));
     const time = originalData.time;
+    const expireTime = originalData.expireTime;
+    const poolName= originalData.poolName;
     
-    localStorage.setItem('participants', JSON.stringify({ participants, totalAmount, time }));
+    localStorage.setItem('participants', JSON.stringify({ 
+      participants, 
+      totalAmount, 
+      time,
+      expireTime, 
+      poolName
+    }));
     setShowModal2(false);
     setShowModal3(false);
   };
@@ -54,11 +63,19 @@ export default function ListParticipants() {
     setParticipants(updatedParticipants);
     setNewParticipant({ name: '', people: 1, amount: 0 });
     setShowModal1(false);
-
+  
     const originalData = JSON.parse(localStorage.getItem('participants'));
     const totalAmount = updatedParticipants.reduce((total, person) => total + person.people * person.amount, 0);
     const time = originalData.time;
-    localStorage.setItem('participants', JSON.stringify({ participants: updatedParticipants, totalAmount, time }));
+    const expireTime = originalData.expireTime;
+    const poolName = originalData.poolName; 
+    localStorage.setItem('participants', JSON.stringify({ 
+      participants: updatedParticipants, 
+      totalAmount, 
+      time,
+      expireTime, 
+      poolName
+    }));
   };
   
   const toggleModal1 = () => {
