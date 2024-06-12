@@ -39,3 +39,12 @@ The app was created with React and Vite.js. This app is a front-end app, with th
 ![SASS](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 ![REACT](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![VITE](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+
+
+##### ScreenShotes
+![screenshot app](/public/screen/Chopping.png)
+![screenshot app](/public/screen/Chopping1.png)
+![screenshot app](/public/screen/Chopping2.png)
+![screenshot app](/public/screen/Chopping3.png)
+![screenshot app](/public/screen/Chopping4.png)
+![screenshot app](/public/screen/Chopping5.png)
