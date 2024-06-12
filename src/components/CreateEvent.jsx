@@ -9,7 +9,8 @@ export default function CreateEvent() {
   const [participants, setParticipants] = useState([{ name: '', people: 1, amount: 0 }]);
   const navigate = useNavigate();
   const [poolName, setPoolName] = useState('');
-  const [showCustom, setShowCustom] = useState(false);
+  const [showCustom, setShowCustom] = useState(participants.map(() => false));
+  const [selectedButtons, setSelectedButtons] = useState(participants.map(() => ({ type: null, value: null })));
 
   useEffect(() => {
     const data = localStorage.getItem('participants');
@@ -64,11 +65,22 @@ export default function CreateEvent() {
     const newParticipants = [...participants];
     newParticipants[index].amount = amountToAdd;
     setParticipants(newParticipants);
+  
+    const newSelectedButtons = [...selectedButtons];
+    newSelectedButtons[index] = { type: 'amount', value: amountToAdd };
+    setSelectedButtons(newSelectedButtons);
   };
 
-  const handleShow = (e) => {
+  const handleShow = (e, index) => {
     e.preventDefault();
-    setShowCustom(prevShow => !prevShow);
+    setShowCustom(prevShow => {
+      const newShow = [...prevShow];
+      newShow[index] = !newShow[index];
+      return newShow;
+    });
+    const newSelectedButtons = [...selectedButtons];
+    newSelectedButtons[index] = { type: 'custom', value: null };
+    setSelectedButtons(newSelectedButtons);
   };
   
 
@@ -135,13 +147,38 @@ export default function CreateEvent() {
               <div className="labelPartNumber">
                 <label>Montant par personne:</label>
                 <div className="buttonsAddByFive">
-                  <button className="addTo" onClick={(e) => updateAmount(e, index, 5)}>5€</button>
-                  <button className="addTo" onClick={(e) => updateAmount(e, index, 10)}>10€</button>
-                  <button className="addTo" onClick={(e) => updateAmount(e, index, 15)}>15€</button>
-                  <button className="addTo" onClick={(e) => updateAmount(e, index, 20)}>20€</button>
-                  <button className="addTo" onClick={handleShow}><FontAwesomeIcon icon={faPen} /></button>
+                  <button 
+                    className={`addTo ${selectedButtons[index]?.type === 'amount' && selectedButtons[index]?.value === 5 ? 'selected' : ''}`} 
+                    onClick={(e) => updateAmount(e, index, 5)}
+                  >
+                    5€
+                  </button>
+                  <button 
+                    className={`addTo ${selectedButtons[index]?.type === 'amount' && selectedButtons[index]?.value === 10 ? 'selected' : ''}`} 
+                    onClick={(e) => updateAmount(e, index, 10)}
+                  >
+                    10€
+                  </button>
+                  <button 
+                    className={`addTo ${selectedButtons[index]?.type === 'amount' && selectedButtons[index]?.value === 15 ? 'selected' : ''}`} 
+                    onClick={(e) => updateAmount(e, index, 15)}
+                  >
+                    15€
+                  </button>
+                  <button 
+                    className={`addTo ${selectedButtons[index]?.type === 'amount' && selectedButtons[index]?.value === 20 ? 'selected' : ''}`} 
+                    onClick={(e) => updateAmount(e, index, 20)}
+                  >
+                    20€
+                  </button>
+                  <button 
+                    className={`addTo ${selectedButtons[index]?.type === 'custom' ? 'selected' : ''}`} 
+                    onClick={(e) => handleShow(e, index)}
+                  >
+                    <FontAwesomeIcon icon={faPen} />
+                  </button>
                 </div>
-                <div className="number" style={{display: showCustom ? '' : 'none'}}>
+                <div className="number" style={{display: showCustom[index] ? '' : 'none'}}>
                   <input type="number" min="0" value={person.amount} className='inputNumber' onChange={e => {
                     const newParticipants = [...participants];
                     newParticipants[index].amount = Number(e.target.value);

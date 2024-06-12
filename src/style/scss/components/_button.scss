@@ -260,7 +260,10 @@
   gap: 5%;
   align-items: center;
   justify-content: center;
-  margin: 2vh 2vw;
+  margin: 2vh 0;
+  @media screen and (max-width: 320px) {
+    gap: 2%;
+  }
   .addTo {
     flex-grow: 1;
     // padding: 0 4vw;
@@ -270,7 +273,12 @@
     border: none;
     &:hover {
       background-color: rgba(0, 111, 119, 1);
+      color: white;
     }
+  }
+  .selected {
+    background-color: rgba(0, 111, 119, 1);
+    color: white;
   }
 }
 
