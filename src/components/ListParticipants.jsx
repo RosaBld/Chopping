@@ -37,6 +37,7 @@ export default function ListParticipants() {
     
     localStorage.setItem('participants', JSON.stringify({ participants, totalAmount, time }));
     setShowModal2(false);
+    setShowModal3(false);
   };
 
   // Function to handle changes in the form
@@ -75,7 +76,7 @@ export default function ListParticipants() {
   const updateAmount = (e, index, amountToAdd) => {
     e.preventDefault();
     const newParticipants = [...participants];
-    newParticipants[index].amount = amountToAdd;
+    newParticipants[index].amount += amountToAdd;
     setParticipants(newParticipants);
   };
   
@@ -92,6 +93,14 @@ export default function ListParticipants() {
   const handleShow2 = (e) => {
     e.preventDefault();
     setShowCustom2(prevShow2 => !prevShow2);
+  };
+
+  const updateAmountAll = (e, amountToAdd) => {
+    e.preventDefault();
+    const newParticipants = participants.map(participant => {
+      return {...participant, amount: participant.amount + amountToAdd};
+    });
+    setParticipants(newParticipants);
   };
 
   // const addPerson = () => {
@@ -145,7 +154,7 @@ export default function ListParticipants() {
             </div>
             <div>
               <button onClick={toggleModal3} className="addAmountParticipants">
-                <FontAwesomeIcon icon={faPlus} /> Ajouter € à tous les participants
+                <FontAwesomeIcon icon={faPlus} /> Ajouter € à tous
               </button>
             </div>
           </div>
@@ -162,8 +171,8 @@ export default function ListParticipants() {
               },
               content: {
                 color: 'lightsteelblue',
-                width: '70%',
-                height: '58%',
+                width: '75%',
+                height: '67%',
                 margin: 'auto',
                 marginLeft: '-20px',
                 padding: '20px',
@@ -256,7 +265,7 @@ export default function ListParticipants() {
               },
               content: {
                 color: 'lightsteelblue',
-                width: '70%',
+                width: '75%',
                 height: '65%',
                 margin: 'auto',
                 marginLeft: '-20px',
@@ -369,7 +378,7 @@ export default function ListParticipants() {
               content: {
                 color: 'lightsteelblue',
                 width: '70%',
-                height: '58%',
+                height: '50%',
                 margin: 'auto',
                 marginLeft: '-20px',
                 padding: '20px',
@@ -387,17 +396,17 @@ export default function ListParticipants() {
               </button>
             </div>
             <div>
-              <h2>Quel montant souhaitez-vous ajouter à tous les participants?</h2>
+              <h2 className="explainAddAmount">Quel montant souhaitez-vous ajouter à tous les participants?</h2>
               <div className="buttonsAddByFive">
-                <button className="addTo">5€</button>
-                <button className="addTo">10€</button>
-                <button className="addTo">15€</button>
-                <button className="addTo">20€</button>
+                <button className="addTo" onClick={(e) => updateAmountAll(e, 5)}>5€</button>
+                <button className="addTo" onClick={(e) => updateAmountAll(e, 10)}>10€</button>
+                <button className="addTo" onClick={(e) => updateAmountAll(e, 15)}>15€</button>
+                <button className="addTo" onClick={(e) => updateAmountAll(e, 20)}>20€</button>
                 <button className="addTo" onClick={handleShow2}><FontAwesomeIcon icon={faPen} /></button>
               </div>
             </div>
             <div className="validateParticipant">
-              <button className="participantButtonsValidate" type="submit">
+              <button className="participantButtonsValidate" type="submit" onClick={handleSubmit}>
                 <FontAwesomeIcon icon={faCheck} /> Valider
               </button>
             </div>

@@ -95,7 +95,7 @@ export default function Order() {
                       borderRadius: '25px',
                       position: 'absolute',
                       top: '0',
-                      marginTop: '50vw'
+                      marginTop: '40vw'
                     },
                   }}
                 >

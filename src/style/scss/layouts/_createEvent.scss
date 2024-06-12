@@ -18,7 +18,7 @@
     }
 
     .labelTitle {
-      margin: 0 0 3vw 0;
+      margin: 0 0 2vh 0;
       input {
         height: 4vh;
         width: 95%;
@@ -26,40 +26,47 @@
       }
     }
 
-    .labelPart {
-      display: flex;
-      flex-direction: column;
-      margin: 0 0 2vw 0;
-      input {
-        height: 4vh;
-        width: 95%;
-        border-radius: 5px;
-      }
-    }
+    .form {
+      background-color: rgb(249, 249, 249);
+      padding: 2vw;
+      margin-top: 5vh;
+      border-radius: 10px;
 
-    .labelPartNumber {
-      display: flex;
-      flex-direction: column;
-      margin: 0 0 2vw 0;
-
-      .number {
+      .labelPart {
         display: flex;
-        flex-direction: row;
-        gap: 2%;
+        flex-direction: column;
+        margin: 0 0 3vh 0;
         input {
           height: 4vh;
           width: 95%;
           border-radius: 5px;
         }
+      }
   
-        .inputNumber::-webkit-inner-spin-button,
-        .inputNumber::-webkit-outer-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
+      .labelPartNumber {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 3vh 0;
   
-        .inputNumber {
-          -moz-appearance: textfield;
+        .number {
+          display: flex;
+          flex-direction: row;
+          gap: 2%;
+          input {
+            height: 4vh;
+            width: 95%;
+            border-radius: 5px;
+          }
+    
+          .inputNumber::-webkit-inner-spin-button,
+          .inputNumber::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+    
+          .inputNumber {
+            -moz-appearance: textfield;
+          }
         }
       }
       
@@ -69,36 +76,45 @@
 
 .formNewPart {
 
-
   .validateParticipant {
     display: flex;
     flex-direction: row;
     gap: 5%;
     margin: 5% 0;
   }
+
   .formParticipant {
+    background-color: rgb(249, 249, 249);
+    padding: 2vw;
+    margin-top: 5vh;
+    border-radius: 10px;
+
     .labelPart {
       display: flex;
       flex-direction: column;
-      margin: 0 0 2vw 0;
+      margin: 0 0 3vh 0;
+
       input {
-        height: 3vh;
+        height: 4vh;
         width: 95%;
         border-radius: 5px;
       }
+    }
+    &:first-child{
+      margin-top: 2vh;
     }
 
     .labelPartNumber {
       display: flex;
       flex-direction: column;
-      margin: 0 0 2vw 0;
+      margin: 0 0 3vh 0;
 
       .number {
         display: flex;
         flex-direction: row;
         gap: 2%;
         input {
-          height: 3vh;
+          height: 4vh;
           width: 95%;
           border-radius: 5px;
         }

@@ -106,14 +106,14 @@ export default function CalculatePool() {
             content: {
               color: 'lightsteelblue',
               width: '50%',
-              height: '40%',
+              height: '35%',
               margin: 'auto',
               padding: '20px',
               border: '10px solid rgba(233, 233, 233, 1)',
               borderRadius: '25px',
               position: 'absolute',
               top: '0',
-              marginTop: '50vw'
+              marginTop: '40vw'
             },
           }}
         >

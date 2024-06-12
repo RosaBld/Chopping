@@ -23,7 +23,6 @@
   font-family: "Poppins", sans-serif;
   color: rgba(0, 111, 119, 1);
   font-weight: 600;
-  margin-top: 7vw;
 }
 
 .labelTitle,  .labelPart, .labelDrinks, .labelPartNumber {
@@ -34,7 +33,7 @@
   }
 }
 
-.participantButtonsValidate {
+.participantButtonsValidate, .participantButtonValidate {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 16px;
@@ -109,6 +108,7 @@
   font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 400;
+  font-size: 16px;
 }
 
 .homeErrorMsg {
@@ -301,4 +301,18 @@ table {
       color:white;
     }
   }
+}
+
+.addAmountParticipants {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: rgba(173, 50, 0, 1);
+}
+
+.explainAddAmount {
+  color: rgba(0, 111, 119, 1);
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  margin-bottom: 3vh;
 }

@@ -161,7 +161,7 @@ export default function CreateEvent() {
               <FontAwesomeIcon icon={faPlus} className="plus" />
             </button>
 
-            <button className="participantButtonsValidate" type="submit">
+            <button className="participantButtonValidate" type="submit">
               <FontAwesomeIcon icon={faCheck} className='check' /> Valider
             </button>
           </div>

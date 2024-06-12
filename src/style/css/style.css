@@ -19,7 +19,6 @@
   font-family: "Poppins", sans-serif;
   color: rgb(0, 111, 119);
   font-weight: 600;
-  margin-top: 7vw;
 }
 
 .labelTitle input, .labelPart input, .labelDrinks input, .labelPartNumber input {
@@ -28,13 +27,13 @@
   font-weight: 400;
 }
 
-.participantButtonsValidate {
+.participantButtonsValidate, .participantButtonValidate {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 16px;
   color: white;
 }
-.participantButtonsValidate .check {
+.participantButtonsValidate .check, .participantButtonValidate .check {
   color: white;
   font-size: 20px;
 }
@@ -93,6 +92,7 @@
   font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 400;
+  font-size: 16px;
 }
 
 .homeErrorMsg {
@@ -264,6 +264,20 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   color: white;
 }
 
+.addAmountParticipants {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: rgb(173, 50, 0);
+}
+
+.explainAddAmount {
+  color: rgb(0, 111, 119);
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  margin-bottom: 3vh;
+}
+
 .createBudget {
   position: absolute;
   left: 50%;
@@ -318,6 +332,16 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
 }
 
 .participantButtonsValidate, .backToDrinks {
+  padding: 4vw 14vw;
+  background-color: rgb(0, 111, 119);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 3vh;
+}
+
+.participantButtonValidate {
   padding: 4vw 14vw;
   background-color: rgb(0, 111, 119);
   border: none;
@@ -513,6 +537,18 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   background-color: rgb(0, 111, 119);
 }
 
+.addAmountParticipants {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 4vh 3vh;
+  padding: 3vh 1vw;
+  background-color: rgb(255, 221, 18);
+  border: none;
+  border-radius: 5px;
+}
+
 .addAndCalculate {
   display: flex;
   flex-direction: row;
@@ -520,12 +556,12 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
 }
 
 .labelDrinks {
-  margin: 0 0 3vw 0;
+  margin: 0 0 3vh 0;
 }
 .labelDrinks input {
   border-radius: 5px;
   width: 95%;
-  height: 3vh;
+  height: 4vh;
 }
 
 .listOfDrinks {
@@ -666,44 +702,50 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   margin: 5% 0;
 }
 .events .createEvent .labelTitle {
-  margin: 0 0 3vw 0;
+  margin: 0 0 2vh 0;
 }
 .events .createEvent .labelTitle input {
   height: 4vh;
   width: 95%;
   border-radius: 5px;
 }
-.events .createEvent .labelPart {
+.events .createEvent .form {
+  background-color: rgb(249, 249, 249);
+  padding: 2vw;
+  margin-top: 5vh;
+  border-radius: 10px;
+}
+.events .createEvent .form .labelPart {
   display: flex;
   flex-direction: column;
-  margin: 0 0 2vw 0;
+  margin: 0 0 3vh 0;
 }
-.events .createEvent .labelPart input {
+.events .createEvent .form .labelPart input {
   height: 4vh;
   width: 95%;
   border-radius: 5px;
 }
-.events .createEvent .labelPartNumber {
+.events .createEvent .form .labelPartNumber {
   display: flex;
   flex-direction: column;
-  margin: 0 0 2vw 0;
+  margin: 0 0 3vh 0;
 }
-.events .createEvent .labelPartNumber .number {
+.events .createEvent .form .labelPartNumber .number {
   display: flex;
   flex-direction: row;
   gap: 2%;
 }
-.events .createEvent .labelPartNumber .number input {
+.events .createEvent .form .labelPartNumber .number input {
   height: 4vh;
   width: 95%;
   border-radius: 5px;
 }
-.events .createEvent .labelPartNumber .number .inputNumber::-webkit-inner-spin-button,
-.events .createEvent .labelPartNumber .number .inputNumber::-webkit-outer-spin-button {
+.events .createEvent .form .labelPartNumber .number .inputNumber::-webkit-inner-spin-button,
+.events .createEvent .form .labelPartNumber .number .inputNumber::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.events .createEvent .labelPartNumber .number .inputNumber {
+.events .createEvent .form .labelPartNumber .number .inputNumber {
   -moz-appearance: textfield;
 }
 
@@ -713,20 +755,29 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   gap: 5%;
   margin: 5% 0;
 }
+.formNewPart .formParticipant {
+  background-color: rgb(249, 249, 249);
+  padding: 2vw;
+  margin-top: 5vh;
+  border-radius: 10px;
+}
 .formNewPart .formParticipant .labelPart {
   display: flex;
   flex-direction: column;
-  margin: 0 0 2vw 0;
+  margin: 0 0 3vh 0;
 }
 .formNewPart .formParticipant .labelPart input {
-  height: 3vh;
+  height: 4vh;
   width: 95%;
   border-radius: 5px;
+}
+.formNewPart .formParticipant:first-child {
+  margin-top: 2vh;
 }
 .formNewPart .formParticipant .labelPartNumber {
   display: flex;
   flex-direction: column;
-  margin: 0 0 2vw 0;
+  margin: 0 0 3vh 0;
 }
 .formNewPart .formParticipant .labelPartNumber .number {
   display: flex;
@@ -734,7 +785,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   gap: 2%;
 }
 .formNewPart .formParticipant .labelPartNumber .number input {
-  height: 3vh;
+  height: 4vh;
   width: 95%;
   border-radius: 5px;
 }
