@@ -41,7 +41,7 @@ The app was created with React and Vite.js. This app is a front-end app, with th
 ![VITE](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
 
 
-##### ScreenShotes
+##### Screenshots
 ![screenshot app](/public/screen/Chopping.png)
 ![screenshot app](/public/screen/Chopping1.png)
 ![screenshot app](/public/screen/Chopping2.png)
