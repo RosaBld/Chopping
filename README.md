@@ -1,3 +1,5 @@
+![Banner](/public/chopping_share.jpg)
+
 # Chopping
 
 This application was created as part of my internship at Alpaga Agency. The goal was to create a budget pool that allows a user, without any authentication, to insert a group of people as well as an amount of money given by each person participating in the pool. Then, the main user (managing the pool for the entire group) would enter a drink order with the price of the drink. Upon validating the order, the price is deducted from the pool budget. If the pool budget is lower than the total of the order, the app gives the user a warning so that they know there is not enough money and need to add more. 
