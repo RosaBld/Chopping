@@ -501,7 +501,6 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   padding: 2vh 11vw;
   background-color: rgb(255, 221, 18);
   border: none;
-  color: white;
   border-radius: 5px;
   cursor: pointer;
 }
