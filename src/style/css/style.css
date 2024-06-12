@@ -549,6 +549,14 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   border-radius: 5px;
 }
 
+.deleteParticipant {
+  border: none;
+  padding: 1vh 2vw;
+  background-color: inherit;
+  color: rgb(159, 159, 159);
+  font-size: 16px;
+}
+
 .addAndCalculate {
   display: flex;
   flex-direction: row;
@@ -702,7 +710,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   margin: 5% 0;
 }
 .events .createEvent .labelTitle {
-  margin: 0 0 2vh 0;
+  margin: 2vh 0 2vh 0;
 }
 .events .createEvent .labelTitle input {
   height: 4vh;
@@ -711,9 +719,15 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
 }
 .events .createEvent .form {
   background-color: rgb(249, 249, 249);
-  padding: 2vw;
-  margin-top: 5vh;
+  padding: 4vw 2vh 2vw 2vh;
+  margin-top: 4vh;
   border-radius: 10px;
+  position: relative;
+}
+.events .createEvent .form .deleteParticipant {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .events .createEvent .form .labelPart {
   display: flex;

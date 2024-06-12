@@ -18,7 +18,7 @@
     }
 
     .labelTitle {
-      margin: 0 0 2vh 0;
+      margin: 2vh 0 2vh 0;
       input {
         height: 4vh;
         width: 95%;
@@ -28,9 +28,16 @@
 
     .form {
       background-color: rgb(249, 249, 249);
-      padding: 2vw;
-      margin-top: 5vh;
+      padding: 4vw 2vh 2vw 2vh;
+      margin-top: 4vh;
       border-radius: 10px;
+      position: relative;
+
+      .deleteParticipant {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
 
       .labelPart {
         display: flex;

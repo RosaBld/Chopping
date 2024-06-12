@@ -49,6 +49,12 @@ export default function CreateEvent() {
     setParticipants([...participants, { name: '', people: 1, amount: 0 }]);
   };
 
+  const removePerson = () => {
+    const newParticipants = [...participants];
+    newParticipants.pop();
+    setParticipants(newParticipants);
+  };
+
   const backHome = () => {
     navigate('/');
   }
@@ -83,6 +89,12 @@ export default function CreateEvent() {
 
           {participants.map((person, index) => (
             <div key={index} className="form">
+              {index !== 0 && (
+                <button className="deleteParticipant" type="button" onClick={removePerson}>
+                  <FontAwesomeIcon icon={faXmark} />
+                </button>
+              )}
+
               <div className="labelPart">
                 <label>Participant:</label>
                 <input value={person.name} onChange={e => {
