@@ -37,14 +37,12 @@ export default function ListParticipants() {
     const originalData = JSON.parse(localStorage.getItem('participants'));
     const time = originalData.time;
     const expireTime = originalData.expireTime;
-    const poolName= originalData.poolName;
     
     localStorage.setItem('participants', JSON.stringify({ 
       participants, 
       totalAmount, 
       time,
       expireTime, 
-      poolName
     }));
     setShowModal2(false);
     setShowModal3(false);
@@ -69,13 +67,11 @@ export default function ListParticipants() {
     const totalAmount = updatedParticipants.reduce((total, person) => total + person.people * person.amount, 0);
     const time = originalData.time;
     const expireTime = originalData.expireTime;
-    const poolName = originalData.poolName; 
     localStorage.setItem('participants', JSON.stringify({ 
       participants: updatedParticipants, 
       totalAmount, 
       time,
       expireTime, 
-      poolName
     }));
   };
   

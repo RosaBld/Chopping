@@ -47,16 +47,12 @@
     right: 0;
     left: 0;
     margin: 2vh;
-
-    .poolRemaining {
-      display: flex; 
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      height:15vh; 
-      .remaining {
-        height: 13vh;
-      }
-    }
   }
+}
+
+.poolRemaining {
+  display: flex; 
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

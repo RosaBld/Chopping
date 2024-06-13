@@ -13,7 +13,7 @@ export default function Budget() {
     // Simulate a data loading delay
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // 2 seconds delay
+    }, 1000); // 2 seconds delay
   });
 
   return (

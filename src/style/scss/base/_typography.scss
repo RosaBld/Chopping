@@ -25,7 +25,7 @@
   font-weight: 600;
 }
 
-.labelTitle,  .labelPart, .labelDrinks, .labelPartNumber {
+.labelPart, .labelDrinks, .labelPartNumber {
   input {
     font-family: "Poppins", sans-serif;
     color: rgba(0, 111, 119, 1);
@@ -80,19 +80,20 @@
 }
 
 
-.remaining {
+.drinksPrice {
   font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 400;
   line-height: 0.5;
-  font-size: 16px;
-  h2 {
-    margin-bottom: 0;
+  font-size: 20px;
+  p {
+    // margin-bottom: 0;
+    line-height: 0;
   }
 }
 
 
-.drinksAmount, .drinksPrice, .totalParticipant {
+.drinksAmount,.remaining, .totalParticipant {
   font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 400;
@@ -101,6 +102,8 @@
 
 .errorState {
   color: rgba(173, 50, 0, 1);
+  border-radius: 5px;
+  padding: 0 2vw;
 }
 
 
@@ -261,12 +264,12 @@ table {
 
     .errorOrder {
       margin: 4vh 2vh;
-      color: rgba(173, 50, 0, 1);
+      color: white;
       font-family: "Poppins", sans-serif;
       font-weight: 600;
       font-size: 18px;
       a {
-        color: rgba(173, 50, 0, 1);
+        color: rgba(255, 221, 18, 1);
       }
     }
     .orders {
@@ -288,7 +291,7 @@ table {
   font-size: 22px;
   margin: 4vh 2vh;
   a {
-    color: rgba(173, 50, 0, 1);
+    color: rgba(255, 221, 18, 1);
   }
 }
 

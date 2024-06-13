@@ -19,11 +19,12 @@ export default function CalculatePool() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       const drinks = JSON.parse(localStorage.getItem('drinks')) || [];
-      if (drinks.length !== storedDrinks.length) {
+      if (JSON.stringify(drinks) !== JSON.stringify(storedDrinks)) {
         setStoredDrinks(drinks);
       }
     }, 0);
-
+  
+    // Cleanup: clear interval when the component unmounts
     return () => {
       clearInterval(intervalId);
     };
@@ -82,18 +83,19 @@ export default function CalculatePool() {
     }
     setShowModal(false);
   };
+  
 
   return (
     <div className="calculatePool">
-      {storedDrinks.length === 0 ? (
-        <>
-        </>
-      ) : (
-        <div>
-
-        <button className="validate" onClick={toggleModal}>
+      <div>
+        <button 
+          className={`validate ${storedDrinks.length === 0 || storedDrinks.every(drink => drink.quantity === 0) ? 'disabled' : ''}`} 
+          onClick={toggleModal} 
+          disabled={storedDrinks.length === 0 || storedDrinks.every(drink => drink.quantity === 0)}
+        >
           <FontAwesomeIcon icon={faCheck} /> Valider
         </button>
+
         <ReactModal 
           isOpen={showModal}
           onRequestClose={toggleModal}
@@ -134,9 +136,8 @@ export default function CalculatePool() {
             </div>
             
           </div>
-          </ReactModal>
-        </div>
-      )}
+        </ReactModal>
+      </div>
     </div>
   )
 }

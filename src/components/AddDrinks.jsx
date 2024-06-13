@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import ReactModal from 'react-modal';
 
 // Components
-import { DeleteDrink, Loading, CalculatePool } from "../utils";
+import { DeleteDrink, Loading } from "../utils";
 
 
 export default function AddDrinks() {
@@ -18,6 +18,8 @@ export default function AddDrinks() {
   const [isLoading, setIsLoading] = useState(true);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [price, setPrice] = useState(""); 
+  const [quantity, setQuantity] = useState(1);
+
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -29,7 +31,7 @@ export default function AddDrinks() {
     const newDrink = {
       ...participants,
       price: Number(participants.price.replace(',', '.')),
-      quantity: 1
+      quantity: quantity
     };
     currentDrinks.push(newDrink);
     localStorage.setItem('drinks', JSON.stringify(currentDrinks));
@@ -85,25 +87,28 @@ export default function AddDrinks() {
   }, [drinks]);
 
   const handleInputChange = (event) => {
-    setParticipants({...participants, [event.target.name]: event.target.value });
-    setSearchTerm(event.target.value);
-    setDropdownVisible(true);
+    const { name, value } = event.target;
+  
+    // Update the participants state
+    setParticipants(prevState => ({ ...prevState, [name]: value }));
+  
+    // Update the searchTerm and dropdownVisible state if the name field is changed
+    if (name === 'name') {
+      setSearchTerm(value);
+      setDropdownVisible(value !== '');
+    }
+  
+    // Update the price and quantity state
+    if (name === 'price') {
+      setPrice(value);
+    } else if (name === 'quantity') {
+      setQuantity(value);
+    }
   };
 
   const filteredDrinks = listDrink.filter(drink =>
     drink.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-  const handleOptionClick = (drinkName) => {
-    setSearchTerm(drinkName);
-    setParticipants({...participants, name: drinkName});
-    setDropdownVisible(false);
-  };
-
-  const handlePriceChange = (event) => {
-    setPrice(event.target.value);
-    setParticipants({...participants, price: event.target.value});
-  };
 
   return (
     <div>
@@ -140,9 +145,8 @@ export default function AddDrinks() {
       <div className="createDrinkable">
         <div className="addAndCalculate">
           <button onClick={toggleModal} className="createNewDrink">
-            <FontAwesomeIcon icon={faPlus} />
+            <FontAwesomeIcon icon={faPlus} /> Ajouter une boisson
           </button>
-          <CalculatePool />
         </div>
         
 
@@ -158,7 +162,7 @@ export default function AddDrinks() {
             content: {
               color: 'lightsteelblue',
               width: '50%',
-              height: '40%',
+              height: '50%',
               margin: 'auto',
               padding: '20px',
               border: '10px solid rgba(233, 233, 233, 1)',
@@ -194,7 +198,7 @@ export default function AddDrinks() {
                       className="customDropdown" 
                       onClick={(e) => {
                         e.preventDefault();
-                        handleOptionClick(e.target.value);
+                        handleInputChange(e);
                       }}
                     >
                       {filteredDrinks.map((drink, index) => (
@@ -208,9 +212,15 @@ export default function AddDrinks() {
               </div>
               
               <div className="labelDrinks">
-                <label>Montant:</label>
-                <input name="price" value={price} onChange={handlePriceChange} required /> {/* Update this line */}
+                <label>Prix (unitaire):</label>
+                <input name="price" value={price} onChange={handleInputChange} required /> {/* Update this line */}
               </div>
+
+              <div className="labelDrinks">
+                <label>Nombre de boissons:</label>
+                <input name="quantity" value={quantity} onChange={handleInputChange} ></input>
+              </div>
+
               <div className="validate">
                 <button className="validateDrink" type="submit">
                   <FontAwesomeIcon icon={faCheck} className="validateCheck" /> Valider

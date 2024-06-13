@@ -1,6 +1,5 @@
 .header {
   height: 12vh;
-  background-color: white;
   border-radius: 25px;
   display: flex;
   justify-content: center;
@@ -8,8 +7,8 @@
 
   .ChoppinLogo {
     width: 11vh;
+    left: 5vh;
     position: absolute;
-    top: 4.5vh;
   }
   
   .burger-menu {
@@ -26,12 +25,29 @@
     z-index: 10;
     transform: translateX(0);
     transition: transform 0.3s ease-out;
-
+  
     .burger {
       width: 2rem;
       height: 0.25rem;
-      background: rgba(0, 111, 119, 1);
-    }  
+      background-color: white;
+      transition: all 0.3s linear;
+    }
+  
+    &.open {
+      .burger:nth-child(1) {
+        transform: rotate(45deg) translate(0.5rem, 0.5rem);
+        background-color: #006f77;
+      }
+  
+      .burger:nth-child(2) {
+        opacity: 0;
+      }
+  
+      .burger:nth-child(3) {
+        transform: rotate(-45deg) translate(0.5rem, -0.5rem);
+        background-color: #006f77;
+      }
+    }
   }
 }
 
@@ -59,36 +75,18 @@
     li {
       padding-bottom: 10px;
       border-bottom: 1px rgba(231, 231, 231, 1) solid;
+
+      &:last-child {
+        border-bottom: none;
+      }
     }
   }
 }
 
 .config {
   list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   padding: 0;
-  width: 80%;
-
-  .iconConfig {
-
-    a {
-      text-decoration: none;
-      color: inherit;
-
-      &:hover {
-        color: inherit;
-      }
-
-      .icon-container {
-        color: rgb(255, 209, 93);
-        font-size: 10vw;
-
-        &:hover {
-          color: black;
-        }
-      }
-    }
-  }
+  position: absolute;
+  right: 15vw;
+  bottom: 0;
 }

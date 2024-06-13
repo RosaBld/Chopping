@@ -21,7 +21,7 @@
   font-weight: 600;
 }
 
-.labelTitle input, .labelPart input, .labelDrinks input, .labelPartNumber input {
+.labelPart input, .labelDrinks input, .labelPartNumber input {
   font-family: "Poppins", sans-serif;
   color: rgb(0, 111, 119);
   font-weight: 400;
@@ -66,18 +66,18 @@
   font-size: 16px;
 }
 
-.remaining {
+.drinksPrice {
   font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 400;
   line-height: 0.5;
-  font-size: 16px;
+  font-size: 20px;
 }
-.remaining h2 {
-  margin-bottom: 0;
+.drinksPrice p {
+  line-height: 0;
 }
 
-.drinksAmount, .drinksPrice, .totalParticipant {
+.drinksAmount, .remaining, .totalParticipant {
   font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 400;
@@ -86,6 +86,8 @@
 
 .errorState {
   color: rgb(173, 50, 0);
+  border-radius: 5px;
+  padding: 0 2vw;
 }
 
 .deleteConfirmation, .homeErrorMsg, .listConfig, .lessDrinks, .deleteDrink {
@@ -228,13 +230,13 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
 }
 .budgetPage .OrderPage .errorOrder {
   margin: 4vh 2vh;
-  color: rgb(173, 50, 0);
+  color: white;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 18px;
 }
 .budgetPage .OrderPage .errorOrder a {
-  color: rgb(173, 50, 0);
+  color: rgb(255, 221, 18);
 }
 .budgetPage .OrderPage .orders .detailOrder {
   line-height: 0.4;
@@ -252,7 +254,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   margin: 4vh 2vh;
 }
 .errorDrink a, .errorOrder a, .errorOrderNoEvent a {
-  color: rgb(173, 50, 0);
+  color: rgb(255, 221, 18);
 }
 
 .buttonsAddByFive .addTo {
@@ -434,6 +436,11 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   cursor: pointer;
 }
 
+button.validate.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
 .deleteOrNotDelete {
   display: flex;
   justify-content: center;
@@ -474,28 +481,29 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   background-color: rgb(255, 217, 0);
 }
 
+.addAndCalculate {
+  width: 100%;
+}
 .addAndCalculate .createNewDrink {
   border-radius: 5px;
   background-color: rgb(255, 221, 18);
   border: none;
   padding: 2vh 2.5vh;
   cursor: pointer;
+  width: 100%;
 }
 .addAndCalculate .createNewDrink:hover {
   background-color: rgb(255, 217, 0);
 }
-.addAndCalculate .calculatePool .validate {
-  padding: 2vh 11vw;
+
+.calculatePool .validate {
+  padding: 2vh 10vw;
   background-color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.createDrinkable {
-  display: flex;
-  justify-content: center;
-}
 .createDrinkable .createDrink {
   padding: 2vh 11vw;
   background-color: rgb(255, 221, 18);
@@ -578,13 +586,15 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
 }
 
 .listOfDrinks {
+  max-height: 270px;
+  overflow-y: auto;
   margin: 4vh 0;
   background-color: rgb(0, 70, 74);
   border-radius: 15px;
 }
 .listOfDrinks .setOfDrink {
   border-bottom: solid 1px rgb(0, 111, 119);
-  margin: 0vh 3vh;
+  margin: 1vh 3vh 0 3vh;
 }
 .listOfDrinks .setOfDrink:last-child {
   border-bottom: none;
@@ -595,6 +605,12 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   justify-content: space-between;
   align-items: center;
   gap: 20vw;
+}
+.listOfDrinks .setOfDrink .displayDrink h2 {
+  line-height: 0;
+}
+.listOfDrinks .setOfDrink .displayDrink p {
+  line-height: 0;
 }
 .listOfDrinks .setOfDrink .NumberOfDrinks {
   display: flex;
@@ -660,15 +676,12 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   left: 0;
   margin: 2vh;
 }
-.budgetPage .poolBudgetPage .poolRemaining {
+
+.poolRemaining {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 15vh;
-}
-.budgetPage .poolBudgetPage .poolRemaining .remaining {
-  height: 13vh;
 }
 
 .logoHome {
@@ -713,14 +726,6 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   flex-direction: row;
   gap: 5%;
   margin: 5% 0;
-}
-.events .createEvent .labelTitle {
-  margin: 2vh 0 2vh 0;
-}
-.events .createEvent .labelTitle input {
-  height: 4vh;
-  width: 95%;
-  border-radius: 5px;
 }
 .events .createEvent .form {
   background-color: rgb(249, 249, 249);
@@ -835,8 +840,12 @@ body {
   background-color: rgb(0, 111, 119);
   border-radius: 15px;
   margin: 0 2vh 2vh 2vh;
-  padding: 0vh 3vh;
   height: 24vh;
+}
+.totalPool .bill .drinksPool {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
 }
 .totalPool .bill .total {
   display: flex;
@@ -846,15 +855,15 @@ body {
   gap: 2vh;
 }
 
-.poolRemaining {
+.drinksPrice {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 5vw;
+  gap: 3vw;
 }
 
-.drinksAmount, .drinksPrice, .totalParticipant {
+.drinksAmount, .totalParticipant, .remaining {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -863,7 +872,7 @@ body {
   padding: 0 4vw;
   background-color: rgb(0, 129, 138);
   border-radius: 7px;
-  width: 40vw;
+  width: 26vw;
   height: 4vh;
 }
 
@@ -895,7 +904,6 @@ body {
 
 .header {
   height: 12vh;
-  background-color: white;
   border-radius: 25px;
   display: flex;
   justify-content: center;
@@ -903,8 +911,8 @@ body {
 }
 .header .ChoppinLogo {
   width: 11vh;
+  left: 5vh;
   position: absolute;
-  top: 4.5vh;
 }
 .header .burger-menu {
   position: absolute;
@@ -924,7 +932,19 @@ body {
 .header .burger-menu .burger {
   width: 2rem;
   height: 0.25rem;
-  background: rgb(0, 111, 119);
+  background-color: white;
+  transition: all 0.3s linear;
+}
+.header .burger-menu.open .burger:nth-child(1) {
+  transform: rotate(45deg) translate(0.5rem, 0.5rem);
+  background-color: #006f77;
+}
+.header .burger-menu.open .burger:nth-child(2) {
+  opacity: 0;
+}
+.header .burger-menu.open .burger:nth-child(3) {
+  transform: rotate(-45deg) translate(0.5rem, -0.5rem);
+  background-color: #006f77;
 }
 
 .navbar {
@@ -948,28 +968,16 @@ body {
   padding-bottom: 10px;
   border-bottom: 1px rgb(231, 231, 231) solid;
 }
+.navbar .links li:last-child {
+  border-bottom: none;
+}
 
 .config {
   list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   padding: 0;
-  width: 80%;
-}
-.config .iconConfig a {
-  text-decoration: none;
-  color: inherit;
-}
-.config .iconConfig a:hover {
-  color: inherit;
-}
-.config .iconConfig a .icon-container {
-  color: rgb(255, 209, 93);
-  font-size: 10vw;
-}
-.config .iconConfig a .icon-container:hover {
-  color: black;
+  position: absolute;
+  right: 15vw;
+  bottom: 0;
 }
 
 .homepage {

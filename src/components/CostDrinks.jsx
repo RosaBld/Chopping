@@ -37,7 +37,7 @@ export default function CostDrinks({ onCostChange }) {
         <FontAwesomeIcon icon={faTriangleExclamation} />
       </Tooltip>
       }
-      <p>{cost}</p>
+      <p>{cost}€</p>
       
     </div>
   ) 

@@ -8,7 +8,6 @@ export default function CreateEvent() {
 
   const [participants, setParticipants] = useState([{ name: '', people: 1, amount: 0 }]);
   const navigate = useNavigate();
-  const [poolName, setPoolName] = useState('');
   const [showCustom, setShowCustom] = useState(participants.map(() => false));
   const [selectedButtons, setSelectedButtons] = useState(participants.map(() => ({ type: null, value: null })));
 
@@ -38,7 +37,6 @@ export default function CreateEvent() {
     const dataToStore = {
       participants,
       totalAmount,
-      poolName,
       expireTime: new Date().getTime()
     };
   
@@ -94,10 +92,6 @@ export default function CreateEvent() {
         </div>
 
         <form className="formParticipant" onSubmit={handleSubmit}>
-          <div className="labelTitle">
-            <label>Nom de l&apos;évènement</label>
-            <input value={poolName} onChange={e => setPoolName(e.target.value)} required />
-          </div>
 
           {participants.map((person, index) => (
             <div key={index} className="form">

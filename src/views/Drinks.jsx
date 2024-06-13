@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 // Components
-import { AddDrinks, CostDrinks, Loading, Pool, TotalDrinks, TotalParticipants } from '../utils';
+import { AddDrinks, CalculatePool, CostDrinks, Loading, Pool, TotalDrinks, TotalParticipants } from '../utils';
 
 export default function Drinks() {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,7 +41,7 @@ export default function Drinks() {
               <h2 className="errorDrink">Il ne vous est pas possible d&apos;ajouter une boisson à vorre évènement car aucun évènement n&apos;est en cours. Veuillez créer un <Link to="/">évènement</Link> afin de continuer</h2>
             </div>
           ) : (
-              <div style={{ maxHeight: '375px', overflowY: 'auto' }} >
+              <div>
                 <AddDrinks />
               </div>
           )}
@@ -55,10 +55,13 @@ export default function Drinks() {
           </div>
 
           <div className="bill">
-            <Pool />
+            <div className="drinksPool">
+              <CalculatePool />
+              <CostDrinks cost={cost} onCostChange={handleCostChange} />
+            </div>
             <div className="total">
               <TotalDrinks />
-              <CostDrinks cost={cost} onCostChange={handleCostChange} />
+              <Pool />
               <TotalParticipants />
             </div>
           </div>

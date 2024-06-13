@@ -13,7 +13,7 @@ export default function Home() {
         setFirstOpen(false);
         localStorage.setItem('firstOpen', 'false');
       }
-    }, 2000); // 2 seconds delay
+    }, 1000); // 2 seconds delay
   }, [firstOpen]);
 
   return (

@@ -1,14 +1,14 @@
 // Libraries
-import { faGear, faClose } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import ReactModal from 'react-modal';
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { DeletePool } from "../utils";
 
 export default function Header() {
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
+  const [isActive, setIsActive] = useState(false);
+  const setExistingData = useState(true)[1];
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -20,7 +20,12 @@ export default function Header() {
 
   const toggleModal = () => {
     setShowModal(!showModal);
+    setIsActive(!isActive);
   }
+
+  const handlePoolDeletion = () => {
+    setExistingData(false);
+  };
 
   return (
     <div className="header">
@@ -29,7 +34,7 @@ export default function Header() {
         <img src="/Chopping-logo.svg" alt="logo Chopp'ing" className="ChoppinLogo" />
       }
 
-      <div className="burger-menu" onClick={toggleModal}>
+      <div className={`burger-menu ${isActive ? 'open' : ''}`} onClick={toggleModal}>
         <div className="burger"></div>
         <div className="burger"></div>
         <div className="burger"></div>
@@ -48,7 +53,7 @@ export default function Header() {
           content: {
             color: 'lightsteelblue',
             width: windowWidth > 425 ? '85.7vw' : windowWidth > 320 ? '83.7vw' : '81vw', 
-            height: '57%',
+            height: '62%',
             padding: '20px',
             border: 'none',
             borderRadius: '25px',
@@ -79,19 +84,16 @@ export default function Header() {
                 Budget
               </Link>
             </li>
+            <li>
+              <Link to="/configuration" onClick={toggleModal}>
+                Liste personnalisée
+              </Link>
+            </li>
           </ul>
 
           <ul className="config">
             <li className="iconConfig">
-              <button className="icon-container" onClick={toggleModal}>
-                <FontAwesomeIcon icon={faClose} className="closeModalHeader" />
-              </button>            
-            </li>
-            
-            <li className="iconConfig">
-              <button onClick={() => { navigate('/configuration'); toggleModal(); }} className="icon-container">
-                <FontAwesomeIcon icon={faGear} className="config-icon" />
-              </button>            
+              <DeletePool onPoolDelete={handlePoolDeletion} />            
             </li>
           </ul>
         </nav>

@@ -163,9 +163,10 @@
   }
 }
 
-
-
-
+button.validate.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
 
 .deleteOrNotDelete {
   display: flex;
@@ -208,30 +209,33 @@
 }
 
 .addAndCalculate {
+  width: 100%;
   .createNewDrink {
     border-radius: 5px;
     background-color:rgba(255, 221, 18, 1);
     border: none;
     padding: 2vh 2.5vh;
     cursor: pointer;
+    width: 100%;
     &:hover {
       background-color: rgb(255, 217, 0) ;
     }
   }
-  .calculatePool {
-    .validate {
-      padding: 2vh 11vw;
-      background-color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+}
+
+.calculatePool {
+  .validate {
+    padding: 2vh 10vw;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
 }
 
 .createDrinkable {
-  display: flex;
-  justify-content: center;
+  // display: flex;
+  // justify-content: center;
 
   .createDrink {
     padding: 2vh 11vw;

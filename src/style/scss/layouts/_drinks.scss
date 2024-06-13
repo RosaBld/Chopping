@@ -18,8 +18,13 @@ body {
     background-color: rgba(0, 111, 119, 1);
     border-radius: 15px;
     margin: 0 2vh 2vh 2vh;
-    padding: 0vh 3vh;
     height: 24vh;
+
+    .drinksPool {
+      display: flex;
+      flex-direction: column;
+      gap: 2vh;
+    }
   
     .total {
       display: flex;
@@ -32,15 +37,15 @@ body {
 }
 
 
-.poolRemaining {
+.drinksPrice {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 5vw;
+  gap: 3vw;
 }
 
-.drinksAmount, .drinksPrice, .totalParticipant {
+.drinksAmount, .totalParticipant, .remaining {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -50,7 +55,7 @@ body {
 
   background-color: rgba(0, 129, 138, 1);
   border-radius: 7px;
-  width: 40vw;
+  width: 26vw;
   height: 4vh;
   
 }
