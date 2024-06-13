@@ -130,6 +130,39 @@
   }
 }
 
+.errorAddMoney {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+
+  .modifyNewParticipant {
+    padding: 2vh 7.08vw;
+    background-color: rgba(173, 50, 0, 1);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    flex: 1;
+    font-size: 12px;
+    margin: 0.7vh 2vw;
+    font-weight: 500;
+  }
+
+  .addAmountParticipants {
+    padding: 2vh 1vw;
+    background-color: rgba(173, 50, 0, 1);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    flex: 1;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0.7vh 2vw;
+  }
+}
+
 .lessDrinks, .deleteDrink {
   border-radius: 5px;
   background-color:rgba(0, 111, 119, 1);

@@ -151,7 +151,7 @@
 }
 
 .addAndCalculate {
-  margin-top: 4vh;
+  margin-top: 2vh;
 }
 .addAndCalculate .createNewDrink {
   color: rgb(173, 50, 0);
@@ -404,6 +404,37 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   width: 90%;
 }
 
+.errorAddMoney {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+.errorAddMoney .modifyNewParticipant {
+  padding: 2vh 7.08vw;
+  background-color: rgb(173, 50, 0);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  flex: 1;
+  font-size: 12px;
+  margin: 0.7vh 2vw;
+  font-weight: 500;
+}
+.errorAddMoney .addAmountParticipants {
+  padding: 2vh 1vw;
+  background-color: rgb(173, 50, 0);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  flex: 1;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0.7vh 2vw;
+}
+
 .lessDrinks, .deleteDrink {
   border-radius: 5px;
   background-color: rgb(0, 111, 119);
@@ -586,9 +617,9 @@ button.validate.disabled {
 }
 
 .listOfDrinks {
-  max-height: 270px;
+  max-height: 49dvh;
   overflow-y: auto;
-  margin: 4vh 0;
+  margin: 4vh 0 0vh 0;
   background-color: rgb(0, 70, 74);
   border-radius: 15px;
 }
@@ -840,7 +871,7 @@ body {
   background-color: rgb(0, 111, 119);
   border-radius: 15px;
   margin: 0 2vh 2vh 2vh;
-  height: 24vh;
+  height: 20vh;
 }
 .totalPool .bill .drinksPool {
   display: flex;
@@ -890,7 +921,7 @@ body {
   padding: 2vh 2vh;
   z-index: 0;
   position: fixed;
-  bottom: 27vh;
+  bottom: 23vh;
   left: 0;
   right: 0;
 }

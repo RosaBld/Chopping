@@ -1,4 +1,7 @@
+export {default as AddAllMoney } from '../components/AddAllMoney';
 export { default as AddDrinks } from '../components/AddDrinks';
+export { default as AddMoneyEach } from '../components/AddMoneyEach';
+export { default as AddNewParticipant } from '../components/AddNewParticipant'
 export { default as BackButton } from '../components/BackButton';
 export { default as Budget } from '../views/Budget'; 
 export { default as CalculatePool } from '../components/CalculatePool';

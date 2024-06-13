@@ -93,7 +93,7 @@ export default function Header() {
 
           <ul className="config">
             <li className="iconConfig">
-              <DeletePool onPoolDelete={handlePoolDeletion} />            
+              <DeletePool onPoolDelete={handlePoolDeletion} toggleModal={toggleModal} />            
             </li>
           </ul>
         </nav>

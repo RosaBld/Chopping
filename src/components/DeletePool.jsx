@@ -6,7 +6,7 @@ import ReactModal from 'react-modal'
 import { useNavigate } from "react-router-dom"
 import PropTypes from 'prop-types';
 
-export default function DeletePool({ onPoolDelete, isHomePage }) {
+export default function DeletePool({ onPoolDelete, isHomePage, toggleModal }) {
 
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
@@ -18,23 +18,24 @@ export default function DeletePool({ onPoolDelete, isHomePage }) {
     localStorage.removeItem('totalAmount');
     localStorage.removeItem('orders');
     setShowModal(!showModal);
-    navigate('/');
     onPoolDelete();
+    navigate('/');
+    toggleModal();
   };
 
-  const toggleModal = () => {
+  const toggleDeleteModal = () => {
     setShowModal(!showModal);
   }
 
   return (
     <div>
-      <button onClick={toggleModal} className={`deletePool ${buttonStyle}`} >
+      <button onClick={toggleDeleteModal} className={`deletePool ${buttonStyle}`} >
         <FontAwesomeIcon icon={faTrashCan} className="trash" />
       </button>
 
       <ReactModal 
         isOpen={showModal}
-        onRequestClose={toggleModal}
+        onRequestClose={toggleDeleteModal}
         contentLabel="Participant Form"
         style={{
           overlay: {
@@ -59,7 +60,7 @@ export default function DeletePool({ onPoolDelete, isHomePage }) {
           <p className="deleteConfirmation">Etes-vous certain de vouloir supprimer la cagnotte?</p>
           <div className="deleteOrNotDelete">
             <button className="cancel">
-              <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+              <FontAwesomeIcon icon={faXmark} onClick={toggleDeleteModal} />
             </button>
             <button onClick={handleDelete} className="validateDelete">
               <FontAwesomeIcon icon={faCheck} />
@@ -75,4 +76,5 @@ export default function DeletePool({ onPoolDelete, isHomePage }) {
 DeletePool.propTypes = {
   onPoolDelete: PropTypes.func.isRequired,
   isHomePage: PropTypes.bool,
+  toggleModal: PropTypes.func.isRequired, // Add this line
 };

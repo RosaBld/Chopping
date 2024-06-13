@@ -198,7 +198,7 @@ export default function AddDrinks() {
                       className="customDropdown" 
                       onClick={(e) => {
                         e.preventDefault();
-                        handleInputChange(e);
+                        setSearchTerm(e.target.value);
                       }}
                     >
                       {filteredDrinks.map((drink, index) => (
