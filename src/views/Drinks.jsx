@@ -75,8 +75,8 @@ export default function Drinks() {
 
           <div className="bill">
             <div className="drinksPool">
-              <CalculatePool />
               <CostDrinks cost={cost} onCostChange={handleCostChange} />
+              <CalculatePool />
             </div>
             <div className="total">
               <TotalDrinks />

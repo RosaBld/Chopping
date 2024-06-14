@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 //Components
 import { AddMoneyEach, AddAllMoney, AddNewParticipant } from "../utils";
+import ModifyIndividually from "./ModifyIndividually";
 
 
 export default function ListParticipants() {
@@ -39,6 +40,7 @@ export default function ListParticipants() {
               <th className="name"><FontAwesomeIcon icon={faUser} className="icon" /></th>
               <th className="numberUser"><FontAwesomeIcon icon={faUsers} className="icon" /></th>
               <th className="given"><FontAwesomeIcon icon={faEuroSign} className="icon" /></th>
+              <th className="modify"></th>
             </tr>
           </thead>
           <tbody>
@@ -49,6 +51,7 @@ export default function ListParticipants() {
                   <td className="name">{participant.name}</td>
                   <td className="numberUser">{participant.people}</td>
                   <td className="given">{totalAmount}</td>
+                  <td className="modify"><ModifyIndividually participant={participant} participantIndex={index} /></td>
                 </tr>
               );
             })}
@@ -62,14 +65,10 @@ export default function ListParticipants() {
           <div>
             <div className="createParticipant">
               <AddMoneyEach />
-
               <AddNewParticipant />
             </div>
             <div>
-
-            <AddAllMoney />
-
-
+              <AddAllMoney />
             </div>
           </div>
         )}

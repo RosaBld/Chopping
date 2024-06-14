@@ -1,18 +1,19 @@
 import { faCheck, faMinus, faPen, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from 'prop-types';
 import { useEffect, useState } from "react";
 import ReactModal from 'react-modal';
 
-export default function AddMoneyEach() {
+export default function ModifyIndividually({ participantIndex }) {
   const data = JSON.parse(localStorage.getItem('participants'));
 
-  const [showCustom2, setShowCustom2] = useState(data?.participants.map(() => false) || []);
-  const [showModal2, setShowModal2] = useState(false);
-  const [participants, setParticipants] = useState(data?.participants || [{ name: '', people: 1, amount: 0 }]);
+  const [showModal, setShowModal] = useState(false);
+  const [showCustom, setShowCustom] = useState(data?.participants.map(() => false) || []);
   const [selectedButtons, setSelectedButtons] = useState(data?.participants.map(() => ({ type: null, value: null })) || []);
+  const [participants, setParticipants] = useState(data?.participants || [{ name: '', people: 1, amount: 0 }]);
 
-  const toggleModal2 = () => {
-    setShowModal2(!showModal2);
+  const toggleModal = () => {
+    setShowModal(!showModal);
   }
 
   useEffect(() => {
@@ -21,17 +22,28 @@ export default function AddMoneyEach() {
       const data = JSON.parse(storedData);
       setParticipants(data.participants);
     }
-  }, []);
+  }, [participantIndex]);
 
-  const handleShow2 = (e, index) => {
+  const handleShow = (e, index) => {
     e.preventDefault();
-    setShowCustom2(prevShow => {
+    setShowCustom(prevShow => {
       const newShow = [...prevShow];
       newShow[index] = !newShow[index];
       return newShow;
     });
     const newSelectedButtons = [...selectedButtons];
     newSelectedButtons[index] = { type: 'custom', value: null };
+    setSelectedButtons(newSelectedButtons);
+  };
+
+  const updateAmount = (e, index, amountToAdd) => {
+    e.preventDefault();
+    const newParticipants = [...participants];
+    newParticipants[index].amount += amountToAdd;
+    setParticipants(newParticipants);
+
+    const newSelectedButtons = [...selectedButtons];
+    newSelectedButtons[index] = { type: 'amount', value: amountToAdd };
     setSelectedButtons(newSelectedButtons);
   };
 
@@ -48,29 +60,18 @@ export default function AddMoneyEach() {
       time,
       expireTime, 
     }));
-    setShowModal2(false);
-  };
-
-  const updateAmount = (e, index, amountToAdd) => {
-    e.preventDefault();
-    const newParticipants = [...participants];
-    newParticipants[index].amount += amountToAdd;
-    setParticipants(newParticipants);
-
-    const newSelectedButtons = [...selectedButtons];
-    newSelectedButtons[index] = { type: 'amount', value: amountToAdd };
-    setSelectedButtons(newSelectedButtons);
+    setShowModal(false);
   };
 
   return (
     <div>
-      <button onClick={toggleModal2} className="modifyNewParticipant">
-        <FontAwesomeIcon icon={faPen} /> Modifier
+      <button onClick={toggleModal} className="modifyIndividualParticipant">
+        <FontAwesomeIcon icon={faPen} />
       </button>
 
       <ReactModal 
-        isOpen={showModal2}
-        onRequestClose={toggleModal2}
+        isOpen={showModal}
+        onRequestClose={toggleModal}
         contentLabel="Participant Form"
         style={{
           overlay: {
@@ -94,11 +95,11 @@ export default function AddMoneyEach() {
       >
         <div className="modalContent">
           <button className="closeModal">
-            <FontAwesomeIcon icon={faXmark} onClick={toggleModal2} />
+            <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
           </button>
         </div>
         <form className="formNewPart" onSubmit={handleSubmit}>
-        {participants.map((person, index) => (
+        {[participants[participantIndex]].map((person, index) => (
           <div key={index} className="formParticipant">
             <div className="labelPart">
               <label>Name:</label>
@@ -165,12 +166,12 @@ export default function AddMoneyEach() {
                 </button>
                 <button 
                   className={`addTo ${selectedButtons[index]?.type === 'custom' ? 'selected' : ''}`} 
-                  onClick={(e) => handleShow2(e, index)}
+                  onClick={(e) => handleShow(e, index)}
                 >
                   <FontAwesomeIcon icon={faPen} />
                 </button>
               </div>
-              <div className="number" style={{display: showCustom2[index] ? '' : 'none'}}>
+              <div className="number" style={{display: showCustom[index] ? '' : 'none'}}>
                 <input type="number" min="0" value={person.amount} className='inputNumber' onChange={e => {
                   const newParticipants = [...participants];
                   newParticipants[index].amount = Number(e.target.value);
@@ -207,3 +208,7 @@ export default function AddMoneyEach() {
     </div>
   )
 }
+
+ModifyIndividually.propTypes = {
+  participantIndex: PropTypes.number.isRequired,
+};

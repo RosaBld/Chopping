@@ -43,6 +43,12 @@
   font-size: 20px;
 }
 
+.deletePool {
+  display: flex;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
 .deletePool .trash {
   color: white;
   font-size: 20px;
@@ -56,7 +62,7 @@
   margin: 4vh 2vh;
 }
 .errorList h2 a {
-  color: rgb(173, 50, 0);
+  color: rgb(255, 217, 0);
 }
 
 .validateDrink {
@@ -215,7 +221,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   font-weight: 600;
 }
 
-.redirectHome, .modifyNewParticipant {
+.redirectHome {
   color: white;
   font-size: 16px;
   font-family: "Poppins", sans-serif;
@@ -348,23 +354,16 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   width: 100%;
 }
 
-.homePageStyle {
-  background-color: rgb(255, 221, 18);
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  padding: 4vw 14vw;
-}
-.homePageStyle .trash {
-  color: rgb(173, 50, 0);
-}
-
-.otherPageStyle {
+.deletePool {
   background-color: rgb(0, 78, 83);
   border: none;
   cursor: pointer;
   border-radius: 5px;
   padding: 4vw;
+  align-items: center;
+  justify-content: center;
+  gap: 3%;
+  width: 100%;
 }
 
 .back {
@@ -385,23 +384,22 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   display: flex;
   justify-content: center;
   gap: 5vw;
-  margin: 0 5vw;
 }
 .createParticipant .modifyNewParticipant {
   background-color: rgb(0, 111, 119);
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  padding: 4vw;
-  width: 90%;
+  padding: 4vw 7vw;
+  width: 100%;
 }
 .createParticipant .addNewParticipant {
   background-color: rgb(255, 221, 18);
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  padding: 4vw;
-  width: 90%;
+  padding: 4vw 7vw;
+  width: 100%;
 }
 
 .errorAddMoney {
@@ -535,6 +533,10 @@ button.validate.disabled {
   cursor: pointer;
 }
 
+.createDrinkable {
+  display: flex;
+  justify-content: center;
+}
 .createDrinkable .createDrink {
   padding: 2vh 11vw;
   background-color: rgb(255, 221, 18);
@@ -599,6 +601,12 @@ button.validate.disabled {
   background-color: inherit;
   color: rgb(159, 159, 159);
   font-size: 16px;
+}
+
+.modifyIndividualParticipant {
+  background-color: rgb(0, 111, 119);
+  border: none;
+  color: white;
 }
 
 .addAndCalculate {
@@ -941,8 +949,8 @@ body {
   align-items: center;
 }
 .header .ChoppinLogo {
-  width: 11vh;
-  left: 5vh;
+  width: 9vh;
+  left: 4vh;
   position: absolute;
 }
 .header .burger-menu {
@@ -967,14 +975,14 @@ body {
   transition: all 0.3s linear;
 }
 .header .burger-menu.open .burger:nth-child(1) {
-  transform: rotate(45deg) translate(0.5rem, 0.5rem);
+  transform: rotate(45deg) translate(0.51rem, 0.45rem);
   background-color: #006f77;
 }
 .header .burger-menu.open .burger:nth-child(2) {
   opacity: 0;
 }
 .header .burger-menu.open .burger:nth-child(3) {
-  transform: rotate(-45deg) translate(0.5rem, -0.5rem);
+  transform: rotate(-45deg) translate(0.5rem, -0.48rem);
   background-color: #006f77;
 }
 
@@ -1007,8 +1015,8 @@ body {
   list-style: none;
   padding: 0;
   position: absolute;
-  right: 15vw;
   bottom: 0;
+  width: 90%;
 }
 
 .homepage {
@@ -1041,9 +1049,9 @@ table thead tr, table tbody tr {
 }
 table thead tr .name, table tbody tr .name {
   display: flex;
-  flex: 2;
+  flex: 1;
   align-items: center;
-  width: 46vw;
+  width: 40vw;
   height: 5vh;
 }
 table thead tr .name:first-child, table tbody tr .name:first-child {
@@ -1052,12 +1060,17 @@ table thead tr .name:first-child, table tbody tr .name:first-child {
   padding-left: 2vh;
 }
 table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, table tbody tr .given {
-  flex: 1.5;
+  flex: 0.5;
   display: flex;
   align-items: center;
-  width: 20vw;
+  width: 10vw;
 }
-table thead tr .numberUser:last-child, table thead tr .given:last-child, table tbody tr .numberUser:last-child, table tbody tr .given:last-child {
+table thead tr .modify, table tbody tr .modify {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+}
+table thead tr .modify:last-child, table tbody tr .modify:last-child {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }

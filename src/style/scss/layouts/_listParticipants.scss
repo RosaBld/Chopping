@@ -13,9 +13,9 @@ table {
 
       .name {
         display: flex;
-        flex: 2;
+        flex: 1;
         align-items: center;
-        width: 46vw;
+        width: 40vw;
         height: 5vh;
         &:first-child {
           border-top-left-radius: 15px;
@@ -25,10 +25,16 @@ table {
       }
       
       .numberUser, .given {
-        flex: 1.5;
+        flex: 0.5;
         display: flex;
         align-items: center;
-        width: 20vw;
+        width: 10vw;
+      }
+
+      .modify {
+        flex: 0.5;
+        display: flex;
+        align-items: center;
         &:last-child {
           border-top-right-radius: 15px;
           border-bottom-right-radius: 15px;

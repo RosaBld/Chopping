@@ -6,11 +6,10 @@ import ReactModal from 'react-modal'
 import { useNavigate } from "react-router-dom"
 import PropTypes from 'prop-types';
 
-export default function DeletePool({ onPoolDelete, isHomePage, toggleModal }) {
+export default function DeletePool({ onPoolDelete, toggleModal }) {
 
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  const buttonStyle = isHomePage ? "homePageStyle" : "otherPageStyle";
 
   const handleDelete = () => {
     localStorage.removeItem('participants');
@@ -29,8 +28,8 @@ export default function DeletePool({ onPoolDelete, isHomePage, toggleModal }) {
 
   return (
     <div>
-      <button onClick={toggleDeleteModal} className={`deletePool ${buttonStyle}`} >
-        <FontAwesomeIcon icon={faTrashCan} className="trash" />
+      <button onClick={toggleDeleteModal} className="deletePool" >
+        Supprimer la cagnotte <FontAwesomeIcon icon={faTrashCan} className="trash" /> 
       </button>
 
       <ReactModal 

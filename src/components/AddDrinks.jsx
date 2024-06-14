@@ -223,7 +223,7 @@ export default function AddDrinks() {
 
               <div className="validate">
                 <button className="validateDrink" type="submit">
-                  <FontAwesomeIcon icon={faCheck} className="validateCheck" /> Valider
+                 Valider <FontAwesomeIcon icon={faCheck} className="validateCheck" /> 
                 </button>
               </div>
             </form>

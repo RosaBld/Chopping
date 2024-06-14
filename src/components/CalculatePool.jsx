@@ -93,7 +93,7 @@ export default function CalculatePool() {
           onClick={toggleModal} 
           disabled={storedDrinks.length === 0 || storedDrinks.every(drink => drink.quantity === 0)}
         >
-          <FontAwesomeIcon icon={faCheck} /> Valider
+          Valider <FontAwesomeIcon icon={faCheck} />
         </button>
 
         <ReactModal 

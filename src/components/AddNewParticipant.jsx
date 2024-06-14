@@ -202,7 +202,7 @@ export default function AddNewParticipant() {
           </div>
           <div className="validateParticipant">
             <button className="participantButtonsValidate" onClick={addNewParticipant} >
-              <FontAwesomeIcon icon={faCheck} /> Valider
+              Valider <FontAwesomeIcon icon={faCheck} /> 
             </button>
           </div>
         </form>

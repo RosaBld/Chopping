@@ -6,8 +6,8 @@
   align-items: center;
 
   .ChoppinLogo {
-    width: 11vh;
-    left: 5vh;
+    width: 9vh;
+    left: 4vh;
     position: absolute;
   }
   
@@ -35,7 +35,7 @@
   
     &.open {
       .burger:nth-child(1) {
-        transform: rotate(45deg) translate(0.5rem, 0.5rem);
+        transform: rotate(45deg) translate(0.51rem, 0.45rem);
         background-color: #006f77;
       }
   
@@ -44,7 +44,7 @@
       }
   
       .burger:nth-child(3) {
-        transform: rotate(-45deg) translate(0.5rem, -0.5rem);
+        transform: rotate(-45deg) translate(0.5rem, -0.48rem);
         background-color: #006f77;
       }
     }
@@ -87,6 +87,6 @@
   list-style: none;
   padding: 0;
   position: absolute;
-  right: 15vw;
   bottom: 0;
+  width: 90%;
 }

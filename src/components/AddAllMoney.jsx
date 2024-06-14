@@ -119,7 +119,7 @@ export default function AddAllMoney() {
         </div>
         <div className="validateParticipant">
           <button className="participantButtonsValidate" type="submit" onClick={handleSubmit}>
-            <FontAwesomeIcon icon={faCheck} /> Valider
+            Valider <FontAwesomeIcon icon={faCheck} /> 
           </button>
         </div>
       </ReactModal>

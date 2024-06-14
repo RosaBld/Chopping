@@ -205,7 +205,7 @@ export default function CreateEvent() {
             </button>
 
             <button className="participantButtonValidate" type="submit">
-              <FontAwesomeIcon icon={faCheck} className='check' /> Valider
+              Valider <FontAwesomeIcon icon={faCheck} className='check' /> 
             </button>
           </div>
         </form>
