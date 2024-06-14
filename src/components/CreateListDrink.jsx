@@ -126,7 +126,7 @@ export default function CreateListDrink() {
         >
           <div className="modalContent">
             <button className="closeModal">
-              <FontAwesomeIcon icon={faXmark} onClick={toggleModal2} />
+              <FontAwesomeIcon icon={faXmark} onClick={toggleModal2} className="fa" />
             </button>
           </div>
           <div className="formDrinks">

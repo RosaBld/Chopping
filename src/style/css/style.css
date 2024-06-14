@@ -7,12 +7,16 @@
   color: rgb(0, 111, 119);
   font-weight: 500;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .logoHome {
   font-family: "Poppins", sans-serif;
   font-size: 12px;
+}
+.logoHome .accroche {
+  font-weight: 200;
+  font-style: italic;
 }
 
 .formParticipant, .formDrinks {
@@ -283,11 +287,18 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   margin-bottom: 3vh;
 }
 
-.about {
+.about h3 {
   font-family: "Poppins", sans-serif;
   color: white;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  margin: 4vh 2vh;
+}
+.about h2 {
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 221, 18);
+  font-weight: 500;
+  font-size: 18px;
   margin: 4vh 2vh;
 }
 
@@ -320,7 +331,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   width: 50px;
   height: 50px;
 }
-.icon-container .config-icon, .icon-container .closeModalHeader {
+.icon-container .config-icon {
   font-size: 25px;
   color: rgb(171, 171, 171);
 }
@@ -337,10 +348,15 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   width: 40px;
   height: 40px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.modalContent .closeModal .closeIcon {
-  font-size: 25px;
+.modalContent .closeModal .fa {
+  pointer-events: auto;
   color: rgb(171, 171, 171);
+  padding: 16px;
+  border-radius: 100%;
 }
 
 .participantButtons {
@@ -358,6 +374,10 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  display: flex;
+  gap: 10%;
+  align-items: center;
+  justify-content: center;
 }
 
 .participantButtonValidate {
@@ -367,6 +387,8 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  display: flex;
+  gap: 10%;
 }
 
 .deletePool {
@@ -435,6 +457,7 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   font-size: 12px;
   margin: 0.7vh 2vw;
   font-weight: 500;
+  cursor: pointer;
 }
 .errorAddMoney .addAmountParticipants {
   padding: 2vh 1vw;
@@ -446,33 +469,49 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   font-size: 12px;
   font-weight: 500;
   margin: 0.7vh 2vw;
+  cursor: pointer;
 }
 
 .lessDrinks, .deleteDrink {
   border-radius: 5px;
   background-color: rgb(0, 111, 119);
-  padding: 1vh 1vh;
   cursor: pointer;
   border: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  justify-content: center;
+}
+.lessDrinks .minus, .lessDrinks .trashDrink, .deleteDrink .minus, .deleteDrink .trashDrink {
+  pointer-events: auto;
+  padding: 1vh 1vh;
+  border-radius: 100%;
 }
 
 .moreDrinks {
   border-radius: 5px;
   background-color: rgb(255, 221, 18);
   border: none;
-  padding: 1vh 1vh;
+  padding: 0;
   cursor: pointer;
 }
-.moreDrinks:hover {
-  background-color: rgb(255, 217, 0);
+.moreDrinks .plus {
+  pointer-events: auto;
+  padding: 1vh 1vh;
+  border-radius: 100%;
 }
 
 .validate {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10%;
 }
 .validate .validateDrink {
+  display: flex;
+  gap: 10%;
+  justify-content: center;
+  align-items: center;
   padding: 4vw 14vw;
   background-color: rgb(0, 111, 119);
   border: none;
@@ -576,6 +615,7 @@ button.validate.disabled {
   align-items: center;
   justify-content: center;
   margin: 2vh 0;
+  cursor: pointer;
 }
 @media screen and (max-width: 320px) {
   .buttonsAddByFive {
@@ -588,6 +628,7 @@ button.validate.disabled {
   height: 8vh;
   border-radius: 10px;
   border: none;
+  cursor: pointer;
 }
 .buttonsAddByFive .addTo:hover {
   background-color: rgb(0, 111, 119);
@@ -608,6 +649,7 @@ button.validate.disabled {
   background-color: rgb(255, 221, 18);
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .deleteParticipant {
@@ -616,12 +658,14 @@ button.validate.disabled {
   background-color: inherit;
   color: rgb(159, 159, 159);
   font-size: 16px;
+  cursor: pointer;
 }
 
 .modifyIndividualParticipant {
   background-color: rgb(0, 111, 119);
   border: none;
   color: white;
+  cursor: pointer;
 }
 
 .addAndCalculate {
@@ -637,6 +681,9 @@ button.validate.disabled {
   border-radius: 5px;
   width: 95%;
   height: 4vh;
+}
+.labelDrinks .inputNumber {
+  -moz-appearance: textfield;
 }
 
 .listOfDrinks {
@@ -942,11 +989,6 @@ body {
   justify-content: center;
   text-align: center;
   padding: 2vh 2vh;
-  z-index: 0;
-  position: fixed;
-  bottom: 23vh;
-  left: 0;
-  right: 0;
 }
 
 .listDrinkConfig {

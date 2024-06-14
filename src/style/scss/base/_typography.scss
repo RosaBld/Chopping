@@ -8,7 +8,7 @@
         color: rgba(0, 111, 119, 1);
         font-weight: 500;
         text-decoration: none;
-        font-size: 24px;
+        font-size: 20px;
       }
     }
   }
@@ -17,6 +17,10 @@
 .logoHome {
   font-family: "Poppins", sans-serif;
   font-size: 12px;
+  .accroche {
+    font-weight: 200;
+    font-style: italic;
+  }
 }
 
 .formParticipant, .formDrinks {
@@ -322,12 +326,22 @@ table {
 }
 
 .about {
-  font-family: "Poppins", sans-serif;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-  margin: 4vh 2vh;
+  h3 {
+    font-family: "Poppins", sans-serif;
+    color: white;
+    font-weight: 400;
+    font-size: 14px;
+    margin: 4vh 2vh;
+  }
+  h2 {
+    font-family: "Poppins", sans-serif;
+    color: rgba(255, 221, 18, 1);
+    font-weight: 500;
+    font-size: 18px;
+    margin: 4vh 2vh;
+  }
 }
+
 
 .title {
   font-family: "Poppins", sans-serif;

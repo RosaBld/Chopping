@@ -1,16 +1,16 @@
 import { faCheck, faMinus, faPen, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from 'prop-types';
 import { useEffect, useState } from "react";
 import ReactModal from 'react-modal';
 
 import { DeleteParticipant } from "../utils";
 
-export default function AddMoneyEach() {
+export default function ModifyParticipants({ participants, setParticipants }) {
   const data = JSON.parse(localStorage.getItem('participants'));
 
   const [showCustom2, setShowCustom2] = useState(data?.participants.map(() => false) || []);
   const [showModal2, setShowModal2] = useState(false);
-  const [participants, setParticipants] = useState(data?.participants || [{ name: '', people: 1, amount: 0 }]);
   const [selectedButtons, setSelectedButtons] = useState(data?.participants.map(() => ({ type: null, value: null })) || []);
 
   const toggleModal2 = () => {
@@ -18,18 +18,12 @@ export default function AddMoneyEach() {
   }
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      const storedData = localStorage.getItem('participants');
-      if (storedData) {
-        const data = JSON.parse(storedData);
-        setParticipants(data.participants);
-      }
-    }, 10);
-
-    return () => { 
-      clearInterval(intervalId);
-    };
-  }, []);
+    const storedData = localStorage.getItem('participants');
+    if (storedData) {
+      const data = JSON.parse(storedData);
+      setParticipants(data.participants);
+    }
+  }, [setParticipants]);
 
   const handleShow2 = (e, index) => {
     e.preventDefault();
@@ -62,7 +56,7 @@ export default function AddMoneyEach() {
   const updateAmount = (e, index, amountToAdd) => {
     e.preventDefault();
     const newParticipants = [...participants];
-    newParticipants[index].amount += amountToAdd;
+    newParticipants[index].amount = amountToAdd;
     setParticipants(newParticipants);
 
     const newSelectedButtons = [...selectedButtons];
@@ -102,7 +96,7 @@ export default function AddMoneyEach() {
       >
         <div className="modalContent">
           <button className="closeModal">
-            <FontAwesomeIcon icon={faXmark} onClick={toggleModal2} />
+            <FontAwesomeIcon icon={faXmark} onClick={toggleModal2} className="fa" />
           </button>
         </div>
         <form className="formNewPart" onSubmit={handleSubmit}>
@@ -114,7 +108,7 @@ export default function AddMoneyEach() {
               participants={participants} 
               setParticipants={setParticipants} 
             />
-
+            
             <div className="labelPart">
               <label>Name:</label>
               <input value={person.name} onChange={e => {
@@ -222,3 +216,8 @@ export default function AddMoneyEach() {
     </div>
   )
 }
+
+ModifyParticipants.propTypes = {
+  participants: PropTypes.array.isRequired,
+  setParticipants:  PropTypes.func.isRequired
+};

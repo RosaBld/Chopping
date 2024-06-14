@@ -46,6 +46,7 @@ export default function Create() {
         <>
         <div className="logoHome">
           <img src="/chopping-full.svg" alt="logo Chopp'ing et marque" className="ChoppinLogo" />
+          <h3 className="accroche">« Les bons comptes font les bonnes guinzes ! »</h3>
         </div>
         <div className="createParticipant" key={location.key}></div>
         <Link to='/createEvent'>

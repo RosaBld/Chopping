@@ -24,7 +24,7 @@ export default function DeleteDrink({ index, drinks, setDrinks }) {
   return (
     <div>
       <button className="deleteDrink">
-        <FontAwesomeIcon icon={faTrashCan} onClick={toggleModal} />
+        <FontAwesomeIcon icon={faTrashCan} onClick={toggleModal} className="trashDrink" />
       </button>
 
       <ReactModal 

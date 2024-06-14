@@ -11,9 +11,15 @@ export default function ModifyIndividually({ participantIndex }) {
   const [showCustom, setShowCustom] = useState(data?.participants.map(() => false) || []);
   const [selectedButtons, setSelectedButtons] = useState(data?.participants.map(() => ({ type: null, value: null })) || []);
   const [participants, setParticipants] = useState(data?.participants || [{ name: '', people: 1, amount: 0 }]);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleModal = () => {
     setShowModal(!showModal);
+  }
+
+  const handleButtonClick = (index) => {
+    setActiveIndex(index);
+    toggleModal();
   }
 
   useEffect(() => {
@@ -36,16 +42,16 @@ export default function ModifyIndividually({ participantIndex }) {
     setSelectedButtons(newSelectedButtons);
   };
 
-  const updateAmount = (e, index, amountToAdd) => {
+  const updateAmount = (e, participantIndex, amountToAdd) => {
     e.preventDefault();
     const newParticipants = [...participants];
-    newParticipants[index].amount += amountToAdd;
+    newParticipants[participantIndex].amount = amountToAdd;
     setParticipants(newParticipants);
 
     const newSelectedButtons = [...selectedButtons];
-    newSelectedButtons[index] = { type: 'amount', value: amountToAdd };
+    newSelectedButtons[participantIndex] = { type: 'amount', value: amountToAdd };
     setSelectedButtons(newSelectedButtons);
-  };
+};
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -65,12 +71,12 @@ export default function ModifyIndividually({ participantIndex }) {
 
   return (
     <div>
-      <button onClick={toggleModal} className="modifyIndividualParticipant">
+      <button onClick={() => handleButtonClick(participantIndex) & toggleModal()} className="modifyIndividualParticipant">
         <FontAwesomeIcon icon={faPen} />
       </button>
 
       <ReactModal 
-        isOpen={showModal}
+        isOpen={showModal && activeIndex !== null}
         onRequestClose={toggleModal}
         contentLabel="Participant Form"
         style={{
@@ -95,107 +101,109 @@ export default function ModifyIndividually({ participantIndex }) {
       >
         <div className="modalContent">
           <button className="closeModal">
-            <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+            <FontAwesomeIcon icon={faXmark} onClick={toggleModal} className="fa" />
           </button>
         </div>
         <form className="formNewPart" onSubmit={handleSubmit}>
-        {[participants[participantIndex]].map((person, index) => (
-          <div key={index} className="formParticipant">
-            <div className="labelPart">
-              <label>Name:</label>
-              <input value={person.name} onChange={e => {
-                const newParticipants = [...participants];
-                newParticipants[index].name = e.target.value;
-                setParticipants(newParticipants);
-              }} required />
-            </div>
-
-            <div className="labelPartNumber">
-              <label>Nombre de personne:</label>
-              <div className="number">
-                <input type="number" min="1" value={person.people} className='inputNumber' onChange={e => {
+        {participants.map((person, index) => (
+          index === activeIndex && (
+            <div key={index} className="formParticipant">
+              <div className="labelPart">
+                <label>Name:{index}</label>
+                <input value={person.name} onChange={e => {
                   const newParticipants = [...participants];
-                  newParticipants[index].people = Number(e.target.value);
+                  newParticipants[index].name = e.target.value;
                   setParticipants(newParticipants);
                 }} required />
-                <button className="lessParticipants" onClick={e => {
-                  e.preventDefault();
-                  const newParticipants = [...participants];
-                  newParticipants[index].people = Math.max(Number(newParticipants[index].people) - 1, 0);
-                  setParticipants(newParticipants);
-                }}>
-                  <FontAwesomeIcon className="minus" icon={faMinus} />
-                </button>
-                <button className="moreParticipants"onClick={e => {
-                  e.preventDefault();
-                  const newParticipants = [...participants];
-                  newParticipants[index].people = Number(newParticipants[index].people) + 1;
-                  setParticipants(newParticipants);
-                }}>
-                  <FontAwesomeIcon className="plus" icon={faPlus} />
-                </button>
               </div>
-            </div>
 
-            <div className="labelPartNumber">
-              <label>Montant par personne:</label>
-              <div className="buttonsAddByFive">
-                <button 
-                  className={`addTo ${selectedButtons[index]?.type === 'amount' && selectedButtons[index]?.value === 5 ? 'selected' : ''}`} 
-                  onClick={(e) => updateAmount(e, index, 5)}
-                >
-                  5€
-                </button>
-                <button 
-                  className={`addTo ${selectedButtons[index]?.type === 'amount' && selectedButtons[index]?.value === 10 ? 'selected' : ''}`} 
-                  onClick={(e) => updateAmount(e, index, 10)}
-                >
-                  10€
-                </button>
-                <button 
-                  className={`addTo ${selectedButtons[index]?.type === 'amount' && selectedButtons[index]?.value === 15 ? 'selected' : ''}`} 
-                  onClick={(e) => updateAmount(e, index, 15)}
-                >
-                  15€
-                </button>
-                <button 
-                  className={`addTo ${selectedButtons[index]?.type === 'amount' && selectedButtons[index]?.value === 20 ? 'selected' : ''}`} 
-                  onClick={(e) => updateAmount(e, index, 20)}
-                >
-                  20€
-                </button>
-                <button 
-                  className={`addTo ${selectedButtons[index]?.type === 'custom' ? 'selected' : ''}`} 
-                  onClick={(e) => handleShow(e, index)}
-                >
-                  <FontAwesomeIcon icon={faPen} />
-                </button>
+              <div className="labelPartNumber">
+                <label>Nombre de personne:</label>
+                <div className="number">
+                  <input type="number" min="1" value={person.people} className='inputNumber' onChange={e => {
+                    const newParticipants = [...participants];
+                    newParticipants[index].people = Number(e.target.value);
+                    setParticipants(newParticipants);
+                  }} required />
+                  <button className="lessParticipants" onClick={e => {
+                    e.preventDefault();
+                    const newParticipants = [...participants];
+                    newParticipants[index].people = Math.max(Number(newParticipants[index].people) - 1, 0);
+                    setParticipants(newParticipants);
+                  }}>
+                    <FontAwesomeIcon className="minus" icon={faMinus} />
+                  </button>
+                  <button className="moreParticipants"onClick={e => {
+                    e.preventDefault();
+                    const newParticipants = [...participants];
+                    newParticipants[index].people = Number(newParticipants[index].people) + 1;
+                    setParticipants(newParticipants);
+                  }}>
+                    <FontAwesomeIcon className="plus" icon={faPlus} />
+                  </button>
+                </div>
               </div>
-              <div className="number" style={{display: showCustom[index] ? '' : 'none'}}>
-                <input type="number" min="0" value={person.amount} className='inputNumber' onChange={e => {
-                  const newParticipants = [...participants];
-                  newParticipants[index].amount = Number(e.target.value);
-                  setParticipants(newParticipants);
-                }} required />
-                <button className="lessMoney" onClick={e => {
-                  e.preventDefault();
-                  const newParticipants = [...participants];
-                  newParticipants[index].amount = Math.max(Number(newParticipants[index].amount) - 1, 0);
-                  setParticipants(newParticipants);
-                }}>
-                  <FontAwesomeIcon className="minus" icon={faMinus} />
-                </button>
-                <button className="moreMoney" onClick={e => {
-                  e.preventDefault();
-                  const newParticipants = [...participants];
-                  newParticipants[index].amount = Number(newParticipants[index].amount) + 1;
-                  setParticipants(newParticipants);
-                }}>
-                  <FontAwesomeIcon className="plus" icon={faPlus} />
-                </button>
+
+              <div className="labelPartNumber">
+                <label>Montant par personne:</label>
+                <div className="buttonsAddByFive">
+                  <button 
+                    className={`addTo ${selectedButtons[index]?.type === 'amount' && selectedButtons[index]?.value === 5 ? 'selected' : ''}`} 
+                    onClick={(e) => updateAmount(e, index, 5)}
+                  >
+                    5€
+                  </button>
+                  <button 
+                    className={`addTo ${selectedButtons[index]?.type === 'amount' && selectedButtons[index]?.value === 10 ? 'selected' : ''}`} 
+                    onClick={(e) => updateAmount(e, index, 10)}
+                  >
+                    10€
+                  </button>
+                  <button 
+                    className={`addTo ${selectedButtons[index]?.type === 'amount' && selectedButtons[index]?.value === 15 ? 'selected' : ''}`} 
+                    onClick={(e) => updateAmount(e, index, 15)}
+                  >
+                    15€
+                  </button>
+                  <button 
+                    className={`addTo ${selectedButtons[index]?.type === 'amount' && selectedButtons[index]?.value === 20 ? 'selected' : ''}`} 
+                    onClick={(e) => updateAmount(e, index, 20)}
+                  >
+                    20€
+                  </button>
+                  <button 
+                    className={`addTo ${selectedButtons[index]?.type === 'custom' ? 'selected' : ''}`} 
+                    onClick={(e) => handleShow(e, index)}
+                  >
+                    <FontAwesomeIcon icon={faPen} />
+                  </button>
+                </div>
+                <div className="number" style={{display: showCustom[index] ? '' : 'none'}}>
+                  <input type="number" min="0" value={person.amount} className='inputNumber' onChange={e => {
+                    const newParticipants = [...participants];
+                    newParticipants[index].amount = Number(e.target.value);
+                    setParticipants(newParticipants);
+                  }} required />
+                  <button className="lessMoney" onClick={e => {
+                    e.preventDefault();
+                    const newParticipants = [...participants];
+                    newParticipants[index].amount = Math.max(Number(newParticipants[index].amount) - 1, 0);
+                    setParticipants(newParticipants);
+                  }}>
+                    <FontAwesomeIcon className="minus" icon={faMinus} />
+                  </button>
+                  <button className="moreMoney" onClick={e => {
+                    e.preventDefault();
+                    const newParticipants = [...participants];
+                    newParticipants[index].amount = Number(newParticipants[index].amount) + 1;
+                    setParticipants(newParticipants);
+                  }}>
+                    <FontAwesomeIcon className="plus" icon={faPlus} />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          )
         ))}
 
         <div className="validateParticipant">

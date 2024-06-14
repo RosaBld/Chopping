@@ -75,5 +75,5 @@ export default function DeletePool({ onPoolDelete, toggleModal }) {
 DeletePool.propTypes = {
   onPoolDelete: PropTypes.func.isRequired,
   isHomePage: PropTypes.bool,
-  toggleModal: PropTypes.func.isRequired, // Add this line
+  toggleModal: PropTypes.func.isRequired,
 };

@@ -121,7 +121,7 @@ export default function CalculatePool() {
         >
           <div className="modalContent">
             <button className="closeModal">
-              <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+              <FontAwesomeIcon icon={faXmark} onClick={toggleModal} className="fa" />
             </button>
           </div>
           <div>

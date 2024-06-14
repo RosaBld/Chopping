@@ -5,8 +5,7 @@ import { useState, useEffect } from "react";
 import ReactModal from 'react-modal';
 
 // Components
-import { DeleteDrink, Loading } from "../utils";
-
+import { DeleteDrink, ErrorNotEnoughMoney, Loading } from "../utils";
 
 export default function AddDrinks() {
 
@@ -19,7 +18,12 @@ export default function AddDrinks() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [price, setPrice] = useState(""); 
   const [quantity, setQuantity] = useState(1);
+  const [totalCost, setTotalCost] = useState(0); // Add this line
 
+  useEffect(() => {
+    const newTotalCost = drinks.reduce((acc, drink) => acc + (drink.price * drink.quantity), 0);
+    setTotalCost(newTotalCost);
+  }, [drinks]);
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -46,6 +50,11 @@ export default function AddDrinks() {
       // Update the listDrink in local storage
       localStorage.setItem('listDrink', JSON.stringify(newListDrink));
     }
+  
+    // Reset form fields
+    setSearchTerm('');
+    setPrice('');
+    setQuantity(1);
   };
 
   const incrementQuantity = (index) => {
@@ -89,17 +98,13 @@ export default function AddDrinks() {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
   
-    // Update the participants state
     setParticipants(prevState => ({ ...prevState, [name]: value }));
   
-    // Update the searchTerm and dropdownVisible state if the name field is changed
     if (name === 'name') {
       setSearchTerm(value);
       setDropdownVisible(value !== '');
     }
-  
-    // Update the price and quantity state
-    if (name === 'price') {
+      if (name === 'price') {
       setPrice(value);
     } else if (name === 'quantity') {
       setQuantity(value);
@@ -118,6 +123,7 @@ export default function AddDrinks() {
         </div>
         :
         <div className="listOfDrinks">
+          <ErrorNotEnoughMoney totalCost={totalCost} />
           {drinks.map((drink, index) => (
             <div key={index} className="setOfDrink">
               <div className="displayDrink">
@@ -176,7 +182,7 @@ export default function AddDrinks() {
 
           <div className="modalContent">
             <button className="closeModal">
-              <FontAwesomeIcon icon={faXmark} onClick={toggleModal} />
+              <FontAwesomeIcon icon={faXmark} onClick={toggleModal} className="fa" />
             </button>
           </div>
           
@@ -213,12 +219,12 @@ export default function AddDrinks() {
               
               <div className="labelDrinks">
                 <label>Prix (unitaire):</label>
-                <input name="price" value={price} onChange={handleInputChange} required /> {/* Update this line */}
+                <input type="number" name="price" value={price} onChange={handleInputChange} required className='inputNumber' /> {/* Update this line */}
               </div>
 
               <div className="labelDrinks">
                 <label>Nombre de boissons:</label>
-                <input name="quantity" value={quantity} onChange={handleInputChange} ></input>
+                <input type="number" name="quantity" value={quantity} onChange={handleInputChange} className='inputNumber' ></input>
               </div>
 
               <div className="validate">

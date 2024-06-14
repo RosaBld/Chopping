@@ -20,7 +20,7 @@ export default function Home() {
     <div>
       {isLoading && firstOpen ? 
         <div className="homepage">
-          <img src="/Chopping-logo.svg" className="logo" alt="logo-Choppin" />          
+          <img src="/Chopping-logo.svg" className="logo" alt="logo-Choppin" />
           <Loading />
         </div> 
       : 

@@ -2,33 +2,45 @@
 import { faCheck, faMinus, faPen, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 
+export default function AddNewParticipant({ participants, setParticipants }) {
 
-export default function AddNewParticipant() {
-  const data = JSON.parse(localStorage.getItem('participants')) || { participants: [{ name: '', people: 1, amount: 0 }] };
-
-  const [participants, setParticipants] = useState(data.participants);
   const [showModal1, setShowModal1] = useState(false);
   const [newParticipant, setNewParticipant] = useState({ name: '', people: 1, amount: 0 });
   const [showCustom, setShowCustom] = useState(participants.map(() => false));
   const [selectedButtons, setSelectedButtons] = useState(participants.map(() => ({ type: null, value: null })));
   
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    const fetchData = () => {
       const storedData = localStorage.getItem('participants');
       if (storedData) {
         const data = JSON.parse(storedData);
         setParticipants(data.participants);
       }
-    }, 10);
-
-    return () => { 
-      clearInterval(intervalId);
     };
-  }, []);
+  
+    // Fetch data when component mounts
+    fetchData();
+  
+    // Function to handle storage changes
+    const handleStorageChange = (e) => {
+      if (e.key === 'participants') {
+        fetchData();
+      }
+    };
+  
+    // Add event listener for storage changes
+    window.addEventListener('storage', handleStorageChange);
+  
+    // Cleanup function
+    return () => {
+      // Remove event listener when component unmounts
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, [setParticipants]);
 
-  // Function to handle changes in the form
   const handleInputChange = (event, field) => {
     setNewParticipant({
       ...newParticipant,
@@ -113,7 +125,7 @@ export default function AddNewParticipant() {
       >
         <div className="modalContent">
           <button className="closeModal">
-            <FontAwesomeIcon icon={faXmark} onClick={toggleModal1} />
+            <FontAwesomeIcon icon={faXmark} onClick={toggleModal1} className="fa" />
           </button>
         </div>
 
@@ -210,3 +222,8 @@ export default function AddNewParticipant() {
     </div>
   )
 }
+
+AddNewParticipant.propTypes = {
+  participants: PropTypes.array.isRequired,
+  setParticipants:  PropTypes.func.isRequired
+};

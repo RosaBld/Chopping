@@ -1,28 +1,15 @@
 // Libraries
 import { faEuroSign, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 //Components
-import { AddMoneyEach, AddAllMoney, AddNewParticipant, ModifyIndividually } from "../utils";
+import { AddAllMoney, AddNewParticipant, ModifyIndividually, ModifyParticipants } from "../utils";
 
 export default function ListParticipants() {
-  const [participants, setParticipants] = useState([]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      const storedData = localStorage.getItem('participants');
-      if (storedData) {
-        const data = JSON.parse(storedData);
-        setParticipants(data.participants);
-      }
-    }, 10);
-
-    return () => { 
-      clearInterval(intervalId);
-    };
-  }, []);
+  const data = JSON.parse(localStorage.getItem('participants')) || { participants: [] };
+  const [participants, setParticipants] = useState(data.participants || []);
 
   return (
     <div>
@@ -49,7 +36,7 @@ export default function ListParticipants() {
                   <td className="name">{participant.name}</td>
                   <td className="numberUser">{participant.people}</td>
                   <td className="given">{totalAmount}</td>
-                  <td className="modify"><ModifyIndividually participant={participant} participantIndex={index} /></td>
+                  <td className="modify"><ModifyIndividually participantIndex={index} /></td>
                 </tr>
               );
             })}
@@ -62,15 +49,14 @@ export default function ListParticipants() {
         {participants.length > 0 && (
           <div>
             <div className="createParticipant">
-              <AddMoneyEach />
-              <AddNewParticipant />
+              <ModifyParticipants participants={participants} setParticipants={setParticipants} />
+              <AddNewParticipant participants={participants} setParticipants={setParticipants} />
             </div>
             <div>
               <AddAllMoney />
             </div>
           </div>
         )}
-
       </div>
     </div>
   );

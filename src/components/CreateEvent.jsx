@@ -87,7 +87,7 @@ export default function CreateEvent() {
       <div className="createEvent">
         <div className="modalContent">
           <button className="closeModal" onClick={backHome}>
-            <FontAwesomeIcon icon={faXmark} className="closeIcon" />
+            <FontAwesomeIcon icon={faXmark} className="fa" />
           </button>
         </div>
 

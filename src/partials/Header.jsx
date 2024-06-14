@@ -73,13 +73,8 @@ export default function Header() {
 
           <ul className="links">
             <li>
-              <Link to="/about" onClick={toggleModal}>
-                A propos
-              </Link>
-            </li>
-            <li>
               <Link to="/drinks" onClick={toggleModal}>
-                Boisson
+                Commande
               </Link>
             </li>
             <li>
@@ -89,12 +84,17 @@ export default function Header() {
             </li>
             <li>
               <Link to="/budget" onClick={toggleModal}>
-                Budget
+                Historique
               </Link>
             </li>
             <li>
               <Link to="/configuration" onClick={toggleModal}>
-                Liste personnalisée
+                Boisson(s) personnalisée(s)
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" onClick={toggleModal}>
+                A propos
               </Link>
             </li>
           </ul>
