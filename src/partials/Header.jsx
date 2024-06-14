@@ -31,7 +31,10 @@ export default function Header() {
     <div className="header">
 
       {location.pathname !== '/' && 
-        <img src="/Chopping-logo.svg" alt="logo Chopp'ing" className="ChoppinLogo" />
+      <div className="logoAndTitle">
+        <img src="/Chopping-logo.svg" alt="logo Chopp'ing" className="ChoppinLogo" /> 
+        <h1 className="title">Chopping</h1>
+      </div>
       }
 
       <div className={`burger-menu ${isActive ? 'open' : ''}`} onClick={toggleModal}>

@@ -291,6 +291,13 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   margin: 4vh 2vh;
 }
 
+.title {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-weight: 600;
+  font-size: 28px;
+}
+
 .createBudget {
   position: absolute;
   left: 50%;
@@ -956,7 +963,13 @@ body {
   justify-content: center;
   align-items: center;
 }
-.header .ChoppinLogo {
+.header .logoAndTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.header .logoAndTitle .ChoppinLogo {
   width: 9vh;
   left: 3.5vh;
   position: absolute;
