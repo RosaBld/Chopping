@@ -6,7 +6,7 @@ import ReactModal from 'react-modal';
 
 
 // Components
-import { Budget, Configuration, CreateEvent, Drinks, ErrorPage, ExpirationLocalStorage, Header, Home, Participants } from './utils';
+import { About, Budget, Configuration, CreateEvent, Drinks, ErrorPage, ExpirationLocalStorage, Header, Home, Participants } from './utils';
 
 
 ReactModal.setAppElement('#root');
@@ -26,6 +26,7 @@ function App() {
         <Routes>
           <Route path="/" element={ <Home />} />
           <Route path="/createEvent" element={ <CreateEvent /> } />
+          <Route path='/about' element={ <About /> } />
           <Route path="/drinks" element={ <Drinks />} />
           <Route path="/participants" element={ <Participants /> } />
           <Route path="/budget" element={ <Budget /> } />

@@ -283,6 +283,14 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   margin-bottom: 3vh;
 }
 
+.about {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 4vh 2vh;
+}
+
 .createBudget {
   position: absolute;
   left: 50%;
@@ -950,7 +958,7 @@ body {
 }
 .header .ChoppinLogo {
   width: 9vh;
-  left: 4vh;
+  left: 3.5vh;
   position: absolute;
 }
 .header .burger-menu {

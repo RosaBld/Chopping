@@ -1,4 +1,5 @@
-export {default as AddAllMoney } from '../components/AddAllMoney';
+export { default as About } from '../views/About';
+export { default as AddAllMoney } from '../components/AddAllMoney';
 export { default as AddDrinks } from '../components/AddDrinks';
 export { default as AddMoneyEach } from '../components/AddMoneyEach';
 export { default as AddNewParticipant } from '../components/AddNewParticipant'

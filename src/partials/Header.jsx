@@ -69,9 +69,14 @@ export default function Header() {
           <img src="/Chopping-logo.svg" alt="logo Chopp'ing" className="ChoppinLogoNav" />
 
           <ul className="links">
-            <li className="">
+            <li>
+              <Link to="/about" onClick={toggleModal}>
+                A propos
+              </Link>
+            </li>
+            <li>
               <Link to="/drinks" onClick={toggleModal}>
-                Accueil
+                Boisson
               </Link>
             </li>
             <li>
