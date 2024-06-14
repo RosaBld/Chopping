@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import ReactModal from 'react-modal';
 
+import { DeleteParticipant } from "../utils";
+
 export default function AddMoneyEach() {
   const data = JSON.parse(localStorage.getItem('participants'));
 
@@ -16,11 +18,17 @@ export default function AddMoneyEach() {
   }
 
   useEffect(() => {
-    const storedData = localStorage.getItem('participants');
-    if (storedData) {
-      const data = JSON.parse(storedData);
-      setParticipants(data.participants);
-    }
+    const intervalId = setInterval(() => {
+      const storedData = localStorage.getItem('participants');
+      if (storedData) {
+        const data = JSON.parse(storedData);
+        setParticipants(data.participants);
+      }
+    }, 10);
+
+    return () => { 
+      clearInterval(intervalId);
+    };
   }, []);
 
   const handleShow2 = (e, index) => {
@@ -100,6 +108,13 @@ export default function AddMoneyEach() {
         <form className="formNewPart" onSubmit={handleSubmit}>
         {participants.map((person, index) => (
           <div key={index} className="formParticipant">
+
+            <DeleteParticipant 
+              index={index} 
+              participants={participants} 
+              setParticipants={setParticipants} 
+            />
+
             <div className="labelPart">
               <label>Name:</label>
               <input value={person.name} onChange={e => {

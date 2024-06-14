@@ -5,9 +5,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //Components
-import { AddMoneyEach, AddAllMoney, AddNewParticipant } from "../utils";
-import ModifyIndividually from "./ModifyIndividually";
-
+import { AddMoneyEach, AddAllMoney, AddNewParticipant, ModifyIndividually } from "../utils";
 
 export default function ListParticipants() {
   const [participants, setParticipants] = useState([]);

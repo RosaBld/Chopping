@@ -6,7 +6,8 @@ export default function ExpirationLocalStorage () {
     
       if(participants) {
         const currentTime = Date.now();
-        const maxAge = 20 * 60 * 60 * 1000; // for 5 minutes
+        // const maxAge = 5 * 60 * 1000; //for 5 minutes
+        const maxAge = 20 * 60 * 60 * 1000; // for 20 hours
         // If the current time is more than maxAge later than the stored timestamp, remove 'participants', 'drinks', and 'orders'
         if(currentTime - participants.expireTime > maxAge) {
           window.localStorage.removeItem('participants');

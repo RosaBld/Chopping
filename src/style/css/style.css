@@ -1084,4 +1084,9 @@ table thead tr td, table tbody tr td {
 .labelParticipants input {
   border-radius: 5px;
   border-color: rgb(246, 224, 197);
+}
+
+.modifyDelete {
+  display: flex;
+  justify-content: end;
 }/*# sourceMappingURL=style.css.map */
