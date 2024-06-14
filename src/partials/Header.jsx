@@ -53,7 +53,7 @@ export default function Header() {
           content: {
             color: 'lightsteelblue',
             width: windowWidth > 425 ? '85.7vw' : windowWidth > 320 ? '83.7vw' : '81vw', 
-            height: '62%',
+            height: '70%',
             padding: '20px',
             border: 'none',
             borderRadius: '25px',
