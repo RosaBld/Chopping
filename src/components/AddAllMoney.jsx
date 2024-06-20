@@ -1,33 +1,26 @@
 // Libraries
 import { faCheck, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from 'prop-types';
 import { useState, useEffect } from "react";
 import ReactModal from 'react-modal';
-import Loading from "./Loading";
 
-export default function AddAllMoney() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [participants, setParticipants] = useState([{ name: '', people: 1, amount: 0 }]);
+export default function AddAllMoney({ participants, setParticipants }) {
   const [showModal3, setShowModal3] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
       const storedData = localStorage.getItem('participants');
       if (storedData) {
         const data = JSON.parse(storedData);
         setParticipants(data.participants);
       }
-      setIsLoading(false);
     };
 
     fetchData();
-  }, []);
+  }, [setParticipants]);
 
-  if (isLoading) {
-    return <Loading />;
-  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -112,3 +105,9 @@ export default function AddAllMoney() {
     </div>
   )
 }
+
+
+AddAllMoney.propTypes = {
+  participants: PropTypes.array.isRequired,
+  setParticipants:  PropTypes.func.isRequired
+};

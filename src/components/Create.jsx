@@ -9,6 +9,7 @@ export default function Create() {
   const navigate = useNavigate();
   const [existingData, setExistingData] = useState(false);
   const location = useLocation();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const data = localStorage.getItem('participants');
@@ -29,6 +30,10 @@ export default function Create() {
     navigate('/drinks')
   }
 
+  const toggleDeleteModal = () => {
+    setShowModal(!showModal);
+  }
+
 
   return (
     <div>
@@ -36,7 +41,7 @@ export default function Create() {
         <div className='homeErrorMsg'>
           <h2>Vous avez déjà une liste de participants avec une cagnotte. Souhaitez-vous la détruire et recommencer ou souhaitez-vous continuer?</h2>
           <div className='buttons'>
-            <DeletePool onPoolDelete={handlePoolDeletion} isHomePage={true} />
+            <DeletePool onPoolDelete={handlePoolDeletion} isHomePage={true} page="/" toggleDeleteModal={toggleDeleteModal}/>
             <button className="backToDrinks" onClick={backToBeer}>
               <FontAwesomeIcon icon={faBeerMugEmpty} className="drinkIcon" />
             </button>

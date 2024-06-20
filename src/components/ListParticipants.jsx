@@ -36,7 +36,7 @@ export default function ListParticipants() {
                   <td className="name">{participant.name}</td>
                   <td className="numberUser">{participant.people}</td>
                   <td className="given">{totalAmount}</td>
-                  <td className="modify"><ModifyIndividually participantIndex={index} /></td>
+                  <td className="modify"><ModifyIndividually participantIndex={index} participants={participants} setParticipants={setParticipants} /></td>
                 </tr>
               );
             })}
@@ -53,7 +53,7 @@ export default function ListParticipants() {
               <AddNewParticipant participants={participants} setParticipants={setParticipants} />
             </div>
             <div>
-              <AddAllMoney />
+              <AddAllMoney participants={participants} setParticipants={setParticipants} />
             </div>
           </div>
         )}

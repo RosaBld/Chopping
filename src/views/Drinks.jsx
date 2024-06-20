@@ -47,7 +47,7 @@ export default function Drinks() {
             </div>
             <div className="total">
               <TotalDrinks />
-              <Pool />
+              <Pool page="/drink" />
               <TotalParticipants />
             </div>
           </div>

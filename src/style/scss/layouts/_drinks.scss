@@ -45,7 +45,7 @@ body {
   gap: 3vw;
 }
 
-.drinksAmount, .totalParticipant, .remaining {
+.drinksAmount, .totalParticipant {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -58,6 +58,8 @@ body {
   width: 26vw;
   height: 4vh;
 }
+
+
 
 .errorState {
   background-color: rgba(255, 221, 18, 1);

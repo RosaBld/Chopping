@@ -4,13 +4,12 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from "react";
 import ReactModal from 'react-modal';
 
-export default function ModifyIndividually({ participantIndex }) {
+export default function ModifyIndividually({ participantIndex, participants, setParticipants }) {
   const data = JSON.parse(localStorage.getItem('participants'));
 
   const [showModal, setShowModal] = useState(false);
   const [showCustom, setShowCustom] = useState(data?.participants.map(() => false) || []);
   const [selectedButtons, setSelectedButtons] = useState(data?.participants.map(() => ({ type: null, value: null })) || []);
-  const [participants, setParticipants] = useState(data?.participants || [{ name: '', people: 1, amount: 0 }]);
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleModal = () => {
@@ -28,7 +27,7 @@ export default function ModifyIndividually({ participantIndex }) {
       const data = JSON.parse(storedData);
       setParticipants(data.participants);
     }
-  }, [participantIndex]);
+  }, [participantIndex, setParticipants]);
 
   const handleShow = (e, index) => {
     e.preventDefault();
@@ -219,4 +218,6 @@ export default function ModifyIndividually({ participantIndex }) {
 
 ModifyIndividually.propTypes = {
   participantIndex: PropTypes.number.isRequired,
+  participants: PropTypes.array.isRequired,
+  setParticipants:  PropTypes.func.isRequired
 };

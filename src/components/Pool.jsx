@@ -1,9 +1,10 @@
 // Libraries
 import { faScaleBalanced } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 
-export default function Pool() {
+export default function Pool({ page }) {
   const [data, setData] = useState(JSON.parse(localStorage.getItem('participants')) || {});
   const [existingData] = useState(true);
 
@@ -19,9 +20,13 @@ export default function Pool() {
       clearInterval(intervalId);
     };
   }, [data]);
+  
+  console.log(page);
+
+  const poolStyle = page === '/budget' ? 'poolRemainingBudget' : 'poolRemaining';
 
   return (
-    <div className="poolRemaining">
+    <div className={poolStyle}>
       {existingData && (
         <div className="remaining">
           <FontAwesomeIcon icon={faScaleBalanced} />
@@ -35,3 +40,7 @@ export default function Pool() {
     </div>
   )
 }
+
+Pool.propTypes = {
+  page: PropTypes.string.isRequired,
+};

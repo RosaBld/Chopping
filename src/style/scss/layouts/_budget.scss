@@ -55,4 +55,35 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  .remaining {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5vw;
+    padding: 0 4vw;
+  
+    background-color: rgba(0, 129, 138, 1);
+    border-radius: 7px;
+    width: 26vw;
+    height: 4vh;
+  }
+}
+
+.poolRemainingBudget {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 12vh;
+
+  .remaining {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5vw;
+    padding: 0 4vw;
+  }
 }

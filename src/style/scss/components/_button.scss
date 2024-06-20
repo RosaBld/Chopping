@@ -95,6 +95,22 @@
   width: 100%;
 }
 
+.deletePoolHome {
+  background-color: rgba(255, 221, 18, 1);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 4vw 14vw;
+  align-items: center;
+  justify-content: center;
+  gap:3%;
+  width: 100%;
+  .trash {
+    color:   rgba(173, 50, 0, 1);
+    font-size: 20px;
+  }
+}
+
 .back {
   background-color: rgba(255, 221, 18, 1);
   border: none;

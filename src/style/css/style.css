@@ -291,15 +291,17 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   font-family: "Poppins", sans-serif;
   color: white;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   margin: 4vh 2vh;
+  line-height: 1.9;
 }
 .about h2 {
   font-family: "Poppins", sans-serif;
   color: rgb(255, 221, 18);
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
   margin: 4vh 2vh;
+  line-height: 2;
 }
 
 .title {
@@ -401,6 +403,22 @@ table thead tr .numberUser, table thead tr .given, table tbody tr .numberUser, t
   justify-content: center;
   gap: 3%;
   width: 100%;
+}
+
+.deletePoolHome {
+  background-color: rgb(255, 221, 18);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 4vw 14vw;
+  align-items: center;
+  justify-content: center;
+  gap: 3%;
+  width: 100%;
+}
+.deletePoolHome .trash {
+  color: rgb(173, 50, 0);
+  font-size: 20px;
 }
 
 .back {
@@ -784,6 +802,34 @@ button.validate.disabled {
   justify-content: center;
   align-items: center;
 }
+.poolRemaining .remaining {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5vw;
+  padding: 0 4vw;
+  background-color: rgb(0, 129, 138);
+  border-radius: 7px;
+  width: 26vw;
+  height: 4vh;
+}
+
+.poolRemainingBudget {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 12vh;
+}
+.poolRemainingBudget .remaining {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5vw;
+  padding: 0 4vw;
+}
 
 .logoHome {
   display: flex;
@@ -964,7 +1010,7 @@ body {
   gap: 3vw;
 }
 
-.drinksAmount, .totalParticipant, .remaining {
+.drinksAmount, .totalParticipant {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

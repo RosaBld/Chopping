@@ -6,6 +6,7 @@ import { DeletePool } from "../utils";
 
 export default function Header() {
   const [showModal, setShowModal] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
   const location = useLocation();
   const [isActive, setIsActive] = useState(false);
   const setExistingData = useState(true)[1];
@@ -21,6 +22,10 @@ export default function Header() {
   const toggleModal = () => {
     setShowModal(!showModal);
     setIsActive(!isActive);
+  };
+
+  const toggleDeleteModal = () => {
+    setShowModal2(!showModal2);
   }
 
   const handlePoolDeletion = () => {
@@ -101,7 +106,7 @@ export default function Header() {
 
           <ul className="config">
             <li className="iconConfig">
-              <DeletePool onPoolDelete={handlePoolDeletion} toggleModal={toggleModal} />            
+              <DeletePool onPoolDelete={handlePoolDeletion} toggleDeleteModal={toggleDeleteModal} page="/header" />            
             </li>
           </ul>
         </nav>

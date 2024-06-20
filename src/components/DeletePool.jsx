@@ -6,7 +6,7 @@ import ReactModal from 'react-modal'
 import { useNavigate } from "react-router-dom"
 import PropTypes from 'prop-types';
 
-export default function DeletePool({ onPoolDelete, toggleModal }) {
+export default function DeletePool({ onPoolDelete, toggleDeleteModal, page }) {
 
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
@@ -19,17 +19,16 @@ export default function DeletePool({ onPoolDelete, toggleModal }) {
     setShowModal(!showModal);
     onPoolDelete();
     navigate('/');
-    toggleModal();
+    toggleDeleteModal();
   };
 
-  const toggleDeleteModal = () => {
-    setShowModal(!showModal);
-  }
+  const poolStyle = page === '/' ? 'deletePoolHome' : 'deletePool';
 
   return (
     <div>
-      <button onClick={toggleDeleteModal} className="deletePool" >
-        Supprimer la cagnotte <FontAwesomeIcon icon={faTrashCan} className="trash" /> 
+      <button onClick={toggleDeleteModal} className={poolStyle} >
+        {page !== '/' && 'Supprimer la cagnotte'} 
+        <FontAwesomeIcon icon={faTrashCan} className="trash" /> 
       </button>
 
       <ReactModal 
@@ -73,7 +72,8 @@ export default function DeletePool({ onPoolDelete, toggleModal }) {
 }
 
 DeletePool.propTypes = {
+  page: PropTypes.string.isRequired,
   onPoolDelete: PropTypes.func.isRequired,
   isHomePage: PropTypes.bool,
-  toggleModal: PropTypes.func.isRequired,
+  toggleDeleteModal: PropTypes.func.isRequired,
 };

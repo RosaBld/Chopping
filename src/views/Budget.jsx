@@ -36,7 +36,7 @@ export default function Budget() {
         
 
           <div className="poolBudgetPage">
-            <Pool />
+            <Pool page="/budget" />
           </div>
         </div>
       }
